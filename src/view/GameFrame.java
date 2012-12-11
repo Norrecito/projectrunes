@@ -4,6 +4,10 @@
  */
 package view;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import resource.RM;
@@ -14,6 +18,16 @@ import resource.RM;
  * @author Norrecito
  */
 public class GameFrame extends JFrame {
+    
+    /*
+     * A cache referenciája
+     */
+    private final Map<Class<? extends JPanel>, JPanel> CACHE = new HashMap<>();
+    
+    /*
+     * Az "előző" panel referenciája
+     */
+    private JPanel prevPanel;
     
     /*
      * Konstruktor
@@ -48,6 +62,21 @@ public class GameFrame extends JFrame {
       if(pn != null){
          add(pn); 
       }
-          
+    }
+    
+    public <P extends JPanel> void switchPanel(Class<P> panelClass){
+        JPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
+        
+        if (panel == null) { try { // ha nincs objektum
+            panel = panelClass.newInstance(); // cache-be beteszi, hogy legközelebb ne legyen példányosítás
+            CACHE.put(panelClass, panel); // cache-be beteszi, hogy legközelebb ne legyen példányosítás
+            if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
+            add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
+            prevPanel = panel; // az előző panel most már a jelenlegi panel
+            
+            } catch (Exception ex) {
+                Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            }
     }
 }
