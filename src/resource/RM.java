@@ -84,6 +84,13 @@ public class RM {
     }
     
     /*
+     * Visszaadja a "Kos" ikonképét
+     */
+    public static ImageIcon getAriesIcon(){
+        return getIcon("zodiac_aries.jpg");
+    }
+    
+    /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
     private static ImageIcon getIcon(String name) {

@@ -37,6 +37,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         {
             addElement(RM.getAquariusIcon());
             addElement(RM.getPiscesIcon());
+            addElement(RM.getAriesIcon());
         }
     };
     
@@ -95,25 +96,6 @@ public class CharacterCreationPanel extends AbstractPanel {
     };
     
     /*
-     * A panel amin a csillagjegyek közül lehet választani
-     */
-    private JPanel pnZodiac = new JPanel(){
-        {
-            //setLayout(new BoxLayout(pnZodiac, BoxLayout.PAGE_AXIS)); //Panel elrendezésének beállítása
-            add(spZodiac); //A csillagjegyeket tároló lista scrollpane-jének hozzáadása a panelhez
-        }
-    };
-    
-    /*
-     * A karakterhez tartozó leírást tartalmazó panel
-     */
-    private JPanel pnDescription = new JPanel(){
-        {
-            add(spDescription);
-        }
-    };
-    
-    /*
      * Konstruktor
      */
     public CharacterCreationPanel(){
@@ -127,10 +109,9 @@ public class CharacterCreationPanel extends AbstractPanel {
     private void initComponents(){
        
         //A komponensek méretének beállítása
-        spZodiac.setMaximumSize(new Dimension(250, 80)); //A Scrollpane méretének beállítása
-        spDescription.setMaximumSize(new Dimension(250, 80)); //A Scrollpane méretének beállítása
+        spZodiac.setMaximumSize(new Dimension(159, 180)); //A Scrollpane méretének beállítása
+        spDescription.setMaximumSize(new Dimension(250, 180)); //A Scrollpane méretének beállítása
         tfName.setMaximumSize(new Dimension(150,25));
-        pnDescription.setMaximumSize(new Dimension(250,80));
         
         //A komponensek elhelyezkedésének beállítása
         spZodiac.setAlignmentX(CENTER_ALIGNMENT);
@@ -139,7 +120,14 @@ public class CharacterCreationPanel extends AbstractPanel {
         tfName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         //A figyelő hozzáadása a karakternév mezőhőz
-        tfName.addKeyListener(btEnabler); 
+        tfName.addKeyListener(btEnabler);
+        
+        //A csillagjegyek leírását tartalmazó TextPane szerkeszthetőségének letíltása
+        tpDescription.setEditable(false);
+        
+        //A lista elrendezésének beállítása
+        lsZodiac.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        lsZodiac.setVisibleRowCount(0);
         
     }
     
@@ -154,10 +142,12 @@ public class CharacterCreationPanel extends AbstractPanel {
         Box bottom = Box.createHorizontalBox(); //Az alsó "doboz"
         
         //A felső "doboz" elemeinek hozzáadása
+        //top.add(Box.createHorizontalStrut(125));
+        top.add(Box.createRigidArea(new Dimension(0, 50)));
         top.add(lbName);
-        top.add(Box.createRigidArea(new Dimension(0, 5)));
+        top.add(Box.createRigidArea(new Dimension(5, 0)));
         top.add(tfName);
-        top.add(Box.createRigidArea(new Dimension(0, 5)));
+        top.add(Box.createRigidArea(new Dimension(5, 0)));
        
         //A középső "doboz" elemeinek hozzáadása
         center.add(spZodiac);
