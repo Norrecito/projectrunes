@@ -36,6 +36,5 @@ public class Main {
      */
     public static void main(String[] args) {
         GAME_FRAME = new GameFrame();
-        GAME_FRAME.switchPanel(MainMenuPanel.class);
     }
 }

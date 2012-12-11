@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import resource.RM;
+import view.component.MainMenuPanel;
 
 /**
  *  A főmenü ablaka
@@ -34,19 +35,15 @@ public class GameFrame extends JFrame {
      */
     public GameFrame(){
         
-        initComponents(); //Komponensek inicialízálása
         initWindow();     //Ablak inicialízálása
         
    }
-    
-    private void initComponents(){
-        
-      }
     
     private void initWindow(){
         
         setTitle("Runes"); //Az ablak cimkéjének beállítása
         setIconImage(RM.getIconImage()); //Az ablak ikonjának beállítása
+        switchPanel(MainMenuPanel.class); //A panel beállítása a főmenüre
         setVisible(true); //Legyen látható
         setDefaultCloseOperation(EXIT_ON_CLOSE); //Az X-re kattintva bezárodik a program
         setSize(640, 480); //Az ablak méretének beállítása (640*480)
@@ -59,18 +56,16 @@ public class GameFrame extends JFrame {
      * Az ablakon lévő panelek cserélgetését elvégző metódus
      */
     public <P extends JPanel> void switchPanel(Class<P> panelClass){
-        JPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
-        
-        if (panel == null) { try { // ha nincs objektum
-            panel = panelClass.newInstance(); // cache-be beteszi, hogy legközelebb ne legyen példányosítás
-            CACHE.put(panelClass, panel); // cache-be beteszi, hogy legközelebb ne legyen példányosítás
-            if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
-            add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
-            prevPanel = panel; // az előző panel most már a jelenlegi panel
-            
-            } catch (Exception ex) {
-                Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-            }
+         JPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
+         
+         try { // ha nincs objektum
+             
+         if (panel == null) CACHE.put(panelClass, panel = panelClass.newInstance()); // létrehozza és cache-be beteszi, hogy legközelebb ne legyen példányosítás
+         if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
+         add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
+         prevPanel = panel; // az előző panel most már a jelenlegi panel
+         } catch (Exception ex) {
+         Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 }
