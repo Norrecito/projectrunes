@@ -70,6 +70,20 @@ public class RM {
     }
     
     /*
+     * Visszaadja a "Vízöntő" ikonképét
+     */
+    public static ImageIcon getAquariusIcon(){
+       return getIcon("zodiac_aquarius.jpg"); 
+    }
+    
+    /*
+     * Visszaadja a "Halak" ikonképét
+     */
+    public static ImageIcon getPiscesIcon(){
+        return getIcon("zodiac_pisces.jpg");
+    }
+    
+    /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
     private static ImageIcon getIcon(String name) {

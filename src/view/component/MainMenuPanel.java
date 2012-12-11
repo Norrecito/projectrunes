@@ -31,7 +31,17 @@ public class MainMenuPanel extends AbstractPanel {
     /*
      * Az "Új Játék" gomb deklarálása
      */
-    JButton btNewGame = new JButton("Új Játék");
+    JButton btNewGame = new JButton("Új Játék"){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    getFrame().switchPanel(CharacterCreationPanel.class);
+                }
+            });
+        }
+    };
     
     /*
      * A "Folytatás" gomb deklarálása
