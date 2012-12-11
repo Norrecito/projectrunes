@@ -72,7 +72,7 @@ public class MainMenuPanel extends AbstractPanel {
      */
     public MainMenuPanel(){
         
-        super();
+        super(); //Ős konstruktor hívása
         initComponents(); //A komponensek a inicializálása
         initPanel(); //A panel inicializálása
       

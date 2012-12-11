@@ -107,7 +107,7 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     public CharacterCreationPanel(){
         
-        super();
+        super(); //Ős konstruktor hívása
         initComponents(); //A komponensek a inicializálása
         initPanel(); //A panel inicializálása
         
@@ -151,7 +151,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         
         setLayout(new BorderLayout()); //A panel elrendezésének beállítása
         
-        setBorder(new EmptyBorder(new Insets(40, 60, 40, 60)));
+        setBorder(new EmptyBorder(new Insets(40, 60, 40, 60))); //Margó beállítása
         
         Box top = Box.createVerticalBox(); //A felső "doboz" létrehozása
         Box center = Box.createHorizontalBox(); //A középső "doboz" létrehozása
