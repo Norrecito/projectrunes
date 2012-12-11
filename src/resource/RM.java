@@ -49,6 +49,27 @@ public class RM {
     }
     
     /*
+     * Visszaadja az aktív gomb ikonját
+     */
+    public static ImageIcon getActiveButtonIcon(){
+       return getIcon("button_active.jpg");  
+    }
+    
+    /*
+     * Visszaadja az inaktív gomb ikonját
+     */
+    public static ImageIcon getDisabledButtonIcon(){
+       return getIcon("button_disabled.jpg"); 
+    }
+    
+    /*
+     * Visszaadja a lenyomott gomb ikonját
+     */
+    public static ImageIcon getPressedButtonIcon(){
+       return getIcon("button_pressed.jpg");  
+    }
+    
+    /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
     private static ImageIcon getIcon(String name) {
