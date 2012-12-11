@@ -65,6 +65,7 @@ public class GameFrame extends JFrame {
          if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
          add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
          repaint(); //újrafesti a Frame-et
+         pack();
          prevPanel = panel; // az előző panel most már a jelenlegi panel
          } catch (Exception ex) {
          Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);

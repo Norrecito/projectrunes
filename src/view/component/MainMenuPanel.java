@@ -105,7 +105,7 @@ public class MainMenuPanel extends AbstractPanel {
         Box bottom = Box.createVerticalBox(); //Az alsó "doboz" deklarálása
             
         //A középső "doboz" elemeinek hozzáadása
-        center.add(Box.createRigidArea(new Dimension(0, 150)));
+        center.add(Box.createRigidArea(new Dimension(0, 200)));
         center.add(btNewGame);
         center.add(Box.createRigidArea(new Dimension(0, 5)));
         center.add(btContinue);

@@ -122,6 +122,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         
         //Komponensek színének beállítása
         lsZodiac.setBackground(Color.black);
+        tpDescription.setBackground(Color.gray);
         
         //A figyelő hozzáadása a karakternév mezőhőz
         tfName.addKeyListener(btEnabler);
@@ -146,8 +147,8 @@ public class CharacterCreationPanel extends AbstractPanel {
         Box bottom = Box.createHorizontalBox(); //Az alsó "doboz"
         
         //A felső "doboz" elemeinek hozzáadása
-        //top.add(Box.createHorizontalStrut(125));
-        top.add(Box.createRigidArea(new Dimension(0, 50)));
+        
+        top.add(Box.createRigidArea(new Dimension(150, 0)));
         top.add(lbName);
         top.add(Box.createRigidArea(new Dimension(5, 0)));
         top.add(tfName);
@@ -160,7 +161,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         
         //Az alsó "doboz" elemeinek hozzáadása
         bottom.add(btBack);
-        bottom.add(Box.createRigidArea(new Dimension(170, 0)));
+        bottom.add(Box.createHorizontalGlue());
         bottom.add(btCreate);
         
         //A "dobozok" hozzáadása a panelhez
