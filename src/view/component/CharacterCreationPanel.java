@@ -5,6 +5,7 @@
 package view.component;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -35,8 +36,8 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private DefaultListModel listModel = new DefaultListModel(){
         {
-            addElement(RM.getAquariusIcon());
-            addElement(RM.getPiscesIcon());
+            addElement(RM.getLeoIcon());
+            addElement(RM.getVirgoIcon());
             addElement(RM.getAriesIcon());
         }
     };
@@ -109,8 +110,8 @@ public class CharacterCreationPanel extends AbstractPanel {
     private void initComponents(){
        
         //A komponensek méretének beállítása
-        spZodiac.setMaximumSize(new Dimension(159, 180)); //A Scrollpane méretének beállítása
-        spDescription.setMaximumSize(new Dimension(250, 180)); //A Scrollpane méretének beállítása
+        spZodiac.setMaximumSize(new Dimension(159, 280)); //A Scrollpane méretének beállítása
+        spDescription.setMaximumSize(new Dimension(340, 280)); //A Scrollpane méretének beállítása
         tfName.setMaximumSize(new Dimension(150,25));
         
         //A komponensek elhelyezkedésének beállítása
@@ -118,6 +119,9 @@ public class CharacterCreationPanel extends AbstractPanel {
         spDescription.setAlignmentX(CENTER_ALIGNMENT);
         lbName.setAlignmentX(Component.CENTER_ALIGNMENT);
         tfName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        //Komponensek színének beállítása
+        lsZodiac.setBackground(Color.black);
         
         //A figyelő hozzáadása a karakternév mezőhőz
         tfName.addKeyListener(btEnabler);
@@ -156,7 +160,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         
         //Az alsó "doboz" elemeinek hozzáadása
         bottom.add(btBack);
-        bottom.add(Box.createRigidArea(new Dimension(20, 0)));
+        bottom.add(Box.createRigidArea(new Dimension(170, 0)));
         bottom.add(btCreate);
         
         //A "dobozok" hozzáadása a panelhez

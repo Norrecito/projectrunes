@@ -87,7 +87,21 @@ public class RM {
      * Visszaadja a "Kos" ikonképét
      */
     public static ImageIcon getAriesIcon(){
-        return getIcon("zodiac_aries.jpg");
+        return getIcon("zodiac_aries.png");
+    }
+    
+    /*
+     * Visszaadja a "Szűz" ikonképét
+     */
+    public static ImageIcon getVirgoIcon(){
+        return getIcon("zodiac_virgo.png");
+    }
+    
+    /*
+     * Visszaadja az "Oroszlán ikonképét
+     */
+    public static ImageIcon getLeoIcon(){
+        return getIcon("zodiac_leo.png");
     }
     
     /*

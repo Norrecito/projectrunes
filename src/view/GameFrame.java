@@ -64,6 +64,7 @@ public class GameFrame extends JFrame {
          if (panel == null) CACHE.put(panelClass, panel = panelClass.newInstance().setFrame(this)); // létrehozza és cache-be beteszi, hogy legközelebb ne legyen példányosítás
          if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
          add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
+         repaint(); //újrafesti a Frame-et
          prevPanel = panel; // az előző panel most már a jelenlegi panel
          } catch (Exception ex) {
          Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
