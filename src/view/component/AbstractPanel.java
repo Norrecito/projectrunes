@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
 import resource.RM;
+import view.GameFrame;
 
 /**
  * Az ablakhóz tartozó "panel" komponens, ami képes egy képet megjeleníteni annak háttereként
@@ -22,6 +23,11 @@ public abstract class AbstractPanel extends JPanel {
      * A háttérkép referenciája
      */
     private Image img;
+    
+    /*
+     * A játék ablak referenciája
+     */
+    private GameFrame frame;
     
     /*
      * Konstruktor
@@ -43,7 +49,22 @@ public abstract class AbstractPanel extends JPanel {
      */
     protected Image createBackgroundImage() {
         return RM.getDefaultBackgroundImage();
- }
+    }
+    
+    /*
+     * Beállítja a játék ablakot
+     */
+    public AbstractPanel setFrame(GameFrame frame) {
+        this.frame = frame;
+        return this;
+    }
+
+    /*
+     * Visszaadja a játékablak referenciáját
+     */
+    public GameFrame getFrame() {
+        return frame;
+    }
     
     /*
      * A "paintComponent" metódus felülírása, hogy kirajzolja a képet a panel háttereként

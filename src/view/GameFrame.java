@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import resource.RM;
+import view.component.AbstractPanel;
 import view.component.MainMenuPanel;
 
 /**
@@ -23,7 +24,7 @@ public class GameFrame extends JFrame {
     /*
      * A cache referenciája
      */
-    private final Map<Class<? extends JPanel>, JPanel> CACHE = new HashMap<>();
+    private final Map<Class<? extends AbstractPanel>, AbstractPanel> CACHE = new HashMap<>();
     
     /*
      * Az "előző" panel referenciája
@@ -55,12 +56,12 @@ public class GameFrame extends JFrame {
     /*
      * Az ablakon lévő panelek cserélgetését elvégző metódus
      */
-    public <P extends JPanel> void switchPanel(Class<P> panelClass){
-         JPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
+    public <P extends AbstractPanel> void switchPanel(Class<P> panelClass){
+         AbstractPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
          
          try { // ha nincs objektum
              
-         if (panel == null) CACHE.put(panelClass, panel = panelClass.newInstance()); // létrehozza és cache-be beteszi, hogy legközelebb ne legyen példányosítás
+         if (panel == null) CACHE.put(panelClass, panel = panelClass.newInstance().setFrame(this)); // létrehozza és cache-be beteszi, hogy legközelebb ne legyen példányosítás
          if (prevPanel != null) remove(prevPanel); // ha volt előző panel, azt leszedi az ablakról
          add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
          prevPanel = panel; // az előző panel most már a jelenlegi panel
