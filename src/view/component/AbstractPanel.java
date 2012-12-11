@@ -12,6 +12,7 @@ import resource.RM;
 
 /**
  * Az ablakhóz tartozó "panel" komponens, ami képes egy képet megjeleníteni annak háttereként
+ * Az ős panel osztály, minden további panel ebből az osztályból származik le
  * 
  * @author Norrecito
  */
