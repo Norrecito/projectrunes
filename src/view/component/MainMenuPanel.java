@@ -112,7 +112,7 @@ public class MainMenuPanel extends AbstractPanel {
         center.add(Box.createRigidArea(new Dimension(0, 5)));
         center.add(btExit);
         center.add(Box.createRigidArea(new Dimension(0, 5)));
-            
+        
         //Az alsó "doboz" elemeinek hozzáadása
         bottom.add(lbVersion);
             

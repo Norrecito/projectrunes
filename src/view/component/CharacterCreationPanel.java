@@ -4,11 +4,7 @@
  */
 package view.component;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +16,16 @@ import resource.RM;
  * @author Norrecito
  */
 public class CharacterCreationPanel extends AbstractPanel {
+    
+    /*
+     * Az "Új karakter létrehozása" felirat fontja
+     */
+    Font ftext = new Font("Algerian",Font.PLAIN, 20);
+    
+    /*
+     * Az "Új karakter létrehozása" felirat címkéje
+     */
+    private JLabel lbText = new JLabel("Új karakter létrehozása");
     
     /*
      * A "Név" feliratot tartalmazó cimke
@@ -115,14 +121,19 @@ public class CharacterCreationPanel extends AbstractPanel {
         tfName.setMaximumSize(new Dimension(150,25));
         
         //A komponensek elhelyezkedésének beállítása
-        spZodiac.setAlignmentX(CENTER_ALIGNMENT);
-        spDescription.setAlignmentX(CENTER_ALIGNMENT);
+        spZodiac.setAlignmentX(Component.CENTER_ALIGNMENT);
+        spDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lbText.setAlignmentX(Component.CENTER_ALIGNMENT);
         lbName.setAlignmentX(Component.CENTER_ALIGNMENT);
         tfName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         //Komponensek színének beállítása
         lsZodiac.setBackground(Color.black);
         tpDescription.setBackground(Color.gray);
+        lbName.setForeground(Color.white);
+        
+        //Betütípus (Font) beállítása
+        lbText.setFont(ftext);
         
         //A figyelő hozzáadása a karakternév mezőhőz
         tfName.addKeyListener(btEnabler);
@@ -142,18 +153,18 @@ public class CharacterCreationPanel extends AbstractPanel {
         
         setBorder(new EmptyBorder(new Insets(40, 60, 40, 60)));
         
-        Box top = Box.createHorizontalBox(); //A felső "doboz" létrehozása
+        Box top = Box.createVerticalBox(); //A felső "doboz" létrehozása
         Box center = Box.createHorizontalBox(); //A középső "doboz" létrehozása
         Box bottom = Box.createHorizontalBox(); //Az alsó "doboz"
         
         //A felső "doboz" elemeinek hozzáadása
-        
-        top.add(Box.createRigidArea(new Dimension(150, 0)));
+        top.add(lbText);
+        top.add(Box.createRigidArea(new Dimension(0, 20)));
         top.add(lbName);
         top.add(Box.createRigidArea(new Dimension(5, 0)));
         top.add(tfName);
         top.add(Box.createRigidArea(new Dimension(5, 0)));
-       
+        
         //A középső "doboz" elemeinek hozzáadása
         center.add(spZodiac);
         center.add(Box.createRigidArea(new Dimension(10, 0)));
