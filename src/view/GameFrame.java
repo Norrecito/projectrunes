@@ -58,12 +58,6 @@ public class GameFrame extends JFrame {
     /*
      * Az ablakon lévő panelek cserélgetését elvégző metódus
      */
-    public void switchPanel(JPanel pn){
-      if(pn != null){
-         add(pn); 
-      }
-    }
-    
     public <P extends JPanel> void switchPanel(Class<P> panelClass){
         JPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
         

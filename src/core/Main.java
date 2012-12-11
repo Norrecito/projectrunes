@@ -25,11 +25,6 @@ public class Main {
     private static GameFrame GAME_FRAME;
     
     /*
-     * A főmenü panel
-     */
-    private static MainMenuPanel MAIN_MENU_PANEL= new MainMenuPanel();
-    
-    /*
      * Visszaadja a program verziószámát
      */
     public static String getVERSION() {
@@ -41,6 +36,6 @@ public class Main {
      */
     public static void main(String[] args) {
         GAME_FRAME = new GameFrame();
-        GAME_FRAME.switchPanel(MAIN_MENU_PANEL);
+        GAME_FRAME.switchPanel(MainMenuPanel.class);
     }
 }
