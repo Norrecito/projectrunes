@@ -20,13 +20,14 @@ public abstract class AbstractPanel extends JPanel {
     /*
      * A háttérkép referenciája
      */
-    private Image img=RM.getDefaultBackgroundImage();
+    private Image img;
     
     /*
      * Konstruktor
      */
     public AbstractPanel() {
         
+        img = createBackgroundImage();
         Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
         setPreferredSize(size);
         setMinimumSize(size);
@@ -35,6 +36,13 @@ public abstract class AbstractPanel extends JPanel {
         setLayout(null);
         
     }
+    
+    /*
+     * Visszadja a panel hátterét
+     */
+    protected Image createBackgroundImage() {
+        return RM.getDefaultBackgroundImage();
+ }
     
     /*
      * A "paintComponent" metódus felülírása, hogy kirajzolja a képet a panel háttereként

@@ -24,11 +24,6 @@ import resource.RM;
 public class MainMenuPanel extends AbstractPanel {
    
     /*
-     * A háttérkép referenciája
-     */
-    private Image img=RM.getMainmenuBackgroundImage();
-    
-    /*
      * A verziószámot tartalmazó cimke
      */
     JLabel lbVersion = new JLabel("verzió: "+Main.getVERSION());
@@ -113,5 +108,13 @@ public class MainMenuPanel extends AbstractPanel {
             
         add(center, BorderLayout.CENTER); //A középen lévő komponenseket tartalmazó "doboz" hozzáadása a panelhez
         add(bottom, BorderLayout.PAGE_END); //A képernyő alján lévő komponenseket tartalmazó "doboz" hozzáadása a panelhez  
+    }
+    
+    /*
+     * Visszadja a panel hátterét
+     */
+    @Override
+    protected Image createBackgroundImage() {
+        return RM.getMainmenuBackgroundImage();
     }
 }
