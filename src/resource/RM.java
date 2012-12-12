@@ -6,6 +6,8 @@ package resource;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
@@ -104,6 +106,49 @@ public class RM {
         return getIcon("zodiac_leo.png");
     }
     
+   
+    /*
+     * A visszaadja a "Levegő" elem képét
+     */
+    public static Image getAirImage(){
+       return getImage("Air.png");  
+    }
+    
+    /*
+     * Visszaadja a "Föld" elem képét
+     */
+    public static Image getEarthImage(){
+       return getImage("Earth.png");  
+    }
+    
+    /*
+     * Visszaadja a "Tűz" elem képét
+     */
+    public static Image getFireImage(){
+       return getImage("Fire.png"); 
+    }
+    
+    /*
+     * Visszaadja a "Víz" elem képét
+     */
+    public static Image getWaterImage(){
+       return getImage("Water.png"); 
+    }
+    
+    /*
+     * Visszaadja a paraméterként kapott elem leírását
+     */
+    public static String getElementDescription(String elementName){
+        return getText(elementName+".txt");
+    }
+    
+    /*
+     * Visszaadja a paraméterként kapott csillagjegy leírását
+     */
+    public static String getZodiacDescription(String zodiacName){
+        return getText(zodiacName+".txt");
+    }
+    
     /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
@@ -129,5 +174,29 @@ public class RM {
      */
     private static InputStream getStream(String name) {
         return RM.class.getResourceAsStream(name);
+    }
+    
+    /*
+     * Visszaadja a szövegfájl tartalmát aminek a nevét paraméterben megkapja
+     */
+    private static String getText(String filename){
+        
+        String content="";
+        
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(filename));
+            
+            String line;
+            
+            while((line = in.readLine()) != null)
+            {
+                content = content + line;
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(RM.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return content;
     }
 }

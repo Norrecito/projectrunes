@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import resource.RM;
 
 /**
@@ -51,7 +53,17 @@ public class CharacterCreationPanel extends AbstractPanel {
     /*
      * A lista ami a csillagjegyeket tárolja
      */
-    private JList lsZodiac = new JList(listModel);
+    private JList lsZodiac = new JList(listModel){
+        {
+            addListSelectionListener(new ListSelectionListener() {
+
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    setZodiacDescription();
+                }
+            });
+        }
+    };
     
     /*
      * A Scrollpane amire a lista kerül
@@ -190,5 +202,14 @@ public class CharacterCreationPanel extends AbstractPanel {
         int n = tfName.getText().length(); //Lekéri a karakter nevének hosszát
         btCreate.setEnabled(n >3); //A hossz alapján engedélyezi, illetve tiltja a gombot
         
+    }
+    
+    /*
+     * Beállítja a TextPane-be az adott csillagjegyhez tartozó leírást
+     */
+    private void setZodiacDescription(){
+        String selectedItem = lsZodiac.getSelectedValue().toString();
+        System.out.println(selectedItem);
+       
     }
 }
