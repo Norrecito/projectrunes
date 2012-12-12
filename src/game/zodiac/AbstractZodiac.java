@@ -5,8 +5,11 @@
 package game.zodiac;
 
 import game.element.AbstractElement;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
+import resource.RM;
 
 /**
  * Az absztrakt csillagjegy osztály
@@ -15,7 +18,7 @@ import javax.swing.JPanel;
  * 
  * @author Norrecito
  */
-public class AbstractZodiac extends JPanel {
+public abstract class AbstractZodiac extends JPanel {
     
     /*
      * Az elem referenciája amibe a csillagjegy tartozik
@@ -25,7 +28,7 @@ public class AbstractZodiac extends JPanel {
     /*
      * A csillagjegyhez tartozó kép referenciája
      */
-    private Image zodiacImage;
+    private Image zodiacImage=RM.getDefaultZodiacImage();
     
     /*
      * A csillagjegy nevének referenciája
@@ -36,6 +39,20 @@ public class AbstractZodiac extends JPanel {
      * A csillagjegy leírásának referenciája
      */
     private String zodiacDescription;
+    
+    /*
+     * Konstruktor
+     */
+    public AbstractZodiac(){
+        
+        createBackgroundImage();
+        Dimension size = new Dimension(zodiacImage.getWidth(null), zodiacImage.getHeight(null));
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
+        setSize(size);
+        setLayout(null);
+    }
     
     /*
      * Visszadja a csillagjegyhez tartozó elemet
@@ -91,6 +108,21 @@ public class AbstractZodiac extends JPanel {
      */
     public void setZodiacName(String zodiacName) {
         this.zodiacName = zodiacName;
+    }
+    
+    /*
+     * Visszadja a panel hátterét
+     */
+    protected Image createBackgroundImage() {
+        return RM.getDefaultZodiacImage();
+    }
+    
+    /*
+     * A "paintComponent" metódus felülírása, hogy kirajzolja a képet a panel háttereként
+     */
+    @Override
+    public void paintComponent(Graphics g) {
+    g.drawImage(zodiacImage, 0, 0, null);
     }
     
     

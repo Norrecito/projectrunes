@@ -21,7 +21,7 @@ public class Fire extends AbstractElement {
       
       setElementName("Fire"); //Az elem nevének beállítása
       setElementImage(RM.getFireImage()); //Az elemhez tartozó kép beállítása
-      setElementDescription(RM.getElementDescription(getElementName())); //Az elem leírásának beállítása
+      //setElementDescription(RM.getElementDescription(getElementName())); //Az elem leírásának beállítása
       
     }
 }

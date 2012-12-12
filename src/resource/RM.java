@@ -106,6 +106,20 @@ public class RM {
         return getIcon("zodiac_leo.png");
     }
     
+    /*
+     * Visszadja az alapértelmezett Csillagjegy képet (Üres kő)
+     */
+    public static Image getDefaultZodiacImage(){
+        return getImage("zodiac_default.png"); 
+    }
+    
+    /*
+     * Visszaadja az "Oroszlán" képét
+     */
+    public static Image getLeoImage(){
+       return getImage("zodiac_leo.png"); 
+    }
+    
    
     /*
      * A visszaadja a "Levegő" elem képét

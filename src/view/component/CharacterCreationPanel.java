@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.zodiac.Leo;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -44,6 +45,8 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private DefaultListModel listModel = new DefaultListModel(){
         {
+            
+            //addElement(new Leo());
             addElement(RM.getLeoIcon());
             addElement(RM.getVirgoIcon());
             addElement(RM.getAriesIcon());
@@ -55,6 +58,8 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private JList lsZodiac = new JList(listModel){
         {
+            //setCellRenderer(new ImageListCellRenderer());
+            
             addListSelectionListener(new ListSelectionListener() {
 
                 @Override
@@ -209,7 +214,7 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private void setZodiacDescription(){
         String selectedItem = lsZodiac.getSelectedValue().toString();
-        System.out.println(selectedItem);
+        //System.out.println(selectedItem);
        
     }
 }
