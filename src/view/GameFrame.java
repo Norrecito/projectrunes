@@ -69,6 +69,7 @@ public class GameFrame extends JFrame {
     
     /*
      * Az ablakon lévő panelek cserélgetését elvégző metódus
+     * TODO: metódus optimalizálása
      */
     public <P extends AbstractPanel> void switchPanel(Class<P> panelClass){
          AbstractPanel panel = CACHE.get(panelClass); // lekéri a cacheből a referenciát
