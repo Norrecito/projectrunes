@@ -28,17 +28,17 @@ public enum Element implements Visible {
     /*
      * Az elem neve
      */
-    private String name="<element name>";
+    private final String name;
     
     /*
      * Az elem leírása
      */
-    private String description="<element description>";
+    private final String description;
     
     /*
      * Az elem ikonja
      */
-    private ImageIcon icon=new ImageIcon();
+    private final ImageIcon icon;
     
     /*
      * Konstruktor
