@@ -20,18 +20,18 @@ public enum Zodiac implements Visible {
     /*
      * A csillagjegyek
      */
-    ARIES(Element.FIRE,"Aries","A Kos leírása"),                     //Kos
-    TAURUS(Element.EARTH,"Taurus","A Bika leírása"),                  //Bika 
-    GEMINI(Element.AIR,"Gemini","Az Ikrek leírása"),                //Ikrek
-    CANCER(Element.WATER,"Cancer","A Rák leírása"),                   //Rák
-    LEO(Element.FIRE,"Leo","Az Oroszlán leírása"),                   //Oroszlán
-    VIRGO(Element.EARTH,"Virgo","A Szűz leírása"),                    //Szűz
-    LIBRA(Element.AIR,"Libra","A Mérleg leírása"),                  //Mérleg
-    SCORPIO(Element.WATER,"Scorpio","A Skorpió leírása"),             //Skorpió
-    SAGITTARIUS(Element.FIRE,"Sagittarius","A Nyilas leírása"),      //Nyilas
-    CAPRICORN(Element.EARTH,"Capricorn","A Bak leírása"),             //Bak
-    AQUARIUS(Element.AIR,"Aquarius","A Vízöntő leírása"),           //Vízöntő
-    PISCES(Element.WATER,"Pisces","A Halak leírása");                 //Halak
+    ARIES(Element.FIRE,"Kos","A Kos leírása","Aries"),                  //Kos
+    TAURUS(Element.EARTH,"Bika","A Bika leírása","Taurus"),             //Bika 
+    GEMINI(Element.AIR,"Ikrek","Az Ikrek leírása","Gemini"),            //Ikrek
+    CANCER(Element.WATER,"Rák","A Rák leírása","Cancer"),               //Rák
+    LEO(Element.FIRE,"Oroszlán","Az Oroszlán leírása","Leo"),           //Oroszlán
+    VIRGO(Element.EARTH,"Szűz","A Szűz leírása","Virgo"),               //Szűz
+    LIBRA(Element.AIR,"Mérleg","A Mérleg leírása","Libra"),             //Mérleg
+    SCORPIO(Element.WATER,"Skorpió","A Skorpió leírása","Scorpio"),     //Skorpió
+    SAGITTARIUS(Element.FIRE,"Nyilas","A Nyilas leírása","Sagittarius"),//Nyilas
+    CAPRICORN(Element.EARTH,"Bak","A Bak leírása","Capricorn"),         //Bak
+    AQUARIUS(Element.AIR,"Vízöntő","A Vízöntő leírása","Aquarius"),     //Vízöntő
+    PISCES(Element.WATER,"Halak","A Halak leírása","Pisces");           //Halak
     
     /*
      * Az elem amibe a csillagjegy tartozik
@@ -56,12 +56,13 @@ public enum Zodiac implements Visible {
     /*
      * Konstruktor
      */
-    private Zodiac(Element element,String name, String description){
+    private Zodiac(Element element,String name, String description, String iconname){
         
         this.element=element;
         this.name = name;
         this.description = description;
-        this.icon =RM.getZodiacIcon(name);
+        this.icon =RM.getZodiacIcon(iconname);
+        
     }
     
     /*
