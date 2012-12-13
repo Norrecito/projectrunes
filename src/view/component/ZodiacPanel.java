@@ -39,7 +39,7 @@ public class ZodiacPanel extends JPanel {
     }
     
     /*
-     * Visszaadja a panelen Visible interface-el ellátott objektumot
+     * Visszaadja a panelen lévő Visible interface-el ellátott objektumot
      */
     public Visible getZodiac() {
         return zodiac;
