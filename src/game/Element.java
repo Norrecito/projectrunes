@@ -20,10 +20,10 @@ public enum Element implements Visible {
     /*
      * Az elemek
      */
-    AIR("Air","A levegő elem leírása"),  //Levegő
-    EARTH("Föld","A föld elem leírása"), //Föld 
-    FIRE("Tűz", "A tűz elem leírása"),   //Tűz
-    WATER("Víz","A víz elem leírása");   //Víz
+    AIR("Levegő","A levegő elem leírása","Air"),  //Levegő
+    EARTH("Föld","A föld elem leírása","Earth"),  //Föld 
+    FIRE("Tűz", "A tűz elem leírása","Fire"),     //Tűz
+    WATER("Víz","A víz elem leírása","Water");    //Víz
     
     /*
      * Az elem neve
@@ -43,11 +43,11 @@ public enum Element implements Visible {
     /*
      * Konstruktor
      */
-    private Element(String name, String description){
+    private Element(String name, String description, String iconName){
         
         this.name = name;
         this.description = description;
-        this.icon = RM.getElementIcon(name);
+        this.icon = RM.getElementIcon(iconName);
         
     }
     
