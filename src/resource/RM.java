@@ -157,6 +157,13 @@ public class RM {
     }
     
     /*
+     * Visszadja a paraméterként kapott elem ikonképét
+     */
+    public static ImageIcon getElementIcon(String elementName){
+        return getIcon(elementName+".png");
+    }
+    
+    /*
      * Visszaadja a paraméterként kapott csillagjegy leírását
      */
     public static String getZodiacDescription(String zodiacName){
@@ -164,11 +171,13 @@ public class RM {
     }
     
     /*
-     * Visszadja a paraméterként kapott elem ikonképét
+     * Visszaadja a paraméternek kapott csillagjegy képét
      */
-    public static ImageIcon getElementIcon(String elementName){
-        return getIcon(elementName+".png");
+    public static ImageIcon getZodiacIcon(String zodiacName){
+        return getIcon(zodiacName+".png");
     }
+    
+    
     
     /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
