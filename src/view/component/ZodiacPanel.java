@@ -27,6 +27,9 @@ public class ZodiacPanel extends JPanel {
      */
     private final JLabel lbZodiac;
     
+    /*
+     * Konstruktor
+     */
     public ZodiacPanel(Visible zodiac){
         
         this.zodiac = zodiac;
