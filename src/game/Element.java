@@ -38,7 +38,7 @@ public enum Element implements Visible {
     /*
      * Az elem ikonja
      */
-    private ImageIcon icon=new ImageIcon(RM.getAirImage());
+    private ImageIcon icon=new ImageIcon();
     
     /*
      * Konstruktor
