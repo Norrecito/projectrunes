@@ -9,7 +9,7 @@ import resource.RM;
 import view.component.Visible;
 
 /**
- * A játékban szereplő elemek osztálya
+ * A játékban szereplő elemek
  * Minden Csillagjegy egy elembe tartozik
  * Tartalmazza az elemhez szükséges változókat és metódusokat
  * 
@@ -20,10 +20,10 @@ public enum Element implements Visible {
     /*
      * Az elemek
      */
-    AIR("Air","A levegő elem leírása"),
-    EARTH("Föld","A föld elem leírása"),
-    FIRE("Tűz", "A tűz elem leírása"),
-    WATER("Víz","A víz elem leírása");
+    AIR("Air","A levegő elem leírása"),  //Levegő
+    EARTH("Föld","A föld elem leírása"), //Föld 
+    FIRE("Tűz", "A tűz elem leírása"),   //Tűz
+    WATER("Víz","A víz elem leírása");   //Víz
     
     /*
      * Az elem neve
