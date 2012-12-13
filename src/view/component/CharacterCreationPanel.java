@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.Zodiac;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -44,9 +45,10 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private DefaultListModel listModel = new DefaultListModel(){
         {
-            addElement(RM.getLeoIcon());
-            addElement(RM.getVirgoIcon());
-            addElement(RM.getAriesIcon());
+            //addElement(RM.getLeoIcon());
+            //addElement(RM.getVirgoIcon());
+            //addElement(RM.getAriesIcon());
+            addElement(new ZodiacPanel(Zodiac.ARIES));
         }
     };
     
@@ -55,7 +57,7 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private JList lsZodiac = new JList(listModel){
         {
-            //setCellRenderer(new ImageListCellRenderer());
+            setCellRenderer(new ImageListCellRenderer());
             
             addListSelectionListener(new ListSelectionListener() {
 
