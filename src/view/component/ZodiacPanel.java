@@ -5,6 +5,8 @@
 package view.component;
 
 import game.Zodiac;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,7 +22,7 @@ public class ZodiacPanel extends JPanel {
     /*
      * A panelre kerülő Visible interface-el ellátott objektum 
      */
-    Visible zodiac;
+    private Visible zodiac;
     
     /*
      * A panelre kerülő címke, ami egy ikont fog tartalmazni
@@ -35,7 +37,7 @@ public class ZodiacPanel extends JPanel {
         this.zodiac = zodiac;
         lbZodiac = new JLabel(zodiac.getIcon());
         add(lbZodiac);
-        
+    
     }
     
     /*

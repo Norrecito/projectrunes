@@ -33,7 +33,7 @@ public class ImageListCellRenderer implements ListCellRenderer {
     {
       Component component = (Component) value;
       component.setForeground (Color.white);
-      component.setBackground (isSelected ? Color.lightGray : Color.white);
+      component.setBackground (isSelected ? Color.lightGray : Color.black);
       return component;
     }
     else

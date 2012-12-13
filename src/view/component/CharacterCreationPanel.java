@@ -7,11 +7,14 @@ package view.component;
 import game.Zodiac;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import resource.RM;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 
 /**
  * A karakterkreálló panel
@@ -45,10 +48,12 @@ public class CharacterCreationPanel extends AbstractPanel {
      */
     private DefaultListModel listModel = new DefaultListModel(){
         {
-            //addElement(RM.getLeoIcon());
-            //addElement(RM.getVirgoIcon());
-            //addElement(RM.getAriesIcon());
             addElement(new ZodiacPanel(Zodiac.ARIES));
+            addElement(new ZodiacPanel(Zodiac.TAURUS));
+            addElement(new ZodiacPanel(Zodiac.GEMINI));
+            addElement(new ZodiacPanel(Zodiac.CANCER));
+            addElement(new ZodiacPanel(Zodiac.LEO));
+            addElement(new ZodiacPanel(Zodiac.VIRGO));
         }
     };
     
@@ -78,6 +83,11 @@ public class CharacterCreationPanel extends AbstractPanel {
      * A TextPane amire a csillagjegyek leírása kerül
      */
     private JTextPane tpDescription = new JTextPane();
+    
+    /*
+     * A TextPane-hez tartozó dokumentum
+     */
+    StyledDocument doc=tpDescription.getStyledDocument();
     
     /*
      * A Scrollpane amire a csillagjegyek leírása kerül
@@ -132,8 +142,8 @@ public class CharacterCreationPanel extends AbstractPanel {
     private void initComponents(){
        
         //A komponensek méretének beállítása
-        spZodiac.setMaximumSize(new Dimension(159, 280)); //A Scrollpane méretének beállítása
-        spDescription.setMaximumSize(new Dimension(340, 280)); //A Scrollpane méretének beállítása
+        spZodiac.setMaximumSize(new Dimension(183, 280)); //A Scrollpane méretének beállítása
+        spDescription.setMaximumSize(new Dimension(320, 280)); //A Scrollpane méretének beállítása
         tfName.setMaximumSize(new Dimension(150,25));
         
         //A komponensek elhelyezkedésének beállítása
@@ -212,8 +222,32 @@ public class CharacterCreationPanel extends AbstractPanel {
      * Beállítja a TextPane-be az adott csillagjegyhez tartozó leírást
      */
     private void setZodiacDescription(){
-        String selectedItem = lsZodiac.getSelectedValue().toString();
         
-       
+        //Elkéri a látható objektumot a listától
+        ZodiacPanel selectedItem = (ZodiacPanel) lsZodiac.getSelectedValue();
+        
+        //Átadja a dokumentum kreáló metódusnak, hogy összeállíthassa a megfelelő dokumentumot
+        createDocument(selectedItem);
+        
+    }
+    
+    /*
+     * Összeállítja a dokumentumot ami a TextPane-be kerül
+     */
+    private void createDocument(ZodiacPanel panel){
+        
+        //Amenyiben a TextPane tartalma nem üres, kitörli a benne lévő szöveget
+        if(!"".equals(tpDescription.getText())) tpDescription.setText("");
+        
+        try {
+            
+            doc.insertString(0, panel.getZodiac().getName()+"\n\n", null); //Beileszti a dokumentumba a csillagjegy nevét
+            doc.insertString(doc.getLength(), "Elem: "+"\n", null );
+            
+            
+        } catch (BadLocationException ex) {
+            Logger.getLogger(CharacterCreationPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }

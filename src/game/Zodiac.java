@@ -64,6 +64,13 @@ public enum Zodiac implements Visible {
         this.icon =RM.getZodiacIcon(iconname);
         
     }
+
+    /*
+     * Visszaadja az elemet amibe a csillagjegy tartozik
+     */
+    public Element getElement() {
+        return element;
+    }
     
     /*
      * Visszaadja a csillagjegy nevét
