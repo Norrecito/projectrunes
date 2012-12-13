@@ -57,17 +57,26 @@ public enum Zodiac implements Visible {
         this.description = description;
         this.icon =RM.getZodiacIcon(name);
     }
-
+    
+    /*
+     * Visszaadja a csillagjegy nevét
+     */
     @Override
     public String getName() {
         return name;
     }
-
+    
+    /*
+     * Visszaadja a csillagjegy leírását
+     */
     @Override
     public String getDescription() {
         return description;
     }
-
+    
+    /*
+     * Visszaadja a csillagjegy ikonját
+     */
     @Override
     public ImageIcon getIcon() {
         return icon;
