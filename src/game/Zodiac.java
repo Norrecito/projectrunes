@@ -20,18 +20,23 @@ public enum Zodiac implements Visible {
     /*
      * A csillagjegyek
      */
-    ARIES("Aries","A Kos leírása"),                     //Kos
-    TAURUS("Taurus","A Bika leírása"),                  //Bika 
-    GEMINI("Gemini","Az Ikrek leírása"),                //Ikrek
-    CANCER("Cancer","A Rák leírása"),                   //Rák
-    LEO("Leo","Az Oroszlán leírása"),                   //Oroszlán
-    VIRGO("Virgo","A Szűz leírása"),                    //Szűz
-    LIBRA("Libra","A Mérleg leírása"),                  //Mérleg
-    SCORPIO("Scorpio","A Skorpió leírása"),             //Skorpió
-    SAGITTARIUS("Sagittarius","A Nyilas leírása"),      //Nyilas
-    CAPRICORN("Capricorn","A Bak leírása"),             //Bak
-    AQUARIUS("Aquarius","A Vízöntő leírása"),           //Vízöntő
-    PISCES("Pisces","A Halak leírása");                 //Halak
+    ARIES(Element.FIRE,"Aries","A Kos leírása"),                     //Kos
+    TAURUS(Element.EARTH,"Taurus","A Bika leírása"),                  //Bika 
+    GEMINI(Element.AIR,"Gemini","Az Ikrek leírása"),                //Ikrek
+    CANCER(Element.WATER,"Cancer","A Rák leírása"),                   //Rák
+    LEO(Element.FIRE,"Leo","Az Oroszlán leírása"),                   //Oroszlán
+    VIRGO(Element.EARTH,"Virgo","A Szűz leírása"),                    //Szűz
+    LIBRA(Element.AIR,"Libra","A Mérleg leírása"),                  //Mérleg
+    SCORPIO(Element.WATER,"Scorpio","A Skorpió leírása"),             //Skorpió
+    SAGITTARIUS(Element.FIRE,"Sagittarius","A Nyilas leírása"),      //Nyilas
+    CAPRICORN(Element.EARTH,"Capricorn","A Bak leírása"),             //Bak
+    AQUARIUS(Element.AIR,"Aquarius","A Vízöntő leírása"),           //Vízöntő
+    PISCES(Element.WATER,"Pisces","A Halak leírása");                 //Halak
+    
+    /*
+     * Az elem amibe a csillagjegy tartozik
+     */
+    private final Element element;
     
     /*
      * A csillagjegy neve
@@ -51,8 +56,9 @@ public enum Zodiac implements Visible {
     /*
      * Konstruktor
      */
-    private Zodiac(String name, String description){
+    private Zodiac(Element element,String name, String description){
         
+        this.element=element;
         this.name = name;
         this.description = description;
         this.icon =RM.getZodiacIcon(name);
