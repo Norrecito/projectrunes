@@ -239,10 +239,17 @@ public class CharacterCreationPanel extends AbstractPanel {
         //Amenyiben a TextPane tartalma nem üres, kitörli a benne lévő szöveget
         if(!"".equals(tpDescription.getText())) tpDescription.setText("");
         
+        //Az ikon amire a csillagjegy elemének képe kerül
+        JLabel lbIcon = new JLabel(panel.getZodiac().getElement().getIcon());
+        
         try {
             
             doc.insertString(0, panel.getZodiac().getName()+"\n\n", null); //Beileszti a dokumentumba a csillagjegy nevét
-            doc.insertString(doc.getLength(), "Elem: "+panel.getZodiac().getElement().getName()+"\n", null );
+            doc.insertString(doc.getLength(), "Elem: "+panel.getZodiac().getElement().getName(), null );
+            tpDescription.insertComponent(lbIcon);
+            doc.insertString(doc.getLength(), "\n\n", null );
+            doc.insertString(doc.getLength(), panel.getZodiac().getElement().getDescription()+"\n\n", null );
+            doc.insertString(doc.getLength(), panel.getZodiac().getDescription()+"\n\n", null );
             
             
         } catch (BadLocationException ex) {
