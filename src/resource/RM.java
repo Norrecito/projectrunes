@@ -164,6 +164,13 @@ public class RM {
     }
     
     /*
+     * Visszadja a paraméterként kapott elem ikonképét
+     */
+    public static ImageIcon getElementIcon(String elementName){
+        return getIcon(elementName+".png");
+    }
+    
+    /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
     private static ImageIcon getIcon(String name) {
