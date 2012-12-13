@@ -242,7 +242,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         try {
             
             doc.insertString(0, panel.getZodiac().getName()+"\n\n", null); //Beileszti a dokumentumba a csillagjegy nevét
-            doc.insertString(doc.getLength(), "Elem: "+"\n", null );
+            doc.insertString(doc.getLength(), "Elem: "+panel.getZodiac().getElement().getName()+"\n", null );
             
             
         } catch (BadLocationException ex) {

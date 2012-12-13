@@ -22,7 +22,7 @@ public class ZodiacPanel extends JPanel {
     /*
      * A panelre kerülő Visible interface-el ellátott objektum 
      */
-    private Visible zodiac;
+    private Zodiac zodiac;
     
     /*
      * A panelre kerülő címke, ami egy ikont fog tartalmazni
@@ -32,7 +32,7 @@ public class ZodiacPanel extends JPanel {
     /*
      * Konstruktor
      */
-    public ZodiacPanel(Visible zodiac){
+    public ZodiacPanel(Zodiac zodiac){
         
         this.zodiac = zodiac;
         lbZodiac = new JLabel(zodiac.getIcon());
@@ -43,7 +43,7 @@ public class ZodiacPanel extends JPanel {
     /*
      * Visszaadja a panelen lévő Visible interface-el ellátott objektumot
      */
-    public Visible getZodiac() {
+    public Zodiac getZodiac() {
         return zodiac;
     }
     
