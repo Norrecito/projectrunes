@@ -51,7 +51,17 @@ public enum Element implements Visible {
         
     }
     
-    
+    /*
+     * Visszaadja az adott elemhez tartozó csillagjegyek listáját
+     */
+    public ZodiacList getZodiacList(){
+        ZodiacList l = new ZodiacList();
+        
+         for (Zodiac z : Zodiac.values()){
+              if (z.getElement() == this) l.add(z);
+         }
+         return l;
+    }
     
     /*
      * Visszaadja az elem nevét
