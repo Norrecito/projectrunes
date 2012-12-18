@@ -9,7 +9,7 @@ import java.util.List;
 import view.component.IconPanel;
 
 /**
- *
+ * 
  * @author Norrecito
  */
 public class ZodiacList extends ArrayList<Zodiac> {

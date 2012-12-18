@@ -8,6 +8,7 @@ import game.DM;
 import game.Element;
 import game.Zodiac;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -57,7 +58,7 @@ public class SelectionPanel extends JPanel {
     /*
      * Az elemeket tartalmazó lista
      */
-    private JList lsElements = new JList(DM.getElementsOnPanel()){
+    private JList lsElements = new JList(Element.createPanels().toArray()){
         {
             addListSelectionListener(new ListSelectionListener() {
 
@@ -170,7 +171,9 @@ public class SelectionPanel extends JPanel {
         
         if(lsZodiac.getModel().getSize() != 0) lsZodiac.removeAll(); //Ha a lista nem üres akkor törölje a tartalmát
         
-        IconPanel[] p = DM.getZodiacsByElementOnPanel((Element)panel.getVisible());
+        //IconPanel[] p = DM.getZodiacsByElementOnPanel((Element)panel.getVisible());
+        
+        
         /*
          * 
         

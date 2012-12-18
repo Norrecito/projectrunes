@@ -4,8 +4,11 @@
  */
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import resource.RM;
+import view.component.IconPanel;
 import view.component.Visible;
 
 /**
@@ -61,6 +64,17 @@ public enum Element implements Visible {
               if (z.getElement() == this) l.add(z);
          }
          return l;
+    }
+    
+    /*
+     * Megjelenítő panelre teszi az elemet
+     */
+    public static List<IconPanel> createPanels() {
+        List<IconPanel> l = new ArrayList<>();
+        for (Element e : values()) {
+            l.add(new IconPanel( e ));
+        }
+     return l;   
     }
     
     /*
