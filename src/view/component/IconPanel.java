@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  *
  * @author Norrecito
  */
-public class ElementPanel extends JPanel {
+public class IconPanel extends JPanel {
     
     /*
      * A panelre kerülő Visible interface-el ellátott objektum 
@@ -26,7 +26,7 @@ public class ElementPanel extends JPanel {
     /*
      * Konstruktor
      */
-    public ElementPanel(Visible visible){
+    public IconPanel(Visible visible){
         
         this.visible = visible;
         lbZodiac = new JLabel(visible.getIcon());

@@ -4,12 +4,10 @@
  */
 package view.component;
 
+import game.DM;
 import game.Element;
 import game.Zodiac;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -45,9 +43,9 @@ public class SelectionPanel extends JPanel {
             lsZodiac.setVisibleRowCount(0);
             lsZodiac.setBackground(Color.black);
             
-            listModel.addElement(new ZodiacPanel(z1));
-            listModel.addElement(new ZodiacPanel(z2));
-            listModel.addElement(new ZodiacPanel(z3));
+            listModel.addElement(new IconPanel(z1));
+            listModel.addElement(new IconPanel(z2));
+            listModel.addElement(new IconPanel(z3));
             
             add(lsZodiac);
             
@@ -59,10 +57,12 @@ public class SelectionPanel extends JPanel {
      */
     private DefaultListModel listModel = new DefaultListModel(){
         {
-            addElement(new ElementPanel(Element.AIR));
-            addElement(new ElementPanel(Element.EARTH));
-            addElement(new ElementPanel(Element.FIRE));
-            addElement(new ElementPanel(Element.WATER));
+            Element [] elements = DM.getELEMENTS();
+            
+            addElement(new IconPanel(Element.AIR));
+            addElement(new IconPanel(Element.EARTH));
+            addElement(new IconPanel(Element.FIRE));
+            addElement(new IconPanel(Element.WATER));
         }
     };
     
@@ -76,6 +76,7 @@ public class SelectionPanel extends JPanel {
      */
     private JPanel pnElementSelection = new JPanel(){
         {
+            setLayout(new FlowLayout());
             add(lsElements);
         }
     };
@@ -121,7 +122,7 @@ public class SelectionPanel extends JPanel {
         
         pnElementSelection.setBorder(BorderFactory.createLineBorder(new Color(181,166,66), 3));
         pnElementSelection.setBackground(Color.black);
-        pnElementSelection.setPreferredSize(new Dimension(275,80));
+        pnElementSelection.setPreferredSize(new Dimension(275,75));
         
         cards.setOpaque(false);
        
