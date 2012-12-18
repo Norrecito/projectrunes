@@ -172,7 +172,7 @@ public class SelectionPanel extends JPanel {
         if(lsZodiac.getModel().getSize() != 0) lsZodiac.removeAll(); //Ha a lista nem üres akkor törölje a tartalmát
         
         //IconPanel[] p = DM.getZodiacsByElementOnPanel((Element)panel.getVisible());
-        
+        IconPanel[] p = (IconPanel[]) Element.FIRE.getZodiacList().toArray();
         
         /*
          * 
