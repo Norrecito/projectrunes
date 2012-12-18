@@ -175,6 +175,7 @@ public class SelectionPanel extends JPanel {
         
         for(int i=0; i<pl.size(); i++){
             listModell.addElement(pl.get(i));
+            System.out.println(pl.get(i).getVisible().getName());
         }
         
     }
