@@ -6,7 +6,10 @@ package view.component;
 
 import game.Element;
 import game.Zodiac;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -22,37 +25,6 @@ import javax.swing.event.ListSelectionListener;
  * @author Norrecito
  */
 public class SelectionPanel extends JPanel {
-    
-    /*
-     * A cardLayout-hóz tartozó panelek osztálya
-     */
-    public class ZodiacChooserPanel extends JPanel{
-        
-        private DefaultListModel listModel = new DefaultListModel();
-        
-        private JList lsZodiac = new JList(listModel);
-        
-        public ZodiacChooserPanel(Zodiac z1, Zodiac z2, Zodiac z3){
-            
-            //setOpaque(false);
-            setBackground(Color.black);
-            setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-            setPreferredSize(new Dimension(275,150));
-            
-            lsZodiac.setCellRenderer(new ImageListCellRenderer());
-            lsZodiac.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-            lsZodiac.setPreferredSize(new Dimension(180,150));
-            lsZodiac.setVisibleRowCount(0);
-            lsZodiac.setBackground(Color.black);
-            
-            listModel.addElement(new IconPanel(z1));
-            listModel.addElement(new IconPanel(z2));
-            listModel.addElement(new IconPanel(z3));
-            
-            add(lsZodiac);
-            
-        }
-    }
     
     /*
      * Az elemeket tartalmazó lista
@@ -104,21 +76,6 @@ public class SelectionPanel extends JPanel {
     };
     
     /*
-     * A "kártya" panel elrendezés menedzsere
-     */
-    CardLayout cl = new CardLayout();
-    
-    /*
-     * A panelek tároló panel deklarálása és a hozzá tartozó elrendezés menedzser átadása
-     */
-    JPanel cards = new JPanel(cl){
-        {
-           setPreferredSize(new Dimension(275,150));
-           add("FIRE", pnZodiacSelection);  
-        }
-    };
-    
-    /*
      * Konstruktor
      */
     public SelectionPanel(){
@@ -135,8 +92,8 @@ public class SelectionPanel extends JPanel {
         setLayout(new BorderLayout()); //Panel elrendezésének beállítása
         
         add(pnElementSelection, BorderLayout.NORTH);
-        add(cards, BorderLayout.CENTER);
-        cl.show(cards, "FIRE");
+        add(pnZodiacSelection, BorderLayout.CENTER);
+        
         
     }
     
@@ -146,7 +103,7 @@ public class SelectionPanel extends JPanel {
         pnElementSelection.setBackground(Color.black);
         pnElementSelection.setPreferredSize(new Dimension(275,75));
         
-        cards.setOpaque(false);
+        
        
         //Az Elemek listájának beállításai
         lsElements.setPreferredSize(new Dimension(240,60));
@@ -175,7 +132,7 @@ public class SelectionPanel extends JPanel {
         
         for(int i=0; i<pl.size(); i++){
             listModell.addElement(pl.get(i));
-            System.out.println(pl.get(i).getVisible().getName());
+            //System.out.println(pl.get(i).getVisible().getName());
         }
         
     }
