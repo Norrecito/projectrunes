@@ -4,23 +4,19 @@
  */
 package view.component;
 
-import game.Zodiac;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * A panel amire a csillagjegy objektum kerül majd
- * Egy "Visible" interface-el ellátott objektumot vár el
- * A panelen lévő cimkére a csillagjegy képe kerül
- * 
+ *
  * @author Norrecito
  */
-public class ZodiacPanel extends JPanel {
+public class ElementPanel extends JPanel {
     
     /*
      * A panelre kerülő Visible interface-el ellátott objektum 
      */
-    private Zodiac zodiac;
+    private Visible visible;
     
     /*
      * A panelre kerülő címke, ami egy ikont fog tartalmazni
@@ -30,10 +26,10 @@ public class ZodiacPanel extends JPanel {
     /*
      * Konstruktor
      */
-    public ZodiacPanel(Zodiac zodiac){
+    public ElementPanel(Visible visible){
         
-        this.zodiac = zodiac;
-        lbZodiac = new JLabel(zodiac.getIcon());
+        this.visible = visible;
+        lbZodiac = new JLabel(visible.getIcon());
         add(lbZodiac);
     
     }
@@ -41,10 +37,8 @@ public class ZodiacPanel extends JPanel {
     /*
      * Visszaadja a panelen lévő Visible interface-el ellátott objektumot
      */
-    public Zodiac getZodiac() {
-        return zodiac;
+    public Visible getVisible() {
+        return visible;
     }
-    
-    
     
 }

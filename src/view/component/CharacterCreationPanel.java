@@ -129,6 +129,11 @@ public class CharacterCreationPanel extends AbstractPanel {
     };
     
     /*
+     * A panel amin az Elem illetve a Csillagjegy választás történik
+     */
+    private SelectionPanel pnSelection = new SelectionPanel();
+    
+    /*
      * Konstruktor
      */
     public CharacterCreationPanel(){
@@ -192,7 +197,9 @@ public class CharacterCreationPanel extends AbstractPanel {
         top.add(Box.createRigidArea(new Dimension(5, 0)));
         
         //A középső "doboz" elemeinek hozzáadása
-        center.add(spZodiac);
+        
+        //center.add(spZodiac);
+        center.add(pnSelection);
         center.add(Box.createRigidArea(new Dimension(10, 0)));
         center.add(spDescription);
         
