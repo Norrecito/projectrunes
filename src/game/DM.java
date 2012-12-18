@@ -6,6 +6,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.List;
+import view.component.IconPanel;
 
 /**
  * DM - Data Manager = Adat Menedzser
@@ -42,6 +43,20 @@ public class DM {
     }
     
     /*
+     * Visszaadja a játékban szereplő összes elemet megjelenítő panellel együtt
+     */
+    public static IconPanel[] getElementsOnPanel(){
+        
+        Element e[] =getELEMENTS();
+        IconPanel p [] = new IconPanel [e.length];
+        
+        for(int i=0; i<e.length; i++){
+            p[i] = new IconPanel(e[i]);
+        }
+        return p;
+    }
+    
+    /*
      * Visszaadja a játékban szereplő összes Levegő elemű csillagjegyet
      */
     public static Zodiac[] getAirZodiacs(){
@@ -70,15 +85,31 @@ public class DM {
     }
     
     /*
+     * Visszaadja az összes paraméterben megadott elemű csillagjegyet megjelenítő panellel együtt
+     */
+    public static IconPanel[] getZodiacsByElementOnPanel (Element element){
+        
+        Zodiac z [] = getZodiacsByElement(element);
+        IconPanel p [] = new IconPanel [z.length];
+        
+        for (int i=0; i<z.length; i++){
+            p[i] = new IconPanel(z[i]);
+        }
+        return p;  
+    }
+    
+    /*
      * Visszaadja az összes paraméterben megadott elemű csillagjegyet
      */
-    private static Zodiac[] getZodiacsByElement(Element element){
+    public static Zodiac[] getZodiacsByElement(Element element){
         
         List <Zodiac> z= new ArrayList();
+         
         
         for (int i=0; i<ZODIACS.length; i++){
-            if(ZODIACS[i].getElement().equals(element)) z.add(ZODIACS[i]); 
+            if(ZODIACS[i].getElement() == element) z.add(ZODIACS[i]); //System.out.println(z.get(i)); 
         }
+        
         
         return (Zodiac[]) z.toArray();
     }

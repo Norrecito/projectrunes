@@ -21,7 +21,7 @@ public class IconPanel extends JPanel {
     /*
      * A panelre kerülő címke, ami egy ikont fog tartalmazni
      */
-    private final JLabel lbZodiac;
+    private final JLabel lbIcon;
     
     /*
      * Konstruktor
@@ -29,8 +29,8 @@ public class IconPanel extends JPanel {
     public IconPanel(Visible visible){
         
         this.visible = visible;
-        lbZodiac = new JLabel(visible.getIcon());
-        add(lbZodiac);
+        lbIcon = new JLabel(visible.getIcon());
+        add(lbIcon);
     
     }
     

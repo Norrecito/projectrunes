@@ -13,6 +13,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * A panel amin az elem kiválasztása, és a hozzá tartozó csillagjegy történik
@@ -53,31 +55,51 @@ public class SelectionPanel extends JPanel {
     }
     
     /*
-     * Az elemek listájáhóz tartozó listamodel
+     * Az elemeket tartalmazó lista
      */
-    private DefaultListModel listModel = new DefaultListModel(){
+    private JList lsElements = new JList(DM.getElementsOnPanel()){
         {
-            Element [] elements = DM.getELEMENTS();
-            
-            addElement(new IconPanel(Element.AIR));
-            addElement(new IconPanel(Element.EARTH));
-            addElement(new IconPanel(Element.FIRE));
-            addElement(new IconPanel(Element.WATER));
+            addListSelectionListener(new ListSelectionListener() {
+
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    setZodiacs((IconPanel) getSelectedValue());
+                }
+            });
         }
     };
     
     /*
-     * Az elemeket tartalmazó lista
+     * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista modellje
      */
-    private JList lsElements = new JList(listModel);
+    DefaultListModel listModell = new DefaultListModel();
     
     /*
-     * Az elemek listáját tartalmazó panel
+     * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista 
+     */
+    private JList lsZodiac = new JList();
+    
+    /*
+     * Az Elemek listáját tartalmazó panel
      */
     private JPanel pnElementSelection = new JPanel(){
         {
             setLayout(new FlowLayout());
             add(lsElements);
+        }
+    };
+    
+    /*
+     * A Csillagjegyek listáját tartalmazó panel
+     */
+    private JPanel pnZodiacSelection = new JPanel(){
+        {
+            setBackground(Color.black);
+            setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+            setPreferredSize(new Dimension(275,150));
+            
+            add(lsZodiac);
+            
         }
     };
     
@@ -126,12 +148,36 @@ public class SelectionPanel extends JPanel {
         
         cards.setOpaque(false);
        
-        //A lista elrendezésének beállítása
+        //Az Elemek listájának beállításai
         lsElements.setPreferredSize(new Dimension(240,60));
         lsElements.setCellRenderer(new ImageListCellRenderer());
         lsElements.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         lsElements.setVisibleRowCount(0);
         
+        //A Csillagjegyek listájának beállításai
+        lsZodiac.setCellRenderer(new ImageListCellRenderer());
+        lsZodiac.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        lsZodiac.setPreferredSize(new Dimension(180,150));
+        lsZodiac.setVisibleRowCount(0);
+        lsZodiac.setBackground(Color.black);
+        
+    }
+    
+    /*
+     * A kiválasztott Elem alapján betölti az alsó listába az ebbe az elembe tartozó Csillagjegyeket
+     */
+    private void setZodiacs(IconPanel panel){
+        
+        if(lsZodiac.getModel().getSize() != 0) lsZodiac.removeAll(); //Ha a lista nem üres akkor törölje a tartalmát
+        
+        IconPanel[] p = DM.getZodiacsByElementOnPanel((Element)panel.getVisible());
+        /*
+         * 
+        
+        for(int i=0; i<z.length; i++){
+            listModell.addElement(z[i]);
+        }
+         */
     }
     
 }
