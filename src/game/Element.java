@@ -51,6 +51,8 @@ public enum Element implements Visible {
         
     }
     
+    
+    
     /*
      * Visszaadja az elem nevét
      */
