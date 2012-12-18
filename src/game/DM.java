@@ -5,7 +5,6 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.List;
 import view.component.IconPanel;
 
 /**
@@ -19,14 +18,12 @@ public class DM {
     /*
      * A játékban szereplő összes elem
      */
-    private static final Element [] ELEMENTS = {Element.AIR, Element.EARTH,Element.FIRE, Element.WATER};
+    private static final Element [] ELEMENTS = Element.values();
     
     /*
      * A játékban szereplő összes csillagjegy
      */
-    private static final Zodiac [] ZODIACS = {Zodiac.AQUARIUS, Zodiac.ARIES, Zodiac.CANCER, Zodiac.CAPRICORN,
-                                              Zodiac.GEMINI, Zodiac.LEO, Zodiac.LIBRA, Zodiac.PISCES,
-                                              Zodiac.SAGITTARIUS, Zodiac.SCORPIO, Zodiac.TAURUS, Zodiac.VIRGO};
+    private static final Zodiac [] ZODIACS =  Zodiac.values();
     
     /*
      * Visszaadja a játékban szereplő elemek listáját
@@ -103,7 +100,7 @@ public class DM {
      */
     public static Zodiac[] getZodiacsByElement(Element element){
         
-        List <Zodiac> z= new ArrayList();
+        ArrayList <Zodiac> z= new ArrayList();
          
         
         for (int i=0; i<ZODIACS.length; i++){
@@ -112,6 +109,7 @@ public class DM {
         
         
         return (Zodiac[]) z.toArray();
+         //return z.toArray(z);
     }
     
 }
