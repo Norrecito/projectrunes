@@ -4,11 +4,10 @@
  */
 package view.component;
 
-import game.DM;
 import game.Element;
 import game.Zodiac;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -115,7 +114,7 @@ public class SelectionPanel extends JPanel {
     JPanel cards = new JPanel(cl){
         {
            setPreferredSize(new Dimension(275,150));
-           add("FIRE", new ZodiacChooserPanel(Zodiac.ARIES, Zodiac.LEO, Zodiac.SAGITTARIUS));  
+           add("FIRE", pnZodiacSelection);  
         }
     };
     
@@ -169,18 +168,15 @@ public class SelectionPanel extends JPanel {
      */
     private void setZodiacs(IconPanel panel){
         
-        if(lsZodiac.getModel().getSize() != 0) lsZodiac.removeAll(); //Ha a lista nem üres akkor törölje a tartalmát
+        lsZodiac.removeAll(); //Törölje a lista jelenlegi tartalmát
         
-        //IconPanel[] p = DM.getZodiacsByElementOnPanel((Element)panel.getVisible());
-        IconPanel[] p = (IconPanel[]) Element.FIRE.getZodiacList().toArray();
+        List<IconPanel> pl = ((Element) panel.getVisible()).getZodiacList().createPanels();
+        IconPanel[] ps = new IconPanel[pl.size()];
         
-        /*
-         * 
-        
-        for(int i=0; i<z.length; i++){
-            listModell.addElement(z[i]);
+        for(int i=0; i<pl.size(); i++){
+            listModell.addElement(pl.get(i));
         }
-         */
+        
     }
     
 }
