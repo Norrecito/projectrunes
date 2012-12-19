@@ -33,8 +33,12 @@ public class SelectionPanel extends JPanel {
 
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
-                    setElementInformation((IconPanel) getSelectedValue());
-                    setZodiacs((IconPanel) getSelectedValue());
+                    
+                    if(!e.getValueIsAdjusting()){
+                        setElementInformation((IconPanel) getSelectedValue());
+                        setZodiacs((IconPanel) getSelectedValue());
+                    }
+                    
                 }
             });
         }
@@ -54,7 +58,7 @@ public class SelectionPanel extends JPanel {
 
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
-                    setZodiacInformation((IconPanel) getSelectedValue());
+                    if(!e.getValueIsAdjusting()) setZodiacInformation((IconPanel) getSelectedValue());
                 }
             });
         }
