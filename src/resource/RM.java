@@ -177,7 +177,12 @@ public class RM {
         return getIcon(zodiacName+".png");
     }
     
-    
+    /*
+     * Visszaadja a teszt avatar képet
+     */
+    public static ImageIcon getTestAvatarIcon(){
+       return getIcon("avatar.jpg"); 
+    }
     
     /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja

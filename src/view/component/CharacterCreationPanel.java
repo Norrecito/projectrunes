@@ -4,16 +4,10 @@
  */
 package view.component;
 
-import game.Zodiac;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 
 /**
@@ -42,24 +36,6 @@ public class CharacterCreationPanel extends AbstractPanel {
      * A karakter nevének beírására szolgáló szövegmező
      */
     private JTextField tfName = new JTextField();
-    
-    /*
-     * A lista modellje
-     */
-    private DefaultListModel listModel = new DefaultListModel(){
-        {
-            addElement(new ZodiacPanel(Zodiac.ARIES));
-            addElement(new ZodiacPanel(Zodiac.TAURUS));
-            addElement(new ZodiacPanel(Zodiac.GEMINI));
-            addElement(new ZodiacPanel(Zodiac.CANCER));
-            addElement(new ZodiacPanel(Zodiac.LEO));
-            addElement(new ZodiacPanel(Zodiac.VIRGO));
-        }
-    };
-    
-    
-    
-    
     
     /*
      * A TextPane amire a csillagjegyek leírása kerül
@@ -111,6 +87,11 @@ public class CharacterCreationPanel extends AbstractPanel {
     };
     
     /*
+     * A panel amin az Avatar kiválasztása történik
+     */
+    private AvatarSelectionPanel pnAvatarSelection = new AvatarSelectionPanel();
+    
+    /*
      * Az Elemmel kapcsolatos informáciokat megjelenítő panel
      */
     private InformationPanel ipElement = new InformationPanel();
@@ -126,9 +107,20 @@ public class CharacterCreationPanel extends AbstractPanel {
     private SelectionPanel pnSelection = new SelectionPanel(ipElement,ipZodiac);
     
     /*
+     * A bal oldali panel (Avatarválasztó, illetve az Elem és Csillagjegy kiválasztása)
+     */
+    private JPanel pnLeft = new JPanel(){
+        {
+            setLayout(new BorderLayout());
+            add(pnAvatarSelection, BorderLayout.CENTER);
+            add(pnSelection, BorderLayout.SOUTH);
+        }
+    };
+    
+    /*
      * A panel amire az Elem illetve a Csillagjegy információi kerülnek
      */
-    private JPanel pnInformation = new JPanel(){
+    private JPanel pnRight = new JPanel(){
         {
           setOpaque(false);
           setLayout(new BorderLayout()); //Panel elrendezésének beállítása
@@ -154,7 +146,8 @@ public class CharacterCreationPanel extends AbstractPanel {
     private void initComponents(){
        
         //A komponensek méretének beállítása
-       
+        pnLeft.setMaximumSize(new Dimension(300,300));
+        pnRight.setMaximumSize(new Dimension(450,300));
         spDescription.setMaximumSize(new Dimension(320, 280)); //A Scrollpane méretének beállítása
         tfName.setMaximumSize(new Dimension(150,25));
         
@@ -203,9 +196,9 @@ public class CharacterCreationPanel extends AbstractPanel {
         top.add(Box.createRigidArea(new Dimension(5, 0)));
         
         //A középső "doboz" elemeinek hozzáadása
-        center.add(pnSelection);
+        center.add(pnLeft);
         center.add(Box.createRigidArea(new Dimension(10, 0)));
-        center.add(pnInformation);
+        center.add(pnRight);
         
         //Az alsó "doboz" elemeinek hozzáadása
         bottom.add(btBack);

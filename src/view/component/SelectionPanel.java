@@ -113,7 +113,7 @@ public class SelectionPanel extends JPanel {
     private void initPanel(){
         
         setOpaque(false); //A panel legyen átlátszó
-        setMaximumSize(new Dimension(240,170)); //Maximum méret beállítása
+        setPreferredSize(new Dimension(240,170)); //Maximum méret beállítása
         setLayout(new BorderLayout()); //Panel elrendezésének beállítása
         
         //Elemek hozzáadása a panelhez
@@ -160,7 +160,7 @@ public class SelectionPanel extends JPanel {
         
         for(int i=0; i<pl.size(); i++){
             listModell.addElement(pl.get(i));
-            System.out.println(pl.get(i).getVisible().getName());
+            //System.out.println(pl.get(i).getVisible().getName());
         }
       
     }
@@ -179,7 +179,7 @@ public class SelectionPanel extends JPanel {
         
         if(!lsZodiac.isSelectionEmpty()){
             ipZodiac.setContent(panel.getVisible());
-            System.out.println(panel.getVisible().getName());
+            //System.out.println(panel.getVisible().getName());
         }
         
     }
