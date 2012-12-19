@@ -39,6 +39,7 @@ public class InformationPanel extends JPanel {
      */
     public InformationPanel(){
         
+        initComponents(); //Komponensek inicializálása
         initPanel(); //Panel inicializálása
         
     }
@@ -66,8 +67,15 @@ public class InformationPanel extends JPanel {
         add(lbName, BorderLayout.NORTH);
         add(lbDescription, BorderLayout.CENTER);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
+        setBackground(Color.black);
         setPreferredSize(new Dimension(100,150));
         
+    }
+    
+    private void initComponents(){
+        
+        lbName.setForeground(Color.white);
+        lbDescription.setForeground(Color.white);
     }
     
 }
