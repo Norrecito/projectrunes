@@ -44,12 +44,26 @@ public class SelectionPanel extends JPanel {
     /*
      * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista modellje
      */
-    DefaultListModel listModell = new DefaultListModel();
+    DefaultListModel listModell = new DefaultListModel(){
+        {
+            addElement(new IconPanel(Zodiac.AQUARIUS));
+        }
+    };
     
     /*
      * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista 
      */
-    private JList lsZodiac = new JList();
+    private JList lsZodiac = new JList(listModell){
+        {
+            addListSelectionListener(new ListSelectionListener() {
+
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    setZodiacInformation((IconPanel) getSelectedValue());
+                }
+            });
+        }
+    };
     
     /*
      * Az Elemek listáját tartalmazó panel
@@ -125,16 +139,28 @@ public class SelectionPanel extends JPanel {
      */
     private void setZodiacs(IconPanel panel){
         
-        lsZodiac.removeAll(); //Törölje a lista jelenlegi tartalmát
+        
+        listModell.clear();
+        
         
         List<IconPanel> pl = ((Element) panel.getVisible()).getZodiacList().createPanels();
         IconPanel[] ps = new IconPanel[pl.size()];
         
         for(int i=0; i<pl.size(); i++){
             listModell.addElement(pl.get(i));
-            //System.out.println(pl.get(i).getVisible().getName());
+            System.out.println(pl.get(i).getVisible().getName());
+        }
+      
+    }
+    
+    /*
+     * Beállítja a kiválasztott Csillagjegy leírását a hozzátartozó panelre
+     */
+    private void setZodiacInformation(IconPanel panel){
+        
+        if(!lsZodiac.isSelectionEmpty()){
+            System.out.println(panel.getVisible().getName());
         }
         
     }
-    
 }
