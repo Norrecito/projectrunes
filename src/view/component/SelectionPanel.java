@@ -5,11 +5,9 @@
 package view.component;
 
 import game.Element;
-import game.Zodiac;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -35,6 +33,7 @@ public class SelectionPanel extends JPanel {
 
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
+                    setElementInformation((IconPanel) getSelectedValue());
                     setZodiacs((IconPanel) getSelectedValue());
                 }
             });
@@ -44,11 +43,7 @@ public class SelectionPanel extends JPanel {
     /*
      * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista modellje
      */
-    DefaultListModel listModell = new DefaultListModel(){
-        {
-            addElement(new IconPanel(Zodiac.AQUARIUS));
-        }
-    };
+    DefaultListModel listModell = new DefaultListModel();
     
     /*
      * Az elemhez kapcsololdó csillagjegyeket tartalmazó lista 
@@ -70,8 +65,7 @@ public class SelectionPanel extends JPanel {
      */
     private JPanel pnElementSelection = new JPanel(){
         {
-            setLayout(new FlowLayout());
-            add(lsElements);
+            add(lsElements); //Elem lista hozzáadása
         }
     };
     
@@ -80,19 +74,32 @@ public class SelectionPanel extends JPanel {
      */
     private JPanel pnZodiacSelection = new JPanel(){
         {
-            setBackground(Color.black);
-            setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+            setBackground(Color.black); //Háttérszín beállítása
+            setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED)); //szegély beállítása
             setPreferredSize(new Dimension(275,150));
             
-            add(lsZodiac);
+            add(lsZodiac); //Csillagjegy lista hozzáadása
             
         }
     };
     
     /*
+     * Az Elemmelvkapcsolatos információkat megjelenítő panel referenciája
+     */
+    private InformationPanel ipElement;
+    
+    /*
+     * A Csillagjeggyel kapcsolatos információkat megjelenítő panel referenciája
+     */
+    private InformationPanel ipZodiac;
+    
+    /*
      * Konstruktor
      */
-    public SelectionPanel(){
+    public SelectionPanel(InformationPanel element, InformationPanel zodiac){
+        
+        ipElement = element;
+        ipZodiac = zodiac;
         
         initComponents(); //komponensek inicializálása
         initPanel(); //panel inicializálása
@@ -101,10 +108,11 @@ public class SelectionPanel extends JPanel {
     
     private void initPanel(){
         
-        setOpaque(false);
-        setMaximumSize(new Dimension(240,170));
+        setOpaque(false); //A panel legyen átlátszó
+        setMaximumSize(new Dimension(240,170)); //Maximum méret beállítása
         setLayout(new BorderLayout()); //Panel elrendezésének beállítása
         
+        //Elemek hozzáadása a panelhez
         add(pnElementSelection, BorderLayout.NORTH);
         add(pnZodiacSelection, BorderLayout.CENTER);
         
@@ -154,11 +162,19 @@ public class SelectionPanel extends JPanel {
     }
     
     /*
+     * Beállítja a kiválasztott Elem leírását a hozzátartozó panelre
+     */
+    private void setElementInformation(IconPanel panel){
+        if(!lsElements.isSelectionEmpty()) ipElement.setContent(panel.getVisible());
+    }
+    
+    /*
      * Beállítja a kiválasztott Csillagjegy leírását a hozzátartozó panelre
      */
     private void setZodiacInformation(IconPanel panel){
         
         if(!lsZodiac.isSelectionEmpty()){
+            ipZodiac.setContent(panel.getVisible());
             System.out.println(panel.getVisible().getName());
         }
         

@@ -5,6 +5,9 @@
 package view.component;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -34,16 +37,9 @@ public class InformationPanel extends JPanel {
     /*
      * Konstruktor
      */
-    public InformationPanel(Visible visible){
+    public InformationPanel(){
         
-        this.visible = visible;
-        lbName.setText(visible.getName());
-        lbName.setIcon(visible.getIcon());
-        lbDescription.setText(visible.getDescription());
-        
-        setLayout(new BorderLayout());
-        add(lbName, BorderLayout.NORTH);
-        add(lbDescription, BorderLayout.CENTER);
+        initPanel(); //Panel inicializálása
         
     }
     
@@ -52,6 +48,26 @@ public class InformationPanel extends JPanel {
      */
     public Visible getVisible() {
         return visible;
+    }
+    
+    /*
+     * Beállítja a panel megjelenését a paraméterként kapott elem szerint
+     */
+    public void setContent(Visible visible){
+        this.visible = visible;
+        lbName.setText(visible.getName());
+        lbName.setIcon(visible.getIcon());
+        lbDescription.setText(visible.getDescription());
+    }
+    
+    private void initPanel(){
+        
+        setLayout(new BorderLayout());
+        add(lbName, BorderLayout.NORTH);
+        add(lbDescription, BorderLayout.CENTER);
+        setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
+        setPreferredSize(new Dimension(100,150));
+        
     }
     
 }

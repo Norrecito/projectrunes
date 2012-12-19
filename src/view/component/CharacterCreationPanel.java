@@ -57,27 +57,9 @@ public class CharacterCreationPanel extends AbstractPanel {
         }
     };
     
-    /*
-     * A lista ami a csillagjegyeket tárolja
-     */
-    private JList lsZodiac = new JList(listModel){
-        {
-            setCellRenderer(new ImageListCellRenderer());
-            
-            addListSelectionListener(new ListSelectionListener() {
-
-                @Override
-                public void valueChanged(ListSelectionEvent e) {
-                    setZodiacDescription();
-                }
-            });
-        }
-    };
     
-    /*
-     * A Scrollpane amire a lista kerül
-     */
-    private JScrollPane spZodiac = new JScrollPane(lsZodiac);
+    
+    
     
     /*
      * A TextPane amire a csillagjegyek leírása kerül
@@ -129,9 +111,34 @@ public class CharacterCreationPanel extends AbstractPanel {
     };
     
     /*
+     * Az Elemmel kapcsolatos informáciokat megjelenítő panel
+     */
+    private InformationPanel ipElement = new InformationPanel();
+    
+    /*
+     * A Csillagjeggyel kapcsolatos információkat megjelenítő panel
+     */
+    private InformationPanel ipZodiac = new InformationPanel();
+    
+    /*
      * A panel amin az Elem illetve a Csillagjegy választás történik
      */
-    private SelectionPanel pnSelection = new SelectionPanel();
+    private SelectionPanel pnSelection = new SelectionPanel(ipElement,ipZodiac);
+    
+    /*
+     * A panel amire az Elem illetve a Csillagjegy információi kerülnek
+     */
+    private JPanel pnInformation = new JPanel(){
+        {
+          setOpaque(false);
+          setLayout(new BorderLayout()); //Panel elrendezésének beállítása
+          add(ipElement, BorderLayout.NORTH);
+          add(ipZodiac, BorderLayout.SOUTH);
+          
+        }
+        
+        
+    };
     
     /*
      * Konstruktor
@@ -147,19 +154,19 @@ public class CharacterCreationPanel extends AbstractPanel {
     private void initComponents(){
        
         //A komponensek méretének beállítása
-        spZodiac.setMaximumSize(new Dimension(183, 280)); //A Scrollpane méretének beállítása
+       
         spDescription.setMaximumSize(new Dimension(320, 280)); //A Scrollpane méretének beállítása
         tfName.setMaximumSize(new Dimension(150,25));
         
         //A komponensek elhelyezkedésének beállítása
-        spZodiac.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         spDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
         lbText.setAlignmentX(Component.CENTER_ALIGNMENT);
         lbName.setAlignmentX(Component.CENTER_ALIGNMENT);
         tfName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         //Komponensek színének beállítása
-        lsZodiac.setBackground(Color.black);
+        
         tpDescription.setBackground(Color.gray);
         lbName.setForeground(Color.white);
         
@@ -173,8 +180,7 @@ public class CharacterCreationPanel extends AbstractPanel {
         tpDescription.setEditable(false);
         
         //A lista elrendezésének beállítása
-        lsZodiac.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        lsZodiac.setVisibleRowCount(0);
+       
         
     }
     
@@ -197,11 +203,9 @@ public class CharacterCreationPanel extends AbstractPanel {
         top.add(Box.createRigidArea(new Dimension(5, 0)));
         
         //A középső "doboz" elemeinek hozzáadása
-        
-        //center.add(spZodiac);
         center.add(pnSelection);
         center.add(Box.createRigidArea(new Dimension(10, 0)));
-        center.add(spDescription);
+        center.add(pnInformation);
         
         //Az alsó "doboz" elemeinek hozzáadása
         bottom.add(btBack);
@@ -225,43 +229,4 @@ public class CharacterCreationPanel extends AbstractPanel {
         
     }
     
-    /*
-     * Beállítja a TextPane-be az adott csillagjegyhez tartozó leírást
-     */
-    private void setZodiacDescription(){
-        
-        //Elkéri a látható objektumot a listától
-        ZodiacPanel selectedItem = (ZodiacPanel) lsZodiac.getSelectedValue();
-        
-        //Átadja a dokumentum kreáló metódusnak, hogy összeállíthassa a megfelelő dokumentumot
-        createDocument(selectedItem);
-        
-    }
-    
-    /*
-     * Összeállítja a dokumentumot ami a TextPane-be kerül
-     */
-    private void createDocument(ZodiacPanel panel){
-        
-        //Amenyiben a TextPane tartalma nem üres, kitörli a benne lévő szöveget
-        if(!"".equals(tpDescription.getText())) tpDescription.setText("");
-        
-        //Az ikon amire a csillagjegy elemének képe kerül
-        JLabel lbIcon = new JLabel(panel.getZodiac().getElement().getIcon());
-        
-        try {
-            
-            doc.insertString(0, panel.getZodiac().getName()+"\n\n", null); //Beileszti a dokumentumba a csillagjegy nevét
-            doc.insertString(doc.getLength(), "Elem: "+panel.getZodiac().getElement().getName(), null );
-            tpDescription.insertComponent(lbIcon);
-            doc.insertString(doc.getLength(), "\n\n", null );
-            doc.insertString(doc.getLength(), panel.getZodiac().getElement().getDescription()+"\n\n", null );
-            doc.insertString(doc.getLength(), panel.getZodiac().getDescription()+"\n\n", null );
-            
-            
-        } catch (BadLocationException ex) {
-            Logger.getLogger(CharacterCreationPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
 }
