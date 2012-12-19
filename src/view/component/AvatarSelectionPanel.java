@@ -7,9 +7,8 @@ package view.component;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import javax.swing.*;
 import resource.RM;
 
 /**
@@ -39,8 +38,10 @@ public class AvatarSelectionPanel extends JPanel {
      */
     JPanel pnAvatar = new JPanel(){
         {
-           add(lbAvatar);
-           setPreferredSize(getPreferredSize());
+            setLayout(new BorderLayout());
+            add(lbAvatar);
+           
+           
         }
         
     };
@@ -58,8 +59,14 @@ public class AvatarSelectionPanel extends JPanel {
     private void initComponents(){
         
         //Az avatar panel beállításai
-        pnAvatar.setPreferredSize(new Dimension(50,50));
+        pnAvatar.setPreferredSize(new Dimension(150,150));
         pnAvatar.setBackground(Color.white);
+        pnAvatar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+        
+        //Az Avatar címke beállításai
+        //lbAvatar.setPreferredSize(new Dimension(pnAvatar.getWidth(),pnAvatar.getHeight()));
+        lbAvatar.setBackground(Color.red);
+        lbAvatar.setOpaque(true);
         
         //Gombok beállításai
         btPrevious.setFocusable(false);
