@@ -92,6 +92,7 @@ public class AvatarSelectionPanel extends JPanel {
         
         initComponents(); //komponensek inicializálása
         initPanel(); //panel inicializálása
+        switchAvatar(); //Betölti az első avatart a panelre
         
     }
     
