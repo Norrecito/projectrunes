@@ -4,10 +4,12 @@
  */
 package view.component;
 
+import game.Avatar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import resource.RM;
 
@@ -19,14 +21,51 @@ import resource.RM;
 public class AvatarSelectionPanel extends JPanel {
     
     /*
+     * A jelenleg kiválasztott avatar referenciája
+     */
+    private Avatar currentAvatar;
+    
+    /*
+     * A jelenleg kiválasztott avatar sorszáma
+     */
+    private int index = 0;
+    
+    /*
+     * Az avatarok listája
+     */
+    private Avatar[] Avatars = Avatar.values();
+    
+    /*
      * A gomb amivel az eggyel elötte lévő Avatarra tudunk váltani
      */
-    JButton btPrevious = new JButton("<<");
+    private JButton btPrevious = new JButton("<<"){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    index--;
+                    switchAvatar();
+                }
+            });
+        }
+    };
     
     /*
      * A gomb amivel a következő Avatarra tudunk váltani
      */
-    JButton btNext = new JButton(">>");
+    private JButton btNext = new JButton(">>"){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    index++;
+                    switchAvatar();
+                }
+            });
+        }
+    };
     
     /*
      * A címke amire az Avatar képe kerül
@@ -64,7 +103,6 @@ public class AvatarSelectionPanel extends JPanel {
         pnAvatar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         
         //Az Avatar címke beállításai
-        //lbAvatar.setPreferredSize(new Dimension(pnAvatar.getWidth(),pnAvatar.getHeight()));
         lbAvatar.setBackground(Color.red);
         lbAvatar.setOpaque(true);
         
@@ -89,5 +127,24 @@ public class AvatarSelectionPanel extends JPanel {
         add(btNext, BorderLayout.EAST);
         
     }
+    
+    private void switchAvatar(){
+        
+        if(index <0) index=Avatars.length-1;
+        if(index >Avatars.length-1) index=0;
+        
+        lbAvatar.setIcon(Avatar.values()[index].getIcon());
+        currentAvatar = Avatar.values()[index];
+        
+    }
+    
+    /*
+     * Visszaadja a jelenleg kiválasztott avatart
+     */
+    public Avatar getCurrentAvatar() {
+        return currentAvatar;
+    }
+    
+    
     
 }

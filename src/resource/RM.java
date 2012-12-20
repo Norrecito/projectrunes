@@ -185,6 +185,13 @@ public class RM {
     }
     
     /*
+     * Visszaadja a paraméterben megadott név alapján az adott avatar ikonképét
+     */
+    public static ImageIcon getAvatarIcon(String fileName){
+        return getIcon(fileName+".png");
+    }
+    
+    /*
      * Visszaadja azt az ikont aminek a nevét paraméterben megkapja
      */
     private static ImageIcon getIcon(String name) {
