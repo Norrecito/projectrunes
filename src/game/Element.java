@@ -23,10 +23,10 @@ public enum Element implements Visible {
     /*
      * Az elemek
      */
-    AIR("Levegő","A levegő elem leírása","Air"),  //Levegő
-    EARTH("Föld","A föld elem leírása","Earth"),  //Föld 
-    FIRE("Tűz", "A tűz elem leírása","Fire"),     //Tűz
-    WATER("Víz","A víz elem leírása","Water");    //Víz
+    AIR("<HTMl><p color='#0B3861'>Levegő<p></HTML>","A levegő elem leírása","Air"),  //Levegő
+    EARTH("<HTMl><p color='#61380B'>Föld<p></HTML>","A föld elem leírása","Earth"),  //Föld 
+    FIRE("<HTMl><p color='#FF0000'>Tűz<p></HTML>", "A hóditó tűz, szó szerint a legforrobb elem. Ha ide tartozol, elemed a harc, a hódítás, a kihivások.","Fire"),     //Tűz
+    WATER("<HTMl><p color='#0404B4'>Víz<p></HTML>","A víz elem leírása","Water");    //Víz
     
     /*
      * Az elem neve
