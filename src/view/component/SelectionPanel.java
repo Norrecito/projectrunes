@@ -5,6 +5,7 @@
 package view.component;
 
 import game.Element;
+import game.Zodiac;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,6 +24,11 @@ import javax.swing.event.ListSelectionListener;
  * @author Norrecito
  */
 public class SelectionPanel extends JPanel {
+    
+    /*
+     * A jelenleg kiválasztott Csillagjegy referenciája
+     */
+    Zodiac currentZodiac;
     
     /*
      * Az elemeket tartalmazó lista
@@ -160,7 +166,6 @@ public class SelectionPanel extends JPanel {
         
         for(int i=0; i<pl.size(); i++){
             listModell.addElement(pl.get(i));
-            //System.out.println(pl.get(i).getVisible().getName());
         }
       
     }
@@ -179,8 +184,15 @@ public class SelectionPanel extends JPanel {
         
         if(!lsZodiac.isSelectionEmpty()){
             ipZodiac.setContent(panel.getVisible());
-            //System.out.println(panel.getVisible().getName());
+            currentZodiac = (Zodiac) panel.getVisible();
         }
-        
     }
+    
+    /*
+     * Visszaadja a jelenleg kiválasztott csillagjegyet
+     */
+    public Zodiac getCurrentZodiac() {
+        return currentZodiac;
+    }
+    
 }

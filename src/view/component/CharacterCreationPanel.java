@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.DataManager;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -58,7 +59,7 @@ public class CharacterCreationPanel extends AbstractPanel {
     private KeyListener btEnabler = new KeyAdapter() {
     @Override
             public void keyReleased(KeyEvent e) {
-                checkName();
+                checkCorrect();
             }
    };
     
@@ -83,6 +84,14 @@ public class CharacterCreationPanel extends AbstractPanel {
     private JButton btCreate = new JButton("Létrehoz"){
         {
             setEnabled(false); //alapértelmezetten le van tiltva (feltételezi hogy a karakter neve még üres)
+            
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    createNewCharater();
+                }
+            });
         }
     };
     
@@ -152,14 +161,12 @@ public class CharacterCreationPanel extends AbstractPanel {
         tfName.setMaximumSize(new Dimension(150,25));
         
         //A komponensek elhelyezkedésének beállítása
-        
         spDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
         lbText.setAlignmentX(Component.CENTER_ALIGNMENT);
         lbName.setAlignmentX(Component.CENTER_ALIGNMENT);
         tfName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         //Komponensek színének beállítása
-        
         tpDescription.setBackground(Color.gray);
         lbName.setForeground(Color.white);
         
@@ -215,11 +222,18 @@ public class CharacterCreationPanel extends AbstractPanel {
     /*
      * Megvizsgálja hogy a karakter neve megfelel-e a követelményeknek
      */
-    private void checkName(){
+    private void checkCorrect(){
         
         int n = tfName.getText().length(); //Lekéri a karakter nevének hosszát
-        btCreate.setEnabled(n >3); //A hossz alapján engedélyezi, illetve tiltja a gombot
+        btCreate.setEnabled(n >3 && pnSelection.getCurrentZodiac() != null); //A feltételek alapján tiltja illetve engedélyezi a gombot
         
+    }
+    
+    /*
+     * Létrehozza az új karaktert
+     */
+    private void createNewCharater(){
+       DataManager.createHero(tfName.getText(), pnAvatarSelection.getCurrentAvatar(), pnSelection.getCurrentZodiac()); 
     }
     
 }
