@@ -90,6 +90,7 @@ public class CharacterCreationPanel extends AbstractPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     createNewCharater();
+                    getFrame().switchPanel(SingleplayerMenuPanel.class);
                 }
             });
         }

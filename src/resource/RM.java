@@ -150,6 +150,34 @@ public class RM {
     }
     
     /*
+     * Visszaadja az "Új harc" ikonképét
+     */
+    public static ImageIcon getNewFightIcon(){
+        return getIcon("newfight.png");
+    }
+    
+    /*
+     * Visszaadja a "Varázskönyv" ikonképét
+     */
+    public static ImageIcon getSpellbookIcon(){
+        return getIcon("spellbook.png");
+    }
+    
+    /*
+     * Visszaadja a "Vissza" ikonképét
+     */
+    public static ImageIcon getBackIcon(){
+      return getIcon("back.png");  
+    }
+    
+    /*
+     * Visszaadja a "Bolt" ikonképét 
+     */
+    public static ImageIcon getShopIcon(){
+      return getIcon("shop.png");   
+    }
+     
+    /*
      * Visszaadja a paraméterként kapott elem leírását
      */
     public static String getElementDescription(String elementName){
