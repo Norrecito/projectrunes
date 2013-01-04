@@ -5,6 +5,7 @@
 package view.component;
 
 import game.DataManager;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -14,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import resource.RM;
 
 /**
@@ -31,7 +33,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     /*
      * A karakter nevét tartalmazó cimke
      */
-    private final JLabel lbName = new JLabel(DataManager.getSelectedHero().getName());
+    private final JLabel lbName = new JLabel("<html><h2>"+DataManager.getSelectedHero().getName()+"</h2></html>");
     
     /*
      * A karater csillagjegyét tartalmazó cimke
@@ -46,22 +48,37 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     /*
      * A karakter szintjét tartalmazó cimke
      */
-    private final JLabel lbLevel = new JLabel("<Level: 2>");
+    private final JLabel lbLevel = new JLabel("Level: 2");
     
     /*
      * A karakter tapasztalati pontját tartalmazó cimke
      */
-    private final JLabel lbXP = new JLabel("<XP: 230>");
+    private final JLabel lbXP = new JLabel("Tapasztalat: 230",RM.getExperienceIcon(),SwingConstants.LEFT);
     
     /*
      * A karakter pénzét tartalmazó cimke
      */
-    private final JLabel lbGold = new JLabel("<Gold: 200>");
+    private final JLabel lbGold = new JLabel("Arany: 0",RM.getGoldIcon(),SwingConstants.LEFT);
     
     /*
      * A karakter életpontjainak számát tartalmazó cimke
      */
-    private final JLabel lbLife = new JLabel("<Életterő: 20/20>");
+    private final JLabel lbLife = new JLabel("Életterő: 20/20",RM.getLifeIcon(),SwingConstants.LEFT);
+    
+    /*
+     * A karakter avatarját tartalmazó cimke
+     */
+    private final JLabel lbAvatar = new JLabel(DataManager.getSelectedHero().getAvatar().getIcon());
+    
+    /*
+     * A karakter "Varázserejét" tartalmazó cimke
+     */
+    private final JLabel lbSpellpower = new JLabel("Varázserő: 100",RM.getSpellpowerIcon(),SwingConstants.LEFT);
+    
+    /*
+     * A karakter "Ellenállását" tartalmazó cimke
+     */
+    private final JLabel lbResistance = new JLabel("Ellenállás: 100",RM.getResistanceIcon(),SwingConstants.LEFT);
     
     /*
      * Az új harc indítására szolgáló gomb
@@ -115,24 +132,49 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     };
     
     /*
-     * A karakterhez kapcsolodó statisztikát mutató panel
+     * A karakterhez kapcsolodó statisztikák baloldali panele
      */
-    private final JPanel pnStat = new JPanel(){
+    private final JPanel pnStatLeft = new JPanel(){
         {
             Box box = Box.createVerticalBox();
             
             box.add(lbName);
             box.add(Box.createRigidArea(new Dimension(0,15)));
-            box.add(lbZodiac);
-            box.add(lbElement);
-            box.add(lbLevel);
+            box.add(lbSpellpower);
+            box.add(lbResistance);
             box.add(Box.createRigidArea(new Dimension(0,15)));
             box.add(lbXP);
             box.add(lbGold);
             box.add(lbLife);
             
             add(box);
+            setOpaque(false);
         }
+    };
+    
+    /*
+     * A karakterhez kapcsolodó statisztikák jobb oldali panele
+     */
+    private final JPanel pnStatRight = new JPanel(){
+        {
+          Box box = Box.createVerticalBox();
+          box.add(lbAvatar);
+          box.add(lbElement);
+          box.add(lbZodiac);
+          box.add(lbLevel);
+          setOpaque(false);
+          add(box);
+          
+        }  
+    };
+    
+    private final TransparentPanel pnStats = new TransparentPanel(){
+        {
+            setLayout(new BorderLayout());
+            add(pnStatLeft, BorderLayout.WEST);
+            add(pnStatRight, BorderLayout.CENTER);
+            setOpaque(false);
+        }  
     };
     
     /*
@@ -168,6 +210,6 @@ public class SingleplayerMenuPanel extends AbstractPanel {
         setOpaque(false);
         
         add(pnMenu);
-        add(pnStat);
+        add(pnStats);
     }
 }

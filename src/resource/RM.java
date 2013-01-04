@@ -176,7 +176,42 @@ public class RM {
     public static ImageIcon getShopIcon(){
       return getIcon("shop.png");   
     }
-     
+    
+    /*
+     * Visszaadja az "Arany" ikonképét
+     */
+    public static ImageIcon getGoldIcon(){
+       return getIcon("gold.png");   
+    }
+    
+    /*
+     * Visszaadja az "Életpont" ikonképét
+     */
+    public static ImageIcon getLifeIcon(){
+       return getIcon("life.png"); 
+    }
+    
+    /*
+     * Visszaadja a "Tapasztalat pont" ikonképét
+     */
+    public static ImageIcon getExperienceIcon(){
+       return getIcon("experience.png"); 
+    }
+    
+    /*
+     * Visszaadja az "Ellenállás" ikonképét
+     */
+    public static ImageIcon getResistanceIcon(){
+        return getIcon("resistance.png"); 
+    }
+    
+    /*
+     * Visszaadj a "Varázserő" ikonképét
+     */
+    public static ImageIcon getSpellpowerIcon(){
+        return getIcon("spellpower.png"); 
+    }
+    
     /*
      * Visszaadja a paraméterként kapott elem leírását
      */

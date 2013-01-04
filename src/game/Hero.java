@@ -65,4 +65,11 @@ public class Hero implements Serializable {
         return zodiac;
     }
     
+    /*
+     * Visszaadja a karakter avatarját
+     */
+    public Avatar getAvatar() {
+        return avatar;
+    }
+    
 }
