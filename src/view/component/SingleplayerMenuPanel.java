@@ -5,10 +5,7 @@
 package view.component;
 
 import game.DataManager;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
@@ -206,13 +203,15 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     }
 
     private void initPanel() {
-        setLayout(new FlowLayout()); //Elrendezés beállítása
-        //setLayout(new BorderLayout());
-        setOpaque(false);
         
-        add(pnMenu);
-        add(pnStats);
-        //add(pnMenu, BorderLayout.WEST);
-        //add(pnStats, BorderLayout.EAST);
+        setLayout(new GridBagLayout());
+        Box box = Box.createHorizontalBox();
+        
+        box.add(Box.createRigidArea(new Dimension(0,30)));
+        box.add(pnMenu);
+        box.add(pnStats);
+        
+        add(box, new GridBagConstraints());
+        
     }
 }
