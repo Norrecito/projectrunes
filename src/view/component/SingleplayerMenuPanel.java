@@ -194,7 +194,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
         btSpellBook.setMaximumSize(btSize);
         btShop.setMaximumSize(btSize);
         btBack.setMaximumSize(btSize);
-        //pnStat.setPreferredSize(new Dimension(400,400));
+        //pnStats.setPreferredSize(new Dimension(350,200));
         
         //Komponensek színének beállítása
         pnMenu.setBackground(Color.black);

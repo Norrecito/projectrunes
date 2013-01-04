@@ -5,7 +5,6 @@
 package view;
 
 import java.awt.CardLayout;
-import java.awt.FlowLayout;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
