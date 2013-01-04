@@ -162,7 +162,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
           box.add(lbElement);
           box.add(lbZodiac);
           box.add(lbLevel);
-          setOpaque(false);
+          //setOpaque(false);
           add(box);
           
         }  
@@ -173,7 +173,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
             setLayout(new BorderLayout());
             add(pnStatLeft, BorderLayout.WEST);
             add(pnStatRight, BorderLayout.CENTER);
-            setOpaque(false);
+            //setOpaque(false);
         }  
     };
     
@@ -207,9 +207,12 @@ public class SingleplayerMenuPanel extends AbstractPanel {
 
     private void initPanel() {
         setLayout(new FlowLayout()); //Elrendezés beállítása
+        //setLayout(new BorderLayout());
         setOpaque(false);
         
         add(pnMenu);
         add(pnStats);
+        //add(pnMenu, BorderLayout.WEST);
+        //add(pnStats, BorderLayout.EAST);
     }
 }
