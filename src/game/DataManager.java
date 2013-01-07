@@ -23,7 +23,7 @@ public class DataManager {
     /*
      * A játékos karaktereket tároló lista
      */
-    private static List<Hero> heroes = new ArrayList();
+    private static List<Hero> heroes = load();
     
     /*
      * A jelenleg kiválasztott hős
@@ -88,8 +88,15 @@ public class DataManager {
             System.out.println("Hiba történt a karakterek kiolvasása közben!");
             System.out.println(Ex);
         }
-        return null;
+        return new ArrayList<Hero>();
         
+    }
+    
+    /*
+     * Visszaadja hogy létezik-e a hősők listáját tároló fájl
+     */
+    public static boolean isSavefileExists(){
+        return file.exists();
     }
     
     /*

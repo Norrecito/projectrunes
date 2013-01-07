@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.text.StyledDocument;
 
 /**
@@ -114,7 +116,17 @@ public class CharacterCreationPanel extends AbstractPanel {
     /*
      * A panel amin az Elem illetve a Csillagjegy választás történik
      */
-    private SelectionPanel pnSelection = new SelectionPanel(ipElement,ipZodiac);
+    private SelectionPanel pnSelection = new SelectionPanel(ipElement,ipZodiac){
+        {
+            getLsZodiac().addListSelectionListener(new ListSelectionListener() {
+
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    checkCorrect();
+                }
+            });
+        }
+    };
     
     /*
      * A bal oldali panel (Avatarválasztó, illetve az Elem és Csillagjegy kiválasztása)

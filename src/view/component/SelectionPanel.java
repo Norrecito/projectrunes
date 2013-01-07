@@ -195,4 +195,11 @@ public class SelectionPanel extends JPanel {
         return currentZodiac;
     }
     
+    /*
+     * Visszaadja a Csillagjegyeket tároló listát
+     */
+    public JList getLsZodiac() {
+        return lsZodiac;
+    }
+    
 }

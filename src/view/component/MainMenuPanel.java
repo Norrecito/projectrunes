@@ -5,6 +5,7 @@
 package view.component;
 
 import core.Main;
+import game.DataManager;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -48,7 +49,7 @@ public class MainMenuPanel extends AbstractPanel {
      */
     JButton btContinue = new JButton("Folytatás"){
         {
-            setEnabled(false); //Alapértelmezetten le van tíltva
+            setEnabled(DataManager.isSavefileExists()); //Amenyiben létezik a mentésfájl, engedélyezze
         }
     };
     
