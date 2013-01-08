@@ -36,8 +36,18 @@ public class DataManager {
     public static void createHero(String name, Avatar avatar, Zodiac zodiac){
         
         Hero hero = new Hero(name,avatar,zodiac); //Létrehozza az új hőst
-        save(hero); //Elementi az új hőst fájlba
+        heroes.add(hero); //hozzáadja az új hőst a hősők listájáhóz
+        save(); //Elementi a hősők listáját fájlba
         setSelectedHero(hero); //Az újonnan létrehozott karakter lesz a kiválasztott karakter
+    }
+    
+    /*
+     * Kitörli a paraméterben megkapott játékos karaktert
+     */
+    public static void deleteHero(Hero hero){
+       System.out.println("Törlendő karakter: "+hero.getName());
+       heroes.remove(hero); //Kitörli a paraméterben megkapott hőst a listából
+       save(); //Elementi a hősők listáját fájéba
     }
     
     /*
@@ -48,10 +58,9 @@ public class DataManager {
     }
     
     /*
-     * Elementi fájlba a paraméterként kapott hőst
+     * Elementi fájlba a hősők listáját
      */
-    private static void save(Hero hero){
-        heroes.add(hero);
+    private static void save(){
         
         try{
             
@@ -61,11 +70,12 @@ public class DataManager {
         oos.flush();
         oos.close();
         fos.close();
-        System.out.println("A karakter sikeresen elmentésre került!");
+        System.out.println("A karakterlista sikeresen elmentésre került!");
+        
         
         }
         catch(Exception Ex){
-            System.out.println("Hiba történt a karakter elmentése közben!");
+            System.out.println("Hiba történt a karakterlista elmentése közben!");
             System.out.println(Ex);
         }
     }
@@ -81,6 +91,8 @@ public class DataManager {
             ObjectInputStream oin = new ObjectInputStream(fis);
             List<Hero> heroList = (List<Hero>) oin.readObject();
             System.out.println("Karakterlista betöltése sikeres!");
+            fis.close();
+            oin.close();
             return heroList;
         }
         }

@@ -84,7 +84,18 @@ public class ContinuePanel extends AbstractPanel {
     /*
      * A "Törlés" gomb ami a kijelölt karakter törlésére szolgál
      */
-    private final JButton btDelete = new JButton("Törlés");
+    private final JButton btDelete = new JButton("Törlés"){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    deleteSelectedHero();
+                    refresh();
+                }
+            });
+        }
+    };
     
     /*
      * A "Tovább" gomb
@@ -194,6 +205,13 @@ public class ContinuePanel extends AbstractPanel {
      */
     private void setSelectedHero(CharacterlistPanel panel){
         selectedHero = panel.getHero();
+    }
+    
+    /*
+     * Kitörli a jelenleg kiválasztott karaktert
+     */
+    private void deleteSelectedHero(){
+       DataManager.deleteHero(selectedHero);
     }
     
     /*
