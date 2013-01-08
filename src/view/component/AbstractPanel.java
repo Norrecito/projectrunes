@@ -74,4 +74,10 @@ public abstract class AbstractPanel extends JPanel {
     g.drawImage(img, 0, 0, null);
     }
     
+    /*
+     * Frissíti a panelen lévő komponenseket, az útódókban kerül kifejtésre ahol szükséges 
+     */
+    public void refresh(){
+        
+    }
 }

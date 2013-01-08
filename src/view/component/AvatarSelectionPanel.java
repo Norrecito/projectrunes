@@ -146,6 +146,13 @@ public class AvatarSelectionPanel extends JPanel {
         return currentAvatar;
     }
     
+    /*
+     * Visszaállítja az avatarválasztót a kezdő állapotba 
+     */
+    public void reset(){
+        index = 0;
+        switchAvatar();
+    }
     
     
 }

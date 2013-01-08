@@ -81,6 +81,7 @@ public class GameFrame extends JFrame {
          //add(panel); // a jelenlegi panelt hozzáadja az ablakhoz
          cards.add(panel.getClass().toString(), panel); //A panel hozzáadása a tárolóhóz
          cl.show(cards, panel.getClass().toString());
+         panel.refresh();
          System.out.println("Jelenlegi panel: "+panel.getClass().toString());
          System.out.println("Pakliban lévő komponensek száma: "+cards.getComponents().length);
          //prevPanel = panel; // az előző panel most már a jelenlegi panel

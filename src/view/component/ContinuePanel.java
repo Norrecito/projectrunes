@@ -54,7 +54,7 @@ public class ContinuePanel extends AbstractPanel {
 
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
-                    setSelectedHero((CharacterlistPanel) getSelectedValue());
+                    if(getSelectedValue() != null) setSelectedHero((CharacterlistPanel) getSelectedValue());
                     btNext.setEnabled(selectedHero != null); //Ha a kiválasztott hős nem "null" érték akkor engedélyezi a "Tovább" gombot
                 }
             });
@@ -194,6 +194,16 @@ public class ContinuePanel extends AbstractPanel {
      */
     private void setSelectedHero(CharacterlistPanel panel){
         selectedHero = panel.getHero();
+    }
+    
+    /*
+     * A panel komponenseinek frissitése
+     */
+    @Override
+    public void refresh(){
+       listmodel.clear();
+       setCharacterList();
+       if(!listmodel.isEmpty()) lsHeroes.setSelectedIndex(0);
     }
     
 }

@@ -249,4 +249,16 @@ public class CharacterCreationPanel extends AbstractPanel {
        DataManager.createHero(tfName.getText(), pnAvatarSelection.getCurrentAvatar(), pnSelection.getCurrentZodiac()); 
     }
     
+    /*
+     * Frissiti a panelen lévő komponenseket
+     */
+    @Override
+    public void refresh(){
+        
+        tfName.setText("");
+        pnAvatarSelection.reset();
+        pnSelection.reset();
+        
+    }
+    
 }

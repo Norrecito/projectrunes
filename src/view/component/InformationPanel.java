@@ -78,4 +78,14 @@ public class InformationPanel extends JPanel {
         lbDescription.setForeground(Color.white);
     }
     
+    /*
+     * Visszaállítja a panelt az eredeti állapotába
+     */
+    public void reset(){
+      lbName.setText("");  
+      lbName.setIcon(null);
+      lbName.revalidate();
+      lbDescription.setText("");
+    }
+    
 }

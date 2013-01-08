@@ -42,7 +42,7 @@ public class SelectionPanel extends JPanel {
                     
                     if(!e.getValueIsAdjusting()){
                         setElementInformation((IconPanel) getSelectedValue());
-                        setZodiacs((IconPanel) getSelectedValue());
+                        if(getSelectedValue() != null) setZodiacs((IconPanel) getSelectedValue());
                     }
                     
                 }
@@ -200,6 +200,16 @@ public class SelectionPanel extends JPanel {
      */
     public JList getLsZodiac() {
         return lsZodiac;
+    }
+    
+    /*
+     * Visszaállítja a választóképernyőt az eredeti állapotba
+     */
+    public void reset(){
+      lsElements.clearSelection();
+      listModell.clear();
+      ipElement.reset();
+      ipZodiac.reset();
     }
     
 }

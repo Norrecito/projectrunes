@@ -210,4 +210,25 @@ public class SingleplayerMenuPanel extends AbstractPanel {
         add(box, new GridBagConstraints());
         
     }
+    
+    /*
+     * Beállítja a címkék tartalmát
+     */
+    private void setContent(){
+        
+        lbAvatar.setIcon(DataManager.getSelectedHero().getAvatar().getIcon());
+        lbText.setText("<html><h1 color='#FFFFFF'>Kampány</h1></html>");
+        lbName.setText("<html><h2>"+DataManager.getSelectedHero().getName()+"</h2></html>");
+        lbZodiac.setText(DataManager.getSelectedHero().getZodiac().getName());
+        lbElement.setText(DataManager.getSelectedHero().getElement().getName());
+        
+    }
+    
+    /*
+     * Frissiti a panel komponenseit
+     */
+    @Override
+    public void refresh(){
+      setContent();  
+    }
 }
