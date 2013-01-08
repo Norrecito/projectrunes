@@ -8,11 +8,7 @@ import game.DataManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import resource.RM;
 
 /**
@@ -159,7 +155,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
           box.add(lbElement);
           box.add(lbZodiac);
           box.add(lbLevel);
-          //setOpaque(false);
+          
           add(box);
           
         }  

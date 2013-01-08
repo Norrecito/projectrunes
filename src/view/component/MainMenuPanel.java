@@ -50,6 +50,13 @@ public class MainMenuPanel extends AbstractPanel {
     JButton btContinue = new JButton("Folytatás"){
         {
             setEnabled(DataManager.isSavefileExists()); //Amenyiben létezik a mentésfájl, engedélyezze
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    getFrame().switchPanel(ContinuePanel.class);
+                }
+            });
         }
     };
     

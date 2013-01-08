@@ -9,11 +9,15 @@ import java.util.List;
 import view.component.IconPanel;
 
 /**
+ * A csillagjegyeket tároló lista
  * 
  * @author Norrecito
  */
 public class ZodiacList extends ArrayList<Zodiac> {
-    
+     
+    /*
+     * a csillagjegyeket panelre teszi fel
+     */
      public List<IconPanel> createPanels(){
          
          List<IconPanel> panels = new ArrayList<>();

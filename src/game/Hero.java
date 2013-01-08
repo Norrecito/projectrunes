@@ -34,6 +34,11 @@ public class Hero implements Serializable {
     private final Element element;
     
     /*
+     * A karakter szintje
+     */
+    private int level = 1;
+    
+    /*
      * Konstruktor
      */
     public Hero(String name,Avatar avatar, Zodiac zodiac){
@@ -70,6 +75,13 @@ public class Hero implements Serializable {
      */
     public Avatar getAvatar() {
         return avatar;
+    }
+    
+    /*
+     * Visszaadja a karakter szintjét
+     */
+    public int getLevel() {
+        return level;
     }
     
 }
