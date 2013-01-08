@@ -211,7 +211,7 @@ public class ContinuePanel extends AbstractPanel {
      * Kitörli a jelenleg kiválasztott karaktert
      */
     private void deleteSelectedHero(){
-       DataManager.deleteHero(selectedHero);
+       DataManager.deleteHero(lsHeroes.getSelectedIndex());
     }
     
     /*

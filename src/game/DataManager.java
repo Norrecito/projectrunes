@@ -42,11 +42,13 @@ public class DataManager {
     }
     
     /*
-     * Kitörli a paraméterben megkapott játékos karaktert
+     * Kitörli a játékos karaktert a paraméterben megkapott index alapján
+     * (Ugyan a hőst is megkaphatná mint objektumot az Arraylist remove(Object o) metódusáshóz
+     *  viszont ebben az esetben nem lehetne két ugyanolyan nevü karakter, ezért döntöttem
+     *  az index mellett)
      */
-    public static void deleteHero(Hero hero){
-       System.out.println("Törlendő karakter: "+hero.getName());
-       heroes.remove(hero); //Kitörli a paraméterben megkapott hőst a listából
+    public static void deleteHero(int index){
+       heroes.remove(index); //Kitörli a paraméterben megkapott hőst a listából
        save(); //Elementi a hősők listáját fájéba
     }
     
