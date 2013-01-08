@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * A "Folytatás" Panel
@@ -22,6 +24,11 @@ import javax.swing.border.EmptyBorder;
  * @author Norrecito
  */
 public class ContinuePanel extends AbstractPanel {
+    
+    /*
+     * A jelenleg kiválasztott folytatandó karakter referenciája
+     */
+    private Hero selectedHero;
     
     /*
      * A "Folytatás" felirat fontja
@@ -41,7 +48,18 @@ public class ContinuePanel extends AbstractPanel {
     /*
      * A lista ami a karaktereket tárolja
      */
-    private final JList lsHeroes = new JList(listmodel);
+    private final JList lsHeroes = new JList(listmodel){
+        {
+            addListSelectionListener(new ListSelectionListener() {
+
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    setSelectedHero((CharacterlistPanel) getSelectedValue());
+                    btNext.setEnabled(selectedHero != null); //Ha a kiválasztott hős nem "null" érték akkor engedélyezi a "Tovább" gombot
+                }
+            });
+        }
+    };
     
     /*
      * A ScrollPane amin a lista van (görgethetőség érdekében)
@@ -79,6 +97,8 @@ public class ContinuePanel extends AbstractPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    
+                    DataManager.setSelectedHero(selectedHero);
                     getFrame().switchPanel(SingleplayerMenuPanel.class);
                 }
             });
@@ -141,6 +161,9 @@ public class ContinuePanel extends AbstractPanel {
         
         //Cellrenderer beállítása
         lsHeroes.setCellRenderer(new ImageListCellRenderer());
+        
+        //Méret beállítása
+        spHeroes.setPreferredSize(new Dimension(300,320));
     }
 
     private void initPanel() {
@@ -164,6 +187,13 @@ public class ContinuePanel extends AbstractPanel {
             listmodel.addElement(new CharacterlistPanel(heroes.get(i)));
         }
         
+    }
+    
+    /*
+     * Beállítja a jelenleg kiválasztott karaktert
+     */
+    private void setSelectedHero(CharacterlistPanel panel){
+        selectedHero = panel.getHero();
     }
     
 }
