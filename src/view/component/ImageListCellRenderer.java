@@ -47,12 +47,12 @@ public class ImageListCellRenderer implements ListCellRenderer {
    * Két paramétert vár, a panel háttérszínét, illetve a színt amilyenre a panel háttere
    * át lesz színezve ha az ki van jelőlve
    */
-    public ImageListCellRenderer(Color backgroundColor, Color selectedColor){
-        this.backgroundColor = backgroundColor;
-        this.selectedColor = selectedColor;
-    }
-    
-  @Override
+   public ImageListCellRenderer(Color backgroundColor, Color selectedColor){
+      this.backgroundColor = backgroundColor;
+      this.selectedColor = selectedColor;
+   }
+   
+ @Override
   public Component getListCellRendererComponent(JList jlist, 
                                                 Object value, 
                                                 int cellIndex, 
