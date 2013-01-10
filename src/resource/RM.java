@@ -248,6 +248,20 @@ public class RM {
     }
     
     /*
+     * Visszaad egy üres képesség ikont
+     */
+    public static ImageIcon getBlankSkillIcon(){
+        return getIcon("blank_skill.png");
+    }
+    
+    /*
+     * Visszaadja a tesztrúna képét
+     */
+    public static ImageIcon getTestruneIcon(){
+       return getIcon("testrune.png"); 
+    }
+    
+    /*
      * Visszaadja a paraméterben megadott név alapján az adott avatar ikonképét
      */
     public static ImageIcon getAvatarIcon(String fileName){

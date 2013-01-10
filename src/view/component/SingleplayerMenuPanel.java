@@ -76,7 +76,17 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     /*
      * Az új harc indítására szolgáló gomb
      */
-    private final JButton btNewFight = new JButton("Új harc", RM.getNewFightIcon());
+    private final JButton btNewFight = new JButton("Új harc", RM.getNewFightIcon()){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    getFrame().switchPanel(FightPanel.class);
+                }
+            });
+        }
+    };
     
     /*
      * A varázskönyv megnyítását szolgáló gomb
