@@ -6,13 +6,7 @@ package view.component;
 
 import game.DataManager;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import resource.RM;
 
 /**
  * A panel amin maga a harc folyik
