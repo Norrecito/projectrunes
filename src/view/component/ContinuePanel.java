@@ -176,14 +176,10 @@ public class ContinuePanel extends AbstractPanel {
         lsHeroes.setBackground(Color.black);
         
         //Cellrenderer beállítása
-        lsHeroes.setCellRenderer(new ImageListCellRenderer());
+        lsHeroes.setCellRenderer(new ImageListCellRenderer(Color.GRAY, Color.LIGHT_GRAY));
         
         //Méret beállítása
         spHeroes.setPreferredSize(new Dimension(300,320));
-        
-        //Keret beállítása
-        spHeroes.setViewportBorder(BorderFactory.createCompoundBorder(BorderFactory.createEtchedBorder(), BorderFactory.createLineBorder(getBackground(), 4)));
-        
     }
 
     private void initPanel() {

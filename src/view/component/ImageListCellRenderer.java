@@ -23,6 +23,36 @@ public class ImageListCellRenderer implements ListCellRenderer {
    * isSelected - true if the specified cell is currently selected
    * cellHasFocus - true if the cell has focus
    */
+  
+  /*
+   * A panel háttérszíne
+   */
+  private Color backgroundColor;
+  
+  /*
+   * A kiválasztás színe
+   */
+  private Color selectedColor;
+  
+  /*
+   * Az első konstruktor
+   * Nem vár paramétert, a standart színeket használja (fekete háttér, szürke kijelőlés)
+   */
+  public ImageListCellRenderer(){
+      this(Color.black, Color.gray);
+  }
+  
+  /*
+   * A második konstruktor
+   * Két paramétert vár, a panel háttérszínét, illetve a színt amilyenre a panel háttere
+   * át lesz színezve ha az ki van jelőlve
+   */
+    public ImageListCellRenderer(Color backgroundColor, Color selectedColor){
+        this.backgroundColor = backgroundColor;
+        this.selectedColor = selectedColor;
+    }
+    
+  @Override
   public Component getListCellRendererComponent(JList jlist, 
                                                 Object value, 
                                                 int cellIndex, 
@@ -33,7 +63,7 @@ public class ImageListCellRenderer implements ListCellRenderer {
     {
       Component component = (Component) value;
       component.setForeground (Color.white);
-      component.setBackground (isSelected ? Color.lightGray : Color.black);
+      component.setBackground (isSelected ? selectedColor : backgroundColor);
       return component;
     }
     else
