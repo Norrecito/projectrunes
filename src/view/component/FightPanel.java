@@ -22,6 +22,11 @@ import resource.RM;
 public class FightPanel extends AbstractPanel {
     
     /*
+     * A rúnatábla méretéhez (sor, oszlop) tartozó változó
+     */
+    private int tableSize;
+    
+    /*
      * A játékos karakert és a hozzá tartozó információkat tároló panel
      */
     private SidePanel pnHero = new SidePanel(DataManager.getSelectedHero());
@@ -34,26 +39,26 @@ public class FightPanel extends AbstractPanel {
     /*
      * A rúna tábla panelje
      */
-    private JPanel pnFightTable = new JPanel(){
-        {
-            //Teszt
-            setLayout(new GridLayout(8,8));
-            
-            for(int i =0; i<64; i++){
-                
-                   JPanel TestRune = new JPanel();
-                   TestRune.setBorder(BorderFactory.createLineBorder(Color.black));
-                   TestRune.add(new JLabel(RM.getTestruneIcon()));
-                   add(TestRune);
-            }
-        }
-    };
+    private FightPanelTable pnFightTable;
     
     /*
-     * Konstruktor
+     * Az első konstruktor
+     * Nem vár paramétert, és a standart beállításokkal hozza létre a rúnatáblát
+     * 8*8 (64 elemű) tábla
      */
     public FightPanel(){
+        this(8);
+    }
+    
+    /*
+     * A második konstruktor
+     * Paraméterben megadható neki a rúnatábla mérete, ez alapján hozza létre
+     */
+    public FightPanel(int tableSize){
+      
+        this.tableSize = tableSize;
         
+        pnFightTable = new FightPanelTable(tableSize);
         initComponents(); //Komponensek inicialízálása
         initPanel(); //Panel inicialízálása
     }
