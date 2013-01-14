@@ -84,7 +84,7 @@ public class RunePanel extends JPanel {
     }
     
     /*
-     * Aktiválja a panelen lévő rúnát
+     * Aktiválja a panelen lévő rúnát ha még nem aktív
      */
     public void activateRune(){
        
