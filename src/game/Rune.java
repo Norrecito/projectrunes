@@ -54,6 +54,7 @@ public enum Rune {
         this.name = name;
         this.element = element;
         Icon = RM.getRuneIcon(name);
+        activatedIcon = RM.getActivatedRuneIcon(name);
         
     }
     

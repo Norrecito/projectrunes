@@ -227,6 +227,13 @@ public class RM {
     }
     
     /*
+     * Visszaadja a paraméterben megkapott rúna "aktivált" állapotú ikonképét
+     */
+    public static ImageIcon getActivatedRuneIcon(String runeName){
+        return getIcon(runeName+"Activated.png");
+    }
+    
+    /*
      * Visszaadja a paraméterként kapott elem leírását
      */
     public static String getElementDescription(String elementName){
