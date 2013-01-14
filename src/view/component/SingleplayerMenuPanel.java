@@ -74,6 +74,11 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     private final JLabel lbResistance = new JLabel("Ellenállás: 100",RM.getResistanceIcon(),SwingConstants.LEFT);
     
     /*
+     * A karakter "Kritikus esélyét" tartalmazó cimke
+     */
+    private final JLabel lbCritical = new JLabel("Kritikus: 100", RM.getCriticalIcon(), SwingConstants.LEFT);
+    
+    /*
      * Az új harc indítására szolgáló gomb
      */
     private final JButton btNewFight = new JButton("Új harc", RM.getNewFightIcon()){
@@ -145,6 +150,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
             box.add(Box.createRigidArea(new Dimension(0,15)));
             box.add(lbSpellpower);
             box.add(lbResistance);
+            box.add(lbCritical);
             box.add(Box.createRigidArea(new Dimension(0,15)));
             box.add(lbXP);
             box.add(lbGold);

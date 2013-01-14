@@ -4,8 +4,11 @@
  */
 package view.component;
 
+import game.C;
+import game.Rune;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +27,11 @@ public class FightPanelTable extends JPanel {
     private int size;
     
     /*
+     * A rúnákat tároló lista referenciája
+     */
+    ArrayList<Rune> Runes;
+    
+    /*
      * Konstruktor
      */
     public FightPanelTable(int size){
@@ -36,19 +44,34 @@ public class FightPanelTable extends JPanel {
      */
     private void initPanel() {
         setLayout(new GridLayout(size,size));
+        createRunes();
         fillTable();
+    }
+    
+    /*
+     * Létrehozza a rúnákat
+     */
+    private void createRunes(){
+        
+        Runes = new ArrayList();
+        
+        for(int i=0; i<size*size; i++){
+            Runes.add(Rune.values()[C.createRandom(0, Rune.values().length-1)]);
+        }
+        
     }
     
     /*
      * Feltölti a táblát rúnákkal a konstruktorban megadott méret alapján
      */
     private void fillTable(){
-       for(int i=0; i<size*size; i++){
+        
+        //Teszt
+        for(int i=0; i<size*size; i++){
          
-         JPanel TestRune = new JPanel();
-         TestRune.setBorder(BorderFactory.createLineBorder(Color.black));
-         TestRune.add(new JLabel(RM.getTestruneIcon()));
-         add(TestRune);
+         RunePanel panel = new RunePanel(Runes.get(i));
+         panel.setBorder(BorderFactory.createLineBorder(Color.black));
+         add(panel);
          
        }
         

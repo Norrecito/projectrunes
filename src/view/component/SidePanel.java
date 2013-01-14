@@ -36,6 +36,11 @@ public class SidePanel extends JPanel {
     private JLabel lbResistance = new JLabel(RM.getResistanceIcon(), SwingConstants.LEFT);
     
     /*
+     * A kritikus esélyt tároló cimke
+     */
+    private JLabel lbCritical = new JLabel(RM.getCriticalIcon(), SwingConstants.LEFT);
+    
+    /*
      * A képességeket mutató 3 cimke
      */
     private JLabel lbSkill1 = new JLabel(RM.getBlankSkillIcon());
@@ -66,6 +71,7 @@ public class SidePanel extends JPanel {
             setBorder(BorderFactory.createLineBorder(Color.black));
             add(lbSpellpower); //"Varázserő" cimke hozzáadása
             add(lbResistance); //"Ellenállás" cimke hozzáadása
+            add(lbCritical); //"Kritikus esély" cimke hozzáadása
         }
     };
     
@@ -113,6 +119,7 @@ public class SidePanel extends JPanel {
          lbAvatar.setIcon(hero.getAvatar().getIcon());
          lbSpellpower.setText("100");
          lbResistance.setText("100");
+         lbCritical.setText("100");
          
          initComponents(); //Komponensek inicialízálása
          initPanel(); //Panel inicialízálása

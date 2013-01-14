@@ -213,6 +213,20 @@ public class RM {
     }
     
     /*
+     * Visszaadja a "Kritikus esély" inkonképét
+     */
+    public  static ImageIcon getCriticalIcon(){
+       return getIcon("critical.png"); 
+    }
+    
+    /*
+     * Visszaadja a paraméterben megkapott rúna ikonképét
+     */
+    public static ImageIcon getRuneIcon(String runeName){
+        return getIcon(runeName+".png");
+    }
+    
+    /*
      * Visszaadja a paraméterként kapott elem leírását
      */
     public static String getElementDescription(String elementName){
