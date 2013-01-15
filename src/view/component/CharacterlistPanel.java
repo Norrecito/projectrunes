@@ -89,9 +89,9 @@ public class CharacterlistPanel extends JPanel {
         lbElement.setText(hero.getElement().getName());
         lbZodiac.setText(hero.getZodiac().getName());
         lbLevel.setText("<html> <p color ='#FFFFFF'>Szint: "+String.valueOf(hero.getLevel())+"</p></html>");
-        lbXP.setText("11230");
-        lbGold.setText("0");
-        lbLife.setText("30");
+        lbXP.setText(String.valueOf(hero.getXp()));
+        lbGold.setText(String.valueOf(hero.getGold()));
+        lbLife.setText(String.valueOf(hero.getHp()));
         
         //Betűszín beállítása
         lbXP.setForeground(Color.white);

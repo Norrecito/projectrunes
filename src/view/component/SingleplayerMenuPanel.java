@@ -58,7 +58,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     /*
      * A karakter életpontjainak számát tartalmazó cimke
      */
-    private final JLabel lbLife = new JLabel("Életterő: 20/20",RM.getLifeIcon(),SwingConstants.LEFT);
+    private final JLabel lbHP = new JLabel("Életterő: 20/20",RM.getLifeIcon(),SwingConstants.LEFT);
     
     /*
      * A karakter avatarját tartalmazó cimke
@@ -156,7 +156,7 @@ public class SingleplayerMenuPanel extends AbstractPanel {
             box.add(Box.createRigidArea(new Dimension(0,15)));
             box.add(lbXP);
             box.add(lbGold);
-            box.add(lbLife);
+            box.add(lbHP);
             
             add(box);
             setOpaque(false);
@@ -237,6 +237,13 @@ public class SingleplayerMenuPanel extends AbstractPanel {
         lbAvatar.setIcon(DataManager.getSelectedHero().getAvatar().getIcon());
         lbText.setText("<html><h1 color='#FFFFFF'>Kampány</h1></html>");
         lbName.setText("<html><h2>"+DataManager.getSelectedHero().getName()+"</h2></html>");
+        lbSpellpower.setText("Varázserő: "+String.valueOf(DataManager.getSelectedHero().getSpellpower()));
+        lbResistance.setText("Ellenállás: "+String.valueOf(DataManager.getSelectedHero().getResistance()));
+        lbCritical.setText("Kritikus: "+String.valueOf(DataManager.getSelectedHero().getCritical()));
+        lbXP.setText("Tapasztalat: "+String.valueOf(DataManager.getSelectedHero().getXp()));
+        lbGold.setText("Arany: "+String.valueOf(DataManager.getSelectedHero().getGold()));
+        lbHP.setText("Élet: "+String.valueOf(DataManager.getSelectedHero().getHp()));
+        lbLevel.setText("Szint: "+String.valueOf(DataManager.getSelectedHero().getLevel()));
         lbZodiac.setText(DataManager.getSelectedHero().getZodiac().getName());
         lbElement.setText(DataManager.getSelectedHero().getElement().getName());
         

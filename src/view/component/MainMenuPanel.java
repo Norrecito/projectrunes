@@ -137,4 +137,12 @@ public class MainMenuPanel extends AbstractPanel {
     protected Image createBackgroundImage() {
         return RM.getMainmenuBackgroundImage();
     }
+    
+    /*
+     * Frissiti a panel komponenseit
+     */
+    @Override
+    public void refresh(){
+        btContinue.setEnabled(DataManager.isSavefileExists());
+    }
 }
