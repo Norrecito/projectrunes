@@ -16,7 +16,9 @@ import view.component.AbstractPanel;
 import view.component.MainMenuPanel;
 
 /**
- *  A főmenü ablaka
+ *  Maga a játék ablaka
+ *  Erre kerülnek a külömbőző megjelenítő panelek mint például a főmenü vagy az "Új játék"
+ *  A kereten elhelyezkedő panelek kérésre cserélődnek (switchPanel() metódus)
  * 
  * @author Norrecito
  */

@@ -9,7 +9,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- * Egy részlegesen átlátszó panel a karakter statisztikák mutatására
+ * Egy részlegesen átlátszó panel 
+ * A karakter statisztikák megjelenítésére szolgál jelenleg
  * 
  * @author Norrecito
  */

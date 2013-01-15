@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Játékos illetve nem játékos karakterek létrehozását/mentését fogja elvégezni
+ * Játékos illetve nem játékos karakterek létrehozását illetve a játékos karakterek mentését végzi
+ * Az összes játékos karakter egy szerializálható objektumként (List) egy fájlba kerül mentésre (Hero.ser)
+ * A "Folytatás" lehetőséget választva a főmenüből a karakterlista szintén innen kerül kiolvasásra
  * 
  * @author Norrecito
  */

@@ -18,7 +18,9 @@ import javax.swing.JLabel;
 import resource.RM;
 
 /**
- * A főmenü panelje 
+ * A főmenü panelje
+ * Itt választhatunk a külömbőző fő menüpontok közül (Új játék, Folytatás, Kilépés),
+ * és ennek megfelelően léphetünk tovább a játékban
  * 
  * @author Norrecito
  */

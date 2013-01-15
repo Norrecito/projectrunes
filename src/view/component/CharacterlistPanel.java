@@ -7,7 +7,6 @@ package view.component;
 import game.Hero;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
@@ -101,7 +100,7 @@ public class CharacterlistPanel extends JPanel {
     }
     
     private void initPanel() {
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS)); //Panel elrendezésének beállítása
         setBorder(new EmptyBorder(new Insets(5, 5, 5, 5))); //Margó beállítása
         
         Box left = Box.createVerticalBox();

@@ -13,6 +13,8 @@ import resource.RM;
 
 /**
  * Az egyjátékos mód főképernyője
+ * Megjelenití az aktuális játékos karakter statisztikáját (varázserő, védelem, kritikus esély...)
+ * Erről a képernyőről indithatunk új harcot, illetve válthatunk a képességeink között
  * 
  * @author Norrecito
  */

@@ -13,7 +13,7 @@ import view.GameFrame;
 
 /**
  * Az ablakhóz tartozó "panel" komponens, ami képes egy képet megjeleníteni annak háttereként
- * Az ős panel osztály, minden további panel ebből az osztályból származik le
+ * Ez az ős panel osztály, minden további panel ami a játékban szerepel ebből az osztályból származik le
  * 
  * @author Norrecito
  */

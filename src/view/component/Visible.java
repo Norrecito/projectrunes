@@ -8,7 +8,8 @@ import javax.swing.ImageIcon;
 
 /**
  * A "Látható" interface
- * Minden osztály implementálja aminek van látható felülete (képe, leírása, neve)
+ * Olyan osztály implementálja aminek van látható felülete (képe, leírása, neve)
+ * Jelenleg az Elem (Element) illetve a Csillgjegy (Zodiac) enum használja, később bővítésre kerül
  * 
  * @author Norrecito
  */

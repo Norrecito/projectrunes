@@ -19,7 +19,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * A panel amin az elem kiválasztása, és a hozzá tartozó csillagjegy történik
+ * A panel amin az elem kiválasztása, és a hozzá tartozó csillagjegy kiválasztása történik
  * 
  * @author Norrecito
  */

@@ -5,7 +5,6 @@
 package core;
 
 import view.GameFrame;
-import view.component.MainMenuPanel;
 
 /**
  * A program indító osztálya

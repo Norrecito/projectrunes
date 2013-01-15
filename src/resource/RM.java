@@ -17,6 +17,8 @@ import javax.swing.ImageIcon;
 
 /**
  * RM = Resource Manager - Az erőforrás kezelő osztály
+ * A "Resource" csomagban elhelyezett képeket illetve az itt lévő szövegfájlok
+ * tartalmát adja vissza
  * 
  * @author Norrecito
  */

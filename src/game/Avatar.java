@@ -9,6 +9,7 @@ import resource.RM;
 
 /**
  * A játékban szereplő avatarok
+ * A játékos illetve nem játékos karakterek (ellenfelek) "profilképei" 
  *
  * @author Norrecito
  */

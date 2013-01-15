@@ -8,7 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
+ * Egy megjelenítő panel ami egy "Látható" (Visible) interface-el ellátott objektum
+ * ikonképét jeleníti meg
+ * 
  * @author Norrecito
  */
 public class IconPanel extends JPanel {
