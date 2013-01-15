@@ -117,9 +117,9 @@ public class SidePanel extends JPanel {
          
          //Cimkék beállítása
          lbAvatar.setIcon(hero.getAvatar().getIcon());
-         lbSpellpower.setText("100");
-         lbResistance.setText("100");
-         lbCritical.setText("100");
+         lbSpellpower.setText(Integer.toString(hero.getSpellpower()));
+         lbResistance.setText(Integer.toString(hero.getResistance()));
+         lbCritical.setText(Integer.toString(hero.getCritical()));
          
          initComponents(); //Komponensek inicialízálása
          initPanel(); //Panel inicialízálása
