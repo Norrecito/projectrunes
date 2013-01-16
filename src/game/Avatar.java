@@ -19,7 +19,10 @@ public enum Avatar {
     WARRIOR1("Warrior1"),
     WIZARD1("Wizard1"),
     WIZARD2("Wizard2"),
-    WIZARD3("Wizard3");
+    WIZARD3("Wizard3"),
+    SKELETON1("Skeleton1"),
+    SKELETON2("Skeleton2"),
+    UNDEAD1("Undead1");
     
     /*
      * Az avatarhóz tartozó ikonkép
