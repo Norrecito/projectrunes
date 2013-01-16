@@ -103,9 +103,10 @@ public class SidePanel extends JPanel {
             
             Box box = Box.createVerticalBox();
             
-            for(int i =0; i<5; i++){
-                JPanel spell = new JPanel();
-                spell.setBorder(BorderFactory.createLineBorder(Color.black));
+            for(int i =0; i<4; i++){
+                //JPanel spell = new JPanel();
+                SpellPanel spell = new SpellPanel();
+                //spell.setBorder(BorderFactory.createLineBorder(Color.black));
                 box.add(spell);  
             }
             
