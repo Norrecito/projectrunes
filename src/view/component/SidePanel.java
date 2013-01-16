@@ -21,6 +21,11 @@ import resource.RM;
 public class SidePanel extends JPanel {
     
     /*
+     * A megjelenítendő elem referenciája
+     */
+    private Displayable displayable;
+    
+    /*
      * Az avatart tároló cimke
      */
     private final JLabel lbAvatar = new JLabel();
@@ -109,17 +114,19 @@ public class SidePanel extends JPanel {
     };
     
     /*
-     * Az első konstruktor
-     * egy hőst (játékos karaktert) vár paraméterként,
+     * A konstruktor
+     * egy "Megjeleníthető" (Displayable) interface-el ellátot objektumot (Hős, Ellenfél) vár paraméterként,
      * és automatikusan beállítja a nézetet hozzá
      */
-     public SidePanel(Hero hero){
+     public SidePanel(Displayable displayable){
+         
+         this.displayable = displayable;
          
          //Cimkék beállítása
-         lbAvatar.setIcon(hero.getAvatar().getIcon());
-         lbSpellpower.setText(Integer.toString(hero.getSpellpower()));
-         lbResistance.setText(Integer.toString(hero.getResistance()));
-         lbCritical.setText(Integer.toString(hero.getCritical()));
+         lbAvatar.setIcon(displayable.getAvatar().getIcon());
+         lbSpellpower.setText(Integer.toString(displayable.getSpellpower()));
+         lbResistance.setText(Integer.toString(displayable.getResistance()));
+         lbCritical.setText(Integer.toString(displayable.getCritical()));
          
          initComponents(); //Komponensek inicialízálása
          initPanel(); //Panel inicialízálása
@@ -130,10 +137,10 @@ public class SidePanel extends JPanel {
         
         //Teszt
         pbHP.setStringPainted(true);
-        pbHP.setString("30/30");
+        pbHP.setString(Integer.toString(displayable.getHp())+"/"+Integer.toString(displayable.getHp()));
         pbHP.setMinimum(0);
-        pbHP.setMaximum(30);
-        pbHP.setValue(30);
+        pbHP.setMaximum(displayable.getHp());
+        pbHP.setValue(displayable.getHp());
     }
 
     private void initPanel() {

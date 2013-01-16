@@ -5,13 +5,14 @@
 package game;
 
 import java.io.Serializable;
+import view.component.Displayable;
 
 /**
  * A játékos által létrehozott "Hős" (Játékos karakter)
  * 
  * @author Norrecito
  */
-public class Hero implements Serializable {
+public class Hero implements Serializable, Displayable {
     
     /*
      * A karakter neve
@@ -73,6 +74,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter nevét
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -87,6 +89,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter avatarját
      */
+    @Override
     public Avatar getAvatar() {
         return avatar;
     }
@@ -94,6 +97,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter szintjét
      */
+    @Override
     public int getLevel() {
         return level;
     }
@@ -101,6 +105,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter kritikus esélyét
      */
+    @Override
     public int getCritical() {
         return critical;
     }
@@ -108,6 +113,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter ellenálását
      */
+    @Override
     public int getResistance() {
         return resistance;
     }
@@ -115,6 +121,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter varázserejét
      */
+    @Override
     public int getSpellpower() {
         return spellpower;
     }
@@ -129,6 +136,7 @@ public class Hero implements Serializable {
     /*
      * Visszaadja a karakter életerő pontjainak számát
      */
+    @Override
     public int getHp() {
         return hp;
     }

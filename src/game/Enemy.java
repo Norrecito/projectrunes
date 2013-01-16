@@ -13,9 +13,9 @@ import view.component.Displayable;
  */
 public enum Enemy implements Displayable {
     
-    SKELETON("Csontváz",Avatar.SKELETON1),
-    SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2),
-    UNDEAD("Élőhalott",Avatar.UNDEAD1);
+    SKELETON("Csontváz",Avatar.SKELETON1,5,15,5,30),
+    SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2,10,15,5,40),
+    UNDEAD("Élőhalott",Avatar.UNDEAD1,2,20,5,50);
     
     /*
      * Az ellenfél neve
@@ -35,35 +35,39 @@ public enum Enemy implements Displayable {
     /*
      * Az ellenfél alapvető tulajdonságai
      */
-    private int spellpower = 5; //Varázserő
-    private int resistance = 20; //Ellenállás
-    private int critical = 10;    //Kritikus esély
+    private int spellpower; //Varázserő
+    private int resistance; //Ellenállás
+    private int critical;    //Kritikus esély
     
     /*
      * Az ellenfél életpontjai
      */
-    private int hp = 30;
+    private int hp;
     
     /*
      * Konstruktor
      */
-    private Enemy(String name ,Avatar avatar){
+    private Enemy(String name ,Avatar avatar, int spellpower, int resistance, int critical, int hp){
         
         this.name = name;
         this.avatar = avatar;
         this.level = DataManager.getSelectedHero().getLevel();
+        this.spellpower = spellpower;
+        this.resistance = resistance;
+        this.critical = critical;
+        this.hp = hp;
         setStats();
         
     }
     
     /*
-     * Tulajdonságok beállítása beállítása
+     * Tulajdonságok beállítása
      */
     private void setStats(){
         
         spellpower = spellpower + level;
         resistance = resistance + level;
-        critical = critical + level;
+        hp = hp + (level*5);
     }
     
     /*

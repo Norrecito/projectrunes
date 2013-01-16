@@ -5,6 +5,7 @@
 package view.component;
 
 import game.DataManager;
+import game.Enemy;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -28,7 +29,7 @@ public class FightPanel extends AbstractPanel {
     /*
      * Az ellenfélt és a hozzá tartozó információkat tároló panel
      */
-    private SidePanel pnEnemy = new SidePanel(DataManager.getSelectedHero());
+    private SidePanel pnEnemy = new SidePanel(Enemy.SKELETON);
     
     /*
      * A rúna tábla panelje
