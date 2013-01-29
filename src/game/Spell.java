@@ -18,10 +18,10 @@ import java.util.List;
  */
 public enum Spell {
     
-    LIGHTNING("Villám", Element.AIR,1, new Rune[]{Rune.AIR1, Rune.AIR2}),
-    SPINES("Tüskék", Element.EARTH,1,new Rune[]{Rune.EARTH1, Rune.EARTH2}),
-    FLAMEARROW("Tűznyil",Element.FIRE,1,new Rune[]{Rune.FIRE1, Rune.FIRE2}),
-    ICESHARDS("Jégszilánkok", Element.WATER,1,new Rune[]{Rune.WATER1, Rune.WATER2});
+    LIGHTNING("Villám", Element.AIR,1, Rune.AIR1, Rune.AIR2),
+    SPINES("Tüskék", Element.EARTH,1,Rune.EARTH1, Rune.EARTH2),
+    FLAMEARROW("Tűznyil",Element.FIRE,1,Rune.FIRE1, Rune.FIRE2),
+    ICESHARDS("Jégszilánkok", Element.WATER,1,Rune.WATER1, Rune.WATER2);
     
     /**
      * A varázslat neve
@@ -51,12 +51,12 @@ public enum Spell {
      * @param level a varázslathóz szükséges karakterszint
      * @param runes  a varázslat használhatáhóz szükséges runák
      */
-    private Spell(String name, Element element, int level, Rune [] runes){
+    private Spell(String name, Element element, int level, Rune ...runes){
         
         this.NAME = name;
         this.ELEMENT = element;
         this.LEVEL = level;
-        this.RUNES = new ArrayList<Rune>(Arrays.asList(runes));
+        this.RUNES = Arrays.asList(runes);
         
     }
     
