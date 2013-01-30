@@ -48,19 +48,6 @@ public class SpellPanel extends JPanel {
     private JPanel pnRequirements = new JPanel(){
         {
         setLayout(new FlowLayout()); //Panel elrendezésének beállítása
-        /*
-        //TESZT
-        //Átméretezett Avatar kép elkészítése
-        BufferedImage image1 = (BufferedImage) Rune.FIRE1.getIcon().getImage();
-        BufferedImage image2 = (BufferedImage) Rune.FIRE2.getIcon().getImage();
-        BufferedImage scaledImage1 = Scalr.resize(image1, 25);
-        BufferedImage scaledImage2 = Scalr.resize(image2, 25);
-        
-        add(new JLabel(new ImageIcon(scaledImage1)));
-        add(new JLabel(new ImageIcon(scaledImage2)));
-        
-        * 
-        */
         setOpaque(false); //Legyen átlátszó a panel
         }
     };
@@ -89,6 +76,7 @@ public class SpellPanel extends JPanel {
 
     private void initComponents() {
         lbName.setText(spell.getNAME());
+        lbName.setForeground(spell.getELEMENT().getColor());
         lbPower.setText("Erő: "+String.valueOf(spell.getPower())+"%");
         
         List<Rune> runes = spell.getRUNES();

@@ -4,6 +4,7 @@
  */
 package game;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -23,15 +24,20 @@ public enum Element implements Visible {
     /*
      * Az elemek
      */
-    AIR("<HTMl><p color='#0B3861'>Levegő<p></HTML>","A levegő elem leírása","Air"),  //Levegő
-    EARTH("<HTMl><p color='#61380B'>Föld<p></HTML>","A föld elem leírása","Earth"),  //Föld 
-    FIRE("<HTMl><p color='#FF0000'>Tűz<p></HTML>", "A hóditó tűz, szó szerint a legforrobb elem. Ha ide tartozol, elemed a harc, a hódítás, a kihivások.","Fire"),     //Tűz
-    WATER("<HTMl><p color='#0404B4'>Víz<p></HTML>","A víz elem leírása","Water");    //Víz
+    AIR("<HTMl><p color='#0B3861'>Levegő<p></HTML>","A levegő elem leírása","Air", Color.darkGray),  //Levegő
+    EARTH("<HTMl><p color='#61380B'>Föld<p></HTML>","A föld elem leírása","Earth", Color.ORANGE),  //Föld 
+    FIRE("<HTMl><p color='#FF0000'>Tűz<p></HTML>", "A hóditó tűz, szó szerint a legforrobb elem. Ha ide tartozol, elemed a harc, a hódítás, a kihivások.","Fire", Color.RED),     //Tűz
+    WATER("<HTMl><p color='#0404B4'>Víz<p></HTML>","A víz elem leírása","Water", Color.BLUE);    //Víz
     
     /*
      * Az elem neve
      */
     private final String name;
+    
+    /**
+     * Az elem színe
+     */
+    private final Color color;
     
     /*
      * Az elem leírása
@@ -46,11 +52,12 @@ public enum Element implements Visible {
     /*
      * Konstruktor
      */
-    private Element(String name, String description, String iconName){
+    private Element(String name, String description, String iconName, Color color){
         
         this.name = name;
         this.description = description;
         this.icon = RM.getElementIcon(iconName);
+        this.color = color;
         
     }
     
@@ -99,6 +106,13 @@ public enum Element implements Visible {
     @Override
     public ImageIcon getIcon() {
         return icon;
+    }
+    
+    /**
+     * @return az elemhez tartozó szint 
+     */
+    public Color getColor() {
+        return color;
     }
     
     

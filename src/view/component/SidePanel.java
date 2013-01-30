@@ -4,7 +4,6 @@
  */
 package view.component;
 
-import game.Hero;
 import game.Spell;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -105,9 +104,7 @@ public class SidePanel extends JPanel {
             Box box = Box.createVerticalBox();
             
             for(int i =0; i<4; i++){
-                //JPanel spell = new JPanel();
-                SpellPanel spell = new SpellPanel(Spell.SPINES);
-                //spell.setBorder(BorderFactory.createLineBorder(Color.black));
+                SpellPanel spell = new SpellPanel(Spell.values()[i]);
                 box.add(spell);  
             }
             
