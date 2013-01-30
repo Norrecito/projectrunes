@@ -61,7 +61,7 @@ public enum Element implements Visible {
         
     }
     
-    /*
+    /**
      * Visszaadja az adott elemhez tartozó csillagjegyek listáját
      */
     public ZodiacList getZodiacList(){
@@ -73,7 +73,20 @@ public enum Element implements Visible {
          return l;
     }
     
-    /*
+    /**
+     * @return az adott elemhez tartozó varázslatok listája 
+     */
+    public List<Spell> getSpellList(){
+        List<Spell> l = new ArrayList<Spell>();
+        
+        for(Spell s: Spell.values()){
+            if(s.getELEMENT() == this) l.add(s);
+        }
+        
+        return l;
+    }
+    
+    /**
      * Megjelenítő panelre teszi az elemet
      */
     public static List<IconPanel> createPanels() {

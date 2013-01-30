@@ -17,10 +17,23 @@ import java.util.List;
  */
 public enum Spell {
     
+    //Levegő varázslatok
     LIGHTNING("Villám", Element.AIR,SpellCategory.OFFENSIVE,1, Rune.AIR1, Rune.AIR2),
+    
+    //Föld varázslatok
     SPINES("Tüskék", Element.EARTH,SpellCategory.OFFENSIVE,1,Rune.EARTH1, Rune.EARTH2),
+    
+    //Tűz varázslatok:
     FLAMEARROW("Tűznyil",Element.FIRE,SpellCategory.OFFENSIVE,1,Rune.FIRE1, Rune.FIRE2),
-    FIRESTORM("Tűzvihar",Element.FIRE, SpellCategory.OFFENSIVE,25,Rune.FIRE1, Rune.FIRE2, Rune.AIR1, Rune.AIR2),
+    RINGOFFIRE("Tűzgyűrű",Element.FIRE,SpellCategory.DEFENSIVE,2,Rune.FIRE1, Rune.FIRE2),
+    FLAMESWORD("Tűzkard",Element.FIRE,SpellCategory.OFFENSIVE,3,Rune.FIRE1, Rune.FIRE2),
+    FIREBALL("Tűzgolyó",Element.FIRE,SpellCategory.OFFENSIVE,5,Rune.AIR2, Rune.FIRE2),
+    FLAMESHIELD("Tűzpajzs",Element.FIRE,SpellCategory.DEFENSIVE,7,Rune.FIRE1, Rune.FIRE2),
+    FIRESTORM("Tűzvihar",Element.FIRE, SpellCategory.OFFENSIVE,10,Rune.FIRE1, Rune.FIRE2, Rune.AIR1, Rune.AIR2),
+    WILDFIRE("Futótűz",Element.FIRE, SpellCategory.OFFENSIVE,15,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
+    LAVA("Láva folyam",Element.FIRE, SpellCategory.OFFENSIVE,20,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
+    
+    //Víz varázslatok
     ICESHARDS("Jégszilánkok", Element.WATER,SpellCategory.OFFENSIVE,1,Rune.WATER1, Rune.WATER2);
     
     
@@ -55,6 +68,12 @@ public enum Spell {
      * Alapértelmezetten százszázalék, képességektől és külömbőző runák aktiválásakor változni fog
      */
     private int Power=100;
+    
+    /**
+     * A varázslat leírása
+     * Egyenlőre nincs implementálva
+     */
+    private String description="<varázslat leírása>";
     
     /**
      * Konstruktor

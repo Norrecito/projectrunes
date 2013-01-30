@@ -4,6 +4,7 @@
  */
 package game;
 
+import java.util.List;
 import view.component.Displayable;
 
 /**
@@ -17,35 +18,46 @@ public enum Enemy implements Displayable {
     SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2,10,15,5,40),
     UNDEAD("Élőhalott",Avatar.UNDEAD1,2,20,5,50);
     
-    /*
+    /**
      * Az ellenfél neve
      */
     private String name;
     
-    /*
+    /**
      * Az ellenfél avatarja
      */
     private Avatar avatar;
     
-    /*
+    /**
      * Az ellenfél szintje
      */
     private int level;
     
-    /*
+    /**
      * Az ellenfél alapvető tulajdonságai
      */
     private int spellpower; //Varázserő
     private int resistance; //Ellenállás
     private int critical;    //Kritikus esély
     
-    /*
+    /**
      * Az ellenfél életpontjai
      */
     private int hp;
     
-    /*
+    /**
+     * Az ellenfél varázslatainak listája
+     */
+    private List<Spell> spells;
+    
+    /**
      * Konstruktor
+     * @param name az ellenfél neve
+     * @param avatar az ellenfél avatar képe
+     * @param spellpower az ellenfél varázsereje
+     * @param resistance az ellenfél ellenállása
+     * @param critical az ellenfél kritikus esélye
+     * @param hp az ellenfél életerő pontjai
      */
     private Enemy(String name ,Avatar avatar, int spellpower, int resistance, int critical, int hp){
         
@@ -60,7 +72,7 @@ public enum Enemy implements Displayable {
         
     }
     
-    /*
+    /**
      * Tulajdonságok beállítása
      */
     private void setStats(){
@@ -70,7 +82,7 @@ public enum Enemy implements Displayable {
         hp = hp + (level*5);
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél nevét
      */
     @Override
@@ -78,7 +90,7 @@ public enum Enemy implements Displayable {
         return name;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél avatar képét
      */
     @Override
@@ -86,7 +98,7 @@ public enum Enemy implements Displayable {
         return avatar;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél szintjét
      */
     @Override
@@ -94,7 +106,7 @@ public enum Enemy implements Displayable {
         return level;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél varázserejét
      */
     @Override
@@ -102,7 +114,7 @@ public enum Enemy implements Displayable {
         return spellpower;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél ellenállását
      */
     @Override
@@ -110,7 +122,7 @@ public enum Enemy implements Displayable {
         return resistance;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél kritikus esélyét
      */
     @Override
@@ -118,7 +130,7 @@ public enum Enemy implements Displayable {
         return critical;
     }
     
-    /*
+    /**
      * Visszaadja az ellenfél életerő pontjait
      */
     @Override
