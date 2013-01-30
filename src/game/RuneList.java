@@ -21,9 +21,8 @@ public class RuneList extends ArrayList<Rune> {
      */
     public int getCount(Rune r){
         int count=0;
-        
-        for(int i=0; i<this.size(); i++){
-            if(this.get(i) == r) count++;
+        for (Rune o : this) {
+            if (o == r) count++;
         }
         return count;
     }

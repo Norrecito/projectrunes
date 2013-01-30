@@ -98,7 +98,17 @@ public class SingleplayerMenuPanel extends AbstractPanel {
     /*
      * A varázskönyv megnyítását szolgáló gomb
      */
-    private final JButton btSpellBook = new JButton("Varázskönyv", RM.getSpellbookIcon());
+    private final JButton btSpellBook = new JButton("Varázskönyv", RM.getSpellbookIcon()){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    getFrame().switchPanel(SpellbookPanel.class);
+                }
+            });
+        }
+    };
     
     /*
      * A bolt megnyítását szolgáló gomb

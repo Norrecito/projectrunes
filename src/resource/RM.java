@@ -235,6 +235,20 @@ public class RM {
         return getIcon(runeName+"Activated.png");
     }
     
+    /**
+     * Visszaadja az Offenzív kategoria ikonját
+     */
+    public static ImageIcon getOffensiveIcon(){
+        return getIcon("Offensive.png");
+    }
+    
+    /**
+     * Visszaadja a Defenzív kategoria ikonját
+     */
+    public static ImageIcon getDefensiveIcon(){
+        return getIcon("Defensive.png");
+    }
+    
     /*
      * Visszaadja a paraméterként kapott elem leírását
      */
