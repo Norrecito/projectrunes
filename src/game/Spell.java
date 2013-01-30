@@ -20,7 +20,9 @@ public enum Spell {
     LIGHTNING("Villám", Element.AIR,SpellCategory.OFFENSIVE,1, Rune.AIR1, Rune.AIR2),
     SPINES("Tüskék", Element.EARTH,SpellCategory.OFFENSIVE,1,Rune.EARTH1, Rune.EARTH2),
     FLAMEARROW("Tűznyil",Element.FIRE,SpellCategory.OFFENSIVE,1,Rune.FIRE1, Rune.FIRE2),
+    FIRESTORM("Tűzvihar",Element.FIRE, SpellCategory.OFFENSIVE,25,Rune.FIRE1, Rune.FIRE2, Rune.AIR1, Rune.AIR2),
     ICESHARDS("Jégszilánkok", Element.WATER,SpellCategory.OFFENSIVE,1,Rune.WATER1, Rune.WATER2);
+    
     
     /**
      * A varázslat neve
