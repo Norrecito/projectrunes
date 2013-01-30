@@ -51,6 +51,11 @@ public enum Enemy implements Displayable {
     private List<Spell> spells;
     
     /**
+     * Az ellenfél runáinak a listája
+     */
+    private RuneList runes;
+    
+    /**
      * Konstruktor
      * @param name az ellenfél neve
      * @param avatar az ellenfél avatar képe
