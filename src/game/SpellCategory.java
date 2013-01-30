@@ -12,7 +12,7 @@ package game;
  * a varázslatok ezek szerint lesznek csoportosítva, illetve egyes képességek
  * kihatnak (pl. nővelik/csökkentik az erejüket) a külömbőző kategoriájú varázslatokra.
  * 
- * @pending az enum kidolgozása
+ * @pending az enum további kidolgozása
  * 
  * @author Norrecito
  */

@@ -5,10 +5,12 @@
 package view.component;
 
 import game.Rune;
+import game.Spell;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,22 +27,28 @@ import org.imgscalr.Scalr;
  */
 public class SpellPanel extends JPanel {
     
-    /*
+    /**
+     * A varázslat ami jelenleg a panelen van
+     */
+    private Spell spell;
+    
+    /**
      * A varázslat nevét mutató cimke
      */
-    private JLabel lbName = new JLabel("<HTML><p color='#FF0000'>Tűzgolyó</p></HTML>");
+    private JLabel lbName = new JLabel();
     
-    /*
+    /**
      * A varázslat erejét mutató cimke
      */
-    private JLabel lbPower = new JLabel("Erő: 100%");
+    private JLabel lbPower = new JLabel();
     
-    /*
+    /**
      * A varázslathóz szükséges rúnákat mutató panel
      */
     private JPanel pnRequirements = new JPanel(){
         {
         setLayout(new FlowLayout()); //Panel elrendezésének beállítása
+        /*
         //TESZT
         //Átméretezett Avatar kép elkészítése
         BufferedImage image1 = (BufferedImage) Rune.FIRE1.getIcon().getImage();
@@ -51,6 +59,8 @@ public class SpellPanel extends JPanel {
         add(new JLabel(new ImageIcon(scaledImage1)));
         add(new JLabel(new ImageIcon(scaledImage2)));
         
+        * 
+        */
         setOpaque(false); //Legyen átlátszó a panel
         }
     };
@@ -60,7 +70,11 @@ public class SpellPanel extends JPanel {
      * Egy varázslatot fog majd várni és annak tulajdonságait/követelményeit jeleníti meg a felhasználó számára
      * Egyenlőre Teszt jellegü
      */
-    public SpellPanel(){
+    public SpellPanel(Spell s){
+        
+        this.spell = s;
+        
+        initComponents(); //Komponensek a inicializálása
         initPanel(); //Panel inicializálása
     }
 
@@ -71,6 +85,22 @@ public class SpellPanel extends JPanel {
         add(lbName, BorderLayout.WEST);
         add(lbPower, BorderLayout.EAST);
         add(pnRequirements, BorderLayout.SOUTH);
+    }
+
+    private void initComponents() {
+        lbName.setText(spell.getNAME());
+        lbPower.setText("Erő: "+String.valueOf(spell.getPower())+"%");
+        
+        List<Rune> runes = spell.getRUNES();
+        for(int i=0; i<runes.size(); i++){
+            
+            Rune rune = runes.get(i);
+            BufferedImage image = (BufferedImage) rune.getIcon().getImage();
+            BufferedImage scaledImage = Scalr.resize(image, 25);
+            
+            pnRequirements.add(new JLabel(new ImageIcon(scaledImage)));
+            
+        }
     }
     
 }
