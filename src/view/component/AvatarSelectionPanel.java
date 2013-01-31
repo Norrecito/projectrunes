@@ -36,7 +36,7 @@ public class AvatarSelectionPanel extends JPanel {
     /*
      * Az avatarok listája
      */
-    private Avatar[] Avatars = Avatar.values();
+    private Avatar[] Avatars = Avatar.getChoosableAvatars();
     
     /*
      * A gomb amivel az eggyel elötte lévő Avatarra tudunk váltani
@@ -82,8 +82,6 @@ public class AvatarSelectionPanel extends JPanel {
         {
             setLayout(new BorderLayout());
             add(lbAvatar);
-           
-           
         }
         
     };
@@ -137,8 +135,8 @@ public class AvatarSelectionPanel extends JPanel {
         if(index <0) index=Avatars.length-1;
         if(index >Avatars.length-1) index=0;
         
-        lbAvatar.setIcon(Avatar.values()[index].getIcon());
-        currentAvatar = Avatar.values()[index];
+        lbAvatar.setIcon(Avatars[index].getIcon());
+        currentAvatar = Avatars[index];
         
     }
     
