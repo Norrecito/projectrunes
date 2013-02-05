@@ -11,10 +11,7 @@ import game.SpellCategory;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -65,19 +62,32 @@ public class SpellbookPanel extends AbstractPanel {
      */
     private JList lsOffensive=new JList(modelOffensize){
         {
-           addMouseListener(new MouseAdapter() {
+          addMouseListener(new MouseAdapter() {
+              
                @Override
                public void mouseClicked(MouseEvent evt){
-                  changeSpellState((SpelllistPanel) getSelectedValue()); 
-               }
-           });
+                   JList list = (JList)evt.getSource();
+                   changeSpellState((SpelllistPanel) list.getSelectedValue());   
+              }
+          });
         }
     };
     
     /**
      * A Defenzív (Védekező) varázslatokat tároló lista
      */
-    private JList lsDefensive=new JList(modelDefensize);
+    private JList lsDefensive=new JList(modelDefensize){
+        {
+          addMouseListener(new MouseAdapter() {
+              
+               @Override
+               public void mouseClicked(MouseEvent evt){
+                   JList list = (JList)evt.getSource();
+                   changeSpellState((SpelllistPanel) list.getSelectedValue());   
+              }
+          });
+        }
+    };
     
     /**
      * Az Offenzív varázslatok listájának görgető felülete
@@ -139,6 +149,9 @@ public class SpellbookPanel extends AbstractPanel {
         }
     };
     
+    /**
+     * Konstruktor
+     */
     public SpellbookPanel(){
         
         initComponents(); //Komponensek a inicializálása
@@ -185,12 +198,14 @@ public class SpellbookPanel extends AbstractPanel {
        if(!spell.isMemorized() && (hero.getMaxSpell()>=hero.getSpells().size())) {
            panel.getCheckBox().setSelected(true);
            panel.getSpell().setMemorized(true);
-           System.out.println("Varázslat memorizálva!");
+           hero.getSpells().add(spell);
+           System.out.println("Varázslat memorizálva: "+spell.getNAME());
        }
        else if(spell.isMemorized()){
             panel.getCheckBox().setSelected(false);
             panel.getSpell().setMemorized(false);
-            System.out.println("Varázslat kiszedve a listából!");
+            hero.getSpells().remove(spell);
+            System.out.println("Varázslat kiszedve a listából: "+spell.getNAME());
        }
     }
 }
