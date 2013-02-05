@@ -5,6 +5,7 @@
 package view.component;
 
 import game.Rune;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
@@ -35,32 +36,13 @@ public class RunePanel extends JPanel {
     /*
      * A egérkattintás figyelő
      */
-    private MouseListener listener = new MouseListener() {
+    private MouseListener listener = new MouseAdapter() {
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            ;
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            ;
-        }
-
-        @Override
+       @Override
         public void mouseReleased(MouseEvent e) {
             activateRune();
         }
 
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ;
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ;
-        }
     };
     
     /*
