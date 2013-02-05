@@ -14,46 +14,61 @@ import view.component.Displayable;
  */
 public class Hero implements Serializable, Displayable {
     
-    /*
+    /**
      * A karakter neve
      */
     private final String name;
     
-    /*
+    /**
      * A karakter avatarja
      */
     private final Avatar avatar;
     
-    /*
+    /**
      * A karakter csillagjegye
      */
     private final Zodiac zodiac;
     
-    /*
+    /**
      * Az elem amibe a karakter csillagjegye tartozik
      */
     private final Element element;
     
-    /*
+    /**
+     * A maximum egyszerre memorizálható (harc közben használható) varázslatok száma
+     */
+    private final int maxSpell=5;
+    
+    /**
+     * A karakter jelenleg memorizált varázslatai
+     */
+    private SpellList spells=new SpellList();
+    
+    /**
+     * A karakter jelenlegi rúnái
+     */
+    private RuneList runes=new RuneList();
+    
+    /**
      * A karakter szintje
      */
     private int level = 1;
     
-    /*
+    /**
      * A karakter alapvető tulajdonságai
      */
     private int spellpower = 10; //Varázserő
     private int resistance = 10; //Ellenállás
     private int critical = 5;    //Kritikus esély
     
-    /*
+    /**
      * A karakter statisztikai értékei
      */
     private int hp = 30;
     private int xp = 0;
     private int gold = 0;
     
-    /*
+    /**
      * Konstruktor
      */
     public Hero(String name,Avatar avatar, Zodiac zodiac){
@@ -64,14 +79,14 @@ public class Hero implements Serializable, Displayable {
         this.element = zodiac.getElement();
     }
     
-    /*
+    /**
      * Visszaadja a karakter csillagjegyéhez tartozó elemet
      */
     public Element getElement() {
         return element;
     }
     
-    /*
+    /**
      * Visszaadja a karakter nevét
      */
     @Override
@@ -79,14 +94,14 @@ public class Hero implements Serializable, Displayable {
         return name;
     }
     
-    /*
+    /**
      * Visszaadja a karakter csillagjegyét
      */
     public Zodiac getZodiac() {
         return zodiac;
     }
     
-    /*
+    /**
      * Visszaadja a karakter avatarját
      */
     @Override
@@ -94,7 +109,7 @@ public class Hero implements Serializable, Displayable {
         return avatar;
     }
     
-    /*
+    /**
      * Visszaadja a karakter szintjét
      */
     @Override
@@ -102,7 +117,7 @@ public class Hero implements Serializable, Displayable {
         return level;
     }
     
-    /*
+    /**
      * Visszaadja a karakter kritikus esélyét
      */
     @Override
@@ -110,7 +125,7 @@ public class Hero implements Serializable, Displayable {
         return critical;
     }
     
-    /*
+    /**
      * Visszaadja a karakter ellenálását
      */
     @Override
@@ -118,7 +133,7 @@ public class Hero implements Serializable, Displayable {
         return resistance;
     }
     
-    /*
+    /**
      * Visszaadja a karakter varázserejét
      */
     @Override
@@ -126,14 +141,14 @@ public class Hero implements Serializable, Displayable {
         return spellpower;
     }
     
-    /*
+    /**
      * Visszaadja a karakter aranyának számát
      */
     public int getGold() {
         return gold;
     }
     
-    /*
+    /**
      * Visszaadja a karakter életerő pontjainak számát
      */
     @Override
@@ -141,13 +156,32 @@ public class Hero implements Serializable, Displayable {
         return hp;
     }
     
-    /*
+    /**
      * Visszaadja a karakter tapasztalatpontjainak számát
      */
     public int getXp() {
         return xp;
     }
+
+    /**
+     * @return a karakter jelenleg memorizált varázslatait 
+     */
+    public SpellList getSpells() {
+        return spells;
+    }
     
+    /**
+     * @return a karakter jelenlegi runáinak listáját 
+     */
+    public RuneList getRunes() {
+        return runes;
+    }
     
+    /**
+     * @return hány darab varázslat lehet egyszerre memorizálva maximum 
+     */
+    public int getMaxSpell() {
+        return maxSpell;
+    }
     
 }

@@ -108,6 +108,11 @@ public enum Spell {
     private String description="<varázslat leírása>";
     
     /**
+     * Memorizálva van-e jelenleg az adott varázslat
+     */
+    private boolean memorized;
+    
+    /**
      * Konstruktor
      * @param name a varázslat neve
      * @param element az elem amibe a varázslat tartozik
@@ -208,6 +213,21 @@ public enum Spell {
      */
     public String getDescription() {
         return description;
+    }
+    
+    /**
+     * @return memorizálva van-e jelenleg a varázslat 
+     */
+    public boolean isMemorized() {
+        return memorized;
+    }
+    
+    /**
+     * Beállítja a paraméterben alapján hogy memorizálva legyen-e a varázslat
+     * @param memorized legyen-e memorizálva a varázslat
+     */
+    public void setMemorized(boolean memorized) {
+        this.memorized = memorized;
     }
     
     

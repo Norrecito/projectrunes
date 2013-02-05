@@ -80,7 +80,7 @@ public class SpelllistPanel extends JPanel {
     }
 
     private void initPanel() {
-        setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        setLayout(new BoxLayout(this,BoxLayout.X_AXIS)); //Panel elrendezésének beállítása
         
         Box box = Box.createHorizontalBox();
         Dimension separator = new Dimension(10,0);
@@ -98,6 +98,18 @@ public class SpelllistPanel extends JPanel {
         add(box);
     }
     
+    /**
+     * @return a panelen lévő varázslatot 
+     */
+    public Spell getSpell() {
+        return spell;
+    }
     
+    /**
+     * @return a checkboxot ami jelzi a user számára hogy memorizálva van-e jelenleg a varázslat
+     */
+    public JCheckBox getCheckBox() {
+        return cbEquip;
+    }
     
 }

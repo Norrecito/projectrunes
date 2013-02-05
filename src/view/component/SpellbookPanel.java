@@ -5,6 +5,7 @@
 package view.component;
 
 import game.DataManager;
+import game.Hero;
 import game.Spell;
 import game.SpellCategory;
 import java.awt.BorderLayout;
@@ -12,6 +13,8 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -60,7 +63,16 @@ public class SpellbookPanel extends AbstractPanel {
     /**
      * Az Offenzív (Támadó) varázslatokat tároló lista
      */
-    private JList lsOffensive=new JList(modelOffensize);
+    private JList lsOffensive=new JList(modelOffensize){
+        {
+           addMouseListener(new MouseAdapter() {
+               @Override
+               public void mouseClicked(MouseEvent evt){
+                  changeSpellState((SpelllistPanel) getSelectedValue()); 
+               }
+           });
+        }
+    };
     
     /**
      * A Defenzív (Védekező) varázslatokat tároló lista
@@ -160,5 +172,23 @@ public class SpellbookPanel extends AbstractPanel {
             if(spells.get(i).getCATEGORY() == SpellCategory.OFFENSIVE) modelOffensize.addElement(new SpelllistPanel(spells.get(i)));
         }
         
+    }
+    
+    /**
+     * Memorizálja a kiválasztott varázslatot, illetve ha az memorizálva van már akkor kiszedi a listából.
+     */
+    private void changeSpellState(SpelllistPanel panel){
+       
+       Spell spell = panel.getSpell();
+       Hero hero = DataManager.getSelectedHero(); 
+       
+       if(!spell.isMemorized() && (hero.getMaxSpell()>=hero.getSpells().size())) {
+           panel.getCheckBox().setSelected(true);
+           spell.setMemorized(true);
+       }
+       if(spell.isMemorized()){
+           panel.getCheckBox().setSelected(false);
+           spell.setMemorized(false);
+       }
     }
 }
