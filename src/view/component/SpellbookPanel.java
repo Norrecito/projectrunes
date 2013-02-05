@@ -184,11 +184,13 @@ public class SpellbookPanel extends AbstractPanel {
        
        if(!spell.isMemorized() && (hero.getMaxSpell()>=hero.getSpells().size())) {
            panel.getCheckBox().setSelected(true);
-           spell.setMemorized(true);
+           panel.getSpell().setMemorized(true);
+           System.out.println("Varázslat memorizálva!");
        }
-       if(spell.isMemorized()){
-           panel.getCheckBox().setSelected(false);
-           spell.setMemorized(false);
+       else if(spell.isMemorized()){
+            panel.getCheckBox().setSelected(false);
+            panel.getSpell().setMemorized(false);
+            System.out.println("Varázslat kiszedve a listából!");
        }
     }
 }
