@@ -4,10 +4,15 @@
  */
 package view.component;
 
+import game.DataManager;
+import game.Spell;
+import game.SpellCategory;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import resource.RM;
@@ -77,6 +82,7 @@ public class SpellbookPanel extends AbstractPanel {
      */
     private JPanel pnOffensive = new JPanel(){
         {
+            setLayout(new BorderLayout());
             add(lsOffensive);
         }
     };
@@ -86,6 +92,7 @@ public class SpellbookPanel extends AbstractPanel {
      */
     private JPanel pnDefensive = new JPanel(){
         {
+            setLayout(new BorderLayout());
             add(lsDefensive);
         }
     };
@@ -124,10 +131,13 @@ public class SpellbookPanel extends AbstractPanel {
         
         initComponents(); //Komponensek a inicializálása
         initPanel(); //Panel inicializálása
+        setListContent(); //Varázslatlisták beállítása
     }
 
     private void initComponents() {
-        
+      //Cellrenderer beállítása
+      lsDefensive.setCellRenderer(new ImageListCellRenderer(Color.GRAY, Color.LIGHT_GRAY));  
+      lsOffensive.setCellRenderer(new ImageListCellRenderer(Color.GRAY, Color.LIGHT_GRAY));  
     }
 
     private void initPanel() {
@@ -137,5 +147,18 @@ public class SpellbookPanel extends AbstractPanel {
        add(pnText, BorderLayout.NORTH);
        add(tbLists, BorderLayout.CENTER);
        add(pnButtons, BorderLayout.SOUTH);
+    }
+    /**
+     * Feltölti és beállítja a varázslatlistákat
+     */
+    private void setListContent(){
+        
+        List<Spell> spells = DataManager.getSelectedHero().getElement().getSpellList();
+        
+        for(int i=0; i<spells.size(); i++){
+            if(spells.get(i).getCATEGORY() == SpellCategory.DEFENSIVE) modelDefensize.addElement(new SpelllistPanel(spells.get(i)));
+            if(spells.get(i).getCATEGORY() == SpellCategory.OFFENSIVE) modelOffensize.addElement(new SpelllistPanel(spells.get(i)));
+        }
+        
     }
 }

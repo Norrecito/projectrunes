@@ -4,8 +4,16 @@
  */
 package game;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import org.imgscalr.Scalr;
 
 /**
  * A varázslatok tároló enum
@@ -145,6 +153,27 @@ public enum Spell {
      */
     public List<Rune> getRUNES() {
         return RUNES;
+    }
+    
+    /**
+     * @return a varázslathóz szükséges runákat panelen 
+     */
+    public JPanel getRUNESOnPanel(){
+        JPanel pn = new JPanel();
+        pn.setLayout(new BorderLayout());
+        pn.setOpaque(false);
+        Box box = Box.createHorizontalBox();
+        for(int i=0; i<RUNES.size(); i++){
+            
+            Rune rune = RUNES.get(i);
+            BufferedImage image = (BufferedImage) rune.getActivatedIcon().getImage();
+            BufferedImage scaledImage = Scalr.resize(image, 25);
+            
+            box.add(new JLabel(new ImageIcon(scaledImage)));
+            
+        }
+        pn.add(box);
+        return pn;
     }
     
     /**
