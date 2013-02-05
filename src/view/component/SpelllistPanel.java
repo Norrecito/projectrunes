@@ -37,6 +37,11 @@ public class SpelllistPanel extends JPanel {
     private final JLabel lbName = new JLabel();
     
     /**
+     * A varázslat típusát megjelenítő cimke
+     */
+    private final JLabel lbType = new JLabel();
+    
+    /**
      * A varázslat kiválasztására lehetőséget adó checkbox
      */
     private JCheckBox cbEquip = new JCheckBox();
@@ -66,6 +71,10 @@ public class SpelllistPanel extends JPanel {
         lbName.setForeground(spell.getELEMENT().getColor());
         lbName.setPreferredSize(new Dimension(100,25));
         
+        lbType.setText(spell.getTYPE().getName());
+        lbType.setForeground(spell.getTYPE().getColor());
+        lbType.setPreferredSize(new Dimension(70,25));
+        
         pnRunes = spell.getRUNESOnPanel();
         
     }
@@ -81,6 +90,8 @@ public class SpelllistPanel extends JPanel {
         box.add(lbLevel);
         box.add(Box.createRigidArea(separator));
         box.add(lbName);
+        box.add(Box.createRigidArea(separator));
+        box.add(lbType);
         box.add(Box.createRigidArea(separator));
         box.add(pnRunes);
         

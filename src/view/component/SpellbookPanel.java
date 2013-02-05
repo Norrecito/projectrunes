@@ -136,8 +136,8 @@ public class SpellbookPanel extends AbstractPanel {
 
     private void initComponents() {
       //Cellrenderer beállítása
-      lsDefensive.setCellRenderer(new ImageListCellRenderer(Color.GRAY, Color.LIGHT_GRAY));  
-      lsOffensive.setCellRenderer(new ImageListCellRenderer(Color.GRAY, Color.LIGHT_GRAY));  
+      lsDefensive.setCellRenderer(new ImageListCellRenderer(Color.WHITE, Color.LIGHT_GRAY));  
+      lsOffensive.setCellRenderer(new ImageListCellRenderer(Color.WHITE, Color.LIGHT_GRAY));  
     }
 
     private void initPanel() {

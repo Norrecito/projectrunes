@@ -5,7 +5,6 @@
 package game;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.List;
@@ -26,44 +25,44 @@ import org.imgscalr.Scalr;
 public enum Spell {
     
     //Levegő varázslatok
-    LIGHTNING("Villám", Element.AIR,SpellCategory.OFFENSIVE,1, Rune.AIR1, Rune.AIR2),
-    ELECTRICCHARGE("Elektromos töltés", Element.AIR,SpellCategory.DEFENSIVE,2, Rune.AIR1, Rune.AIR2),
-    LIGHTNINGSPEAR("Villámlándzsa",Element.AIR,SpellCategory.OFFENSIVE,3, Rune.AIR1, Rune.AIR2),
-    BALLLIGHTNING("Gömbvillám",Element.AIR,SpellCategory.OFFENSIVE,5, Rune.AIR2, Rune.WATER2),
-    LIGHTNINGSHIELD("Villámpajzs", Element.AIR,SpellCategory.DEFENSIVE,7, Rune.AIR1, Rune.AIR2),
-    ELECTRICSTORM("Elektromos vihar",Element.AIR,SpellCategory.OFFENSIVE,10, Rune.AIR1, Rune.AIR2, Rune.WATER1, Rune.WATER2),
-    SUNRAY("Napsugár",Element.AIR,SpellCategory.OFFENSIVE,5, Rune.AIR1, Rune.AIR2),
-    STARFALL("Csillaghullás",Element.AIR,SpellCategory.OFFENSIVE,20, Rune.AIR1, Rune.AIR2, Rune.WATER1, Rune.WATER2),
+    LIGHTNING("Villám", Element.AIR,SpellCategory.OFFENSIVE,SpellType.MISSILE,1, Rune.AIR1, Rune.AIR2),
+    ELECTRICCHARGE("Elektromos töltés", Element.AIR,SpellCategory.DEFENSIVE,SpellType.BUFF,2, Rune.AIR1, Rune.AIR2),
+    LIGHTNINGSPEAR("Villámlándzsa",Element.AIR,SpellCategory.OFFENSIVE,SpellType.CONJURE,3, Rune.AIR1, Rune.AIR2),
+    BALLLIGHTNING("Gömbvillám",Element.AIR,SpellCategory.OFFENSIVE,SpellType.MISSILE,5, Rune.AIR2, Rune.WATER2),
+    LIGHTNINGSHIELD("Villámpajzs", Element.AIR,SpellCategory.DEFENSIVE,SpellType.BUFF,7, Rune.AIR1, Rune.AIR2),
+    ELECTRICSTORM("Elektromos vihar",Element.AIR,SpellCategory.OFFENSIVE,SpellType.AREA,10, Rune.AIR1, Rune.AIR2, Rune.WATER1, Rune.WATER2),
+    SUNRAY("Napsugár",Element.AIR,SpellCategory.OFFENSIVE,SpellType.MISSILE,5, Rune.AIR1, Rune.AIR2),
+    STARFALL("Csillaghullás",Element.AIR,SpellCategory.OFFENSIVE,SpellType.AREA,20, Rune.AIR1, Rune.AIR2, Rune.WATER1, Rune.WATER2),
     
     //Föld varázslatok
-    SPINES("Tüskék", Element.EARTH,SpellCategory.OFFENSIVE,1,Rune.EARTH1, Rune.EARTH2),
-    HEAL("Gyógyítás",Element.EARTH,SpellCategory.DEFENSIVE,2,Rune.EARTH1, Rune.EARTH2),
-    SPINEWHIP("Tövis ostor",Element.EARTH,SpellCategory.OFFENSIVE,3,Rune.EARTH1, Rune.EARTH2),
-    QUICKSAND("Futóhomok",Element.EARTH,SpellCategory.OFFENSIVE,5,Rune.EARTH2, Rune.WATER2),
-    FLESHTOSTONE("Kővéváltoztatás",Element.EARTH,SpellCategory.DEFENSIVE,7,Rune.EARTH1, Rune.EARTH2),
-    THORNS("Tövisek",Element.EARTH,SpellCategory.OFFENSIVE,10,Rune.EARTH1, Rune.EARTH2, Rune.WATER1, Rune.WATER2),
-    EARTHQUAKE("Földrengés",Element.EARTH,SpellCategory.OFFENSIVE,15,Rune.EARTH1, Rune.AIR1, Rune.AIR2, Rune.WATER2),
-    METEORSHOWER("Meteoreső",Element.EARTH,SpellCategory.OFFENSIVE,20,Rune.EARTH1,Rune.EARTH2, Rune.AIR1, Rune.AIR2),
+    SPINES("Tüskék", Element.EARTH,SpellCategory.OFFENSIVE,SpellType.MISSILE,1,Rune.EARTH1, Rune.EARTH2),
+    HEAL("Gyógyítás",Element.EARTH,SpellCategory.DEFENSIVE,SpellType.CURE,2,Rune.EARTH1, Rune.EARTH2),
+    SPINEWHIP("Tövis ostor",Element.EARTH,SpellCategory.OFFENSIVE,SpellType.CONJURE,3,Rune.EARTH1, Rune.EARTH2),
+    QUICKSAND("Futóhomok",Element.EARTH,SpellCategory.OFFENSIVE,SpellType.AREA,5,Rune.EARTH2, Rune.WATER2),
+    FLESHTOSTONE("Kővéváltoztatás",Element.EARTH,SpellCategory.DEFENSIVE,SpellType.DEBUFF,7,Rune.EARTH1, Rune.EARTH2),
+    THORNS("Tövisek",Element.EARTH,SpellCategory.OFFENSIVE,SpellType.AREA,10,Rune.EARTH1, Rune.EARTH2, Rune.WATER1, Rune.WATER2),
+    EARTHQUAKE("Földrengés",Element.EARTH,SpellCategory.OFFENSIVE,SpellType.AREA,15,Rune.EARTH1, Rune.AIR1, Rune.AIR2, Rune.WATER2),
+    METEORSHOWER("Meteoreső",Element.EARTH,SpellCategory.OFFENSIVE,SpellType.AREA,20,Rune.EARTH1,Rune.EARTH2, Rune.AIR1, Rune.AIR2),
     
     //Tűz varázslatok:
-    FLAMEARROW("Tűznyil",Element.FIRE,SpellCategory.OFFENSIVE,1,Rune.FIRE1, Rune.FIRE2),
-    RINGOFFIRE("Tűzgyűrű",Element.FIRE,SpellCategory.DEFENSIVE,2,Rune.FIRE1, Rune.FIRE2),
-    FLAMESWORD("Tűzkard",Element.FIRE,SpellCategory.OFFENSIVE,3,Rune.FIRE1, Rune.FIRE2),
-    FIREBALL("Tűzgolyó",Element.FIRE,SpellCategory.OFFENSIVE,5,Rune.AIR2, Rune.FIRE2),
-    FLAMESHIELD("Tűzpajzs",Element.FIRE,SpellCategory.DEFENSIVE,7,Rune.FIRE1, Rune.FIRE2),
-    FIRESTORM("Tűzvihar",Element.FIRE, SpellCategory.OFFENSIVE,10,Rune.FIRE1, Rune.FIRE2, Rune.AIR1, Rune.AIR2),
-    WILDFIRE("Futótűz",Element.FIRE, SpellCategory.OFFENSIVE,15,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
-    LAVA("Láva folyam",Element.FIRE, SpellCategory.OFFENSIVE,20,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
+    FLAMEARROW("Tűznyil",Element.FIRE,SpellCategory.OFFENSIVE,SpellType.MISSILE,1,Rune.FIRE1, Rune.FIRE2),
+    RINGOFFIRE("Tűzgyűrű",Element.FIRE,SpellCategory.DEFENSIVE,SpellType.BUFF,2,Rune.FIRE1, Rune.FIRE2),
+    FLAMESWORD("Tűzkard",Element.FIRE,SpellCategory.OFFENSIVE,SpellType.CONJURE,3,Rune.FIRE1, Rune.FIRE2),
+    FIREBALL("Tűzgolyó",Element.FIRE,SpellCategory.OFFENSIVE,SpellType.MISSILE,5,Rune.AIR2, Rune.FIRE2),
+    FLAMESHIELD("Tűzpajzs",Element.FIRE,SpellCategory.DEFENSIVE,SpellType.BUFF,7,Rune.FIRE1, Rune.FIRE2),
+    FIRESTORM("Tűzvihar",Element.FIRE, SpellCategory.OFFENSIVE,SpellType.AREA,10,Rune.FIRE1, Rune.FIRE2, Rune.AIR1, Rune.AIR2),
+    WILDFIRE("Futótűz",Element.FIRE, SpellCategory.OFFENSIVE,SpellType.AREA,15,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
+    LAVA("Láva folyam",Element.FIRE, SpellCategory.OFFENSIVE,SpellType.AREA,20,Rune.FIRE1, Rune.FIRE2, Rune.EARTH1, Rune.EARTH2),
     
     //Víz varázslatok
-    ICESHARDS("Jégszilánkok", Element.WATER,SpellCategory.OFFENSIVE,1,Rune.WATER1, Rune.WATER2),
-    VAPORCOULD("Gőzfelhő", Element.WATER,SpellCategory.DEFENSIVE,2,Rune.WATER1, Rune.WATER2),
-    ICEBOW("Jégíj", Element.WATER,SpellCategory.OFFENSIVE,3,Rune.WATER1, Rune.WATER2),
-    HOTSTEAM("Forró gőz", Element.WATER,SpellCategory.OFFENSIVE,5,Rune.WATER2, Rune.FIRE2),
-    FREEZE("Megfagyasztás", Element.WATER,SpellCategory.DEFENSIVE,7,Rune.WATER1, Rune.WATER2),
-    BLIZZARD("Jégvihar", Element.WATER,SpellCategory.OFFENSIVE,10,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2),
-    TORNADO("Tornádó", Element.WATER,SpellCategory.OFFENSIVE,15,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2),
-    LAVINA("Lavina",Element.WATER,SpellCategory.OFFENSIVE,20,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2);
+    ICESHARDS("Jégszilánkok", Element.WATER,SpellCategory.OFFENSIVE,SpellType.MISSILE,1,Rune.WATER1, Rune.WATER2),
+    VAPORCOULD("Gőzfelhő", Element.WATER,SpellCategory.DEFENSIVE,SpellType.BUFF,2,Rune.WATER1, Rune.WATER2),
+    ICEBOW("Jégíj", Element.WATER,SpellCategory.OFFENSIVE,SpellType.CONJURE,3,Rune.WATER1, Rune.WATER2),
+    HOTSTEAM("Forró gőz", Element.WATER,SpellCategory.OFFENSIVE,SpellType.AREA,5,Rune.WATER2, Rune.FIRE2),
+    FREEZE("Megfagyasztás", Element.WATER,SpellCategory.DEFENSIVE,SpellType.DEBUFF,7,Rune.WATER1, Rune.WATER2),
+    BLIZZARD("Jégvihar", Element.WATER,SpellCategory.OFFENSIVE,SpellType.AREA,10,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2),
+    TORNADO("Tornádó", Element.WATER,SpellCategory.OFFENSIVE,SpellType.AREA,15,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2),
+    LAVINA("Lavina",Element.WATER,SpellCategory.OFFENSIVE,SpellType.AREA,20,Rune.WATER1, Rune.WATER2,Rune.AIR1, Rune.AIR2);
     
     /**
      * A varázslat neve
@@ -79,6 +78,11 @@ public enum Spell {
      * A varázslat kategoriája
      */
     private final SpellCategory CATEGORY;
+    
+    /**
+     * A varázslat típusa
+     */
+    private final SpellType TYPE;
     
     /**
      * A varázslat megnyitásáhóz szükséges karakterszint
@@ -110,11 +114,12 @@ public enum Spell {
      * @param level a varázslathóz szükséges karakterszint
      * @param runes  a varázslat használhatáhóz szükséges runák
      */
-    private Spell(String name, Element element,SpellCategory category, int level, Rune ...runes){
+    private Spell(String name, Element element,SpellCategory category,SpellType type, int level, Rune ...runes){
         
         this.NAME = name;
         this.ELEMENT = element;
         this.CATEGORY = category;
+        this.TYPE = type;
         this.LEVEL = level;
         this.RUNES = Arrays.asList(runes);
         
@@ -167,7 +172,7 @@ public enum Spell {
             
             Rune rune = RUNES.get(i);
             BufferedImage image = (BufferedImage) rune.getActivatedIcon().getImage();
-            BufferedImage scaledImage = Scalr.resize(image, 25);
+            BufferedImage scaledImage = Scalr.resize(image, 30);
             
             box.add(new JLabel(new ImageIcon(scaledImage)));
             
@@ -189,6 +194,20 @@ public enum Spell {
      */
     public void setPower(int Power) {
         this.Power = Power;
+    }
+    
+    /**
+     * @return a varázslat típusát 
+     */
+    public SpellType getTYPE() {
+        return TYPE;
+    }
+    
+    /**
+     * @return a varázslat leírását 
+     */
+    public String getDescription() {
+        return description;
     }
     
     
