@@ -201,13 +201,13 @@ public class SpellbookPanel extends AbstractPanel {
        
        if(!spell.isMemorized() && (hero.getMaxSpell()>=hero.getSpells().size())) {
            panel.getCheckBox().setSelected(true);
-           panel.getSpell().setMemorized(true);
+           spell.setMemorized(true);
            hero.getSpells().add(spell);
            System.out.println("Varázslat memorizálva: "+spell.getNAME());
        }
        else if(spell.isMemorized()){
             panel.getCheckBox().setSelected(false);
-            panel.getSpell().setMemorized(false);
+            spell.setMemorized(false);
             hero.getSpells().remove(spell);
             System.out.println("Varázslat kiszedve a listából: "+spell.getNAME());
        }
