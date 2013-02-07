@@ -76,12 +76,12 @@ public class SpellbookPanel extends AbstractPanel {
     /**
      * Az Offenzív varázslatok listájáhóz tartozó lista model
      */
-    private DefaultListModel modelOffensize = new DefaultListModel();
+    private DefaultListModel<SpelllistPanel> modelOffensize = new DefaultListModel<SpelllistPanel>();
     
     /**
      * Az Defenzív varázslatok listájáhóz tartozó lista model
      */
-    private DefaultListModel modelDefensize = new DefaultListModel();
+    private DefaultListModel<SpelllistPanel> modelDefensize = new DefaultListModel<SpelllistPanel>();
     
     /**
      * Az Offenzív (Támadó) varázslatokat tároló lista
