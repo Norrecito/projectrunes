@@ -28,6 +28,32 @@ import resource.RM;
 public class SpellbookPanel extends AbstractPanel {
     
     /**
+     * A varázslatpaneleket tároló lista osztálya
+     * erre kerülnek fel a "varázslatok" és ebből a listából választhatjuk ki 
+     * azt a pár darabot amit memorizál a karakterünk.
+     */
+    private class SpellList extends JList<SpelllistPanel>{
+        
+        /**
+         * Konstruktor
+         * @param model a listamodell 
+         */
+        public SpellList(ListModel model){
+            super(model); 
+            
+            addMouseListener(new MouseAdapter(){
+                @Override
+                public void mouseClicked(MouseEvent evt){
+                     if(evt.getClickCount() == 2) {   
+                     changeSpellState(((JList<SpelllistPanel>)evt.getSource()).getSelectedValue());
+                     repaint();
+                     }
+                }
+            });
+        }
+    }
+    
+    /**
      * A "Varázskönyv" feliratot és annak ikonját tároló cimke 
      */
     private final JLabel lbText = new JLabel("<html><h1 color='#FFFFFF'>Varázskönyv (0/5)</h1></html>",RM.getSpellbookIcon(), SwingConstants.RIGHT);
@@ -60,34 +86,12 @@ public class SpellbookPanel extends AbstractPanel {
     /**
      * Az Offenzív (Támadó) varázslatokat tároló lista
      */
-    private JList lsOffensive=new JList(modelOffensize){
-        {
-          addMouseListener(new MouseAdapter() {
-              
-               @Override
-               public void mouseClicked(MouseEvent evt){
-                   JList list = (JList)evt.getSource();
-                   changeSpellState((SpelllistPanel) list.getSelectedValue());   
-              }
-          });
-        }
-    };
+    private JList<SpelllistPanel> lsOffensive=new SpellList(modelOffensize);
     
     /**
      * A Defenzív (Védekező) varázslatokat tároló lista
      */
-    private JList lsDefensive=new JList(modelDefensize){
-        {
-          addMouseListener(new MouseAdapter() {
-              
-               @Override
-               public void mouseClicked(MouseEvent evt){
-                   JList list = (JList)evt.getSource();
-                   changeSpellState((SpelllistPanel) list.getSelectedValue());   
-              }
-          });
-        }
-    };
+    private JList<SpelllistPanel> lsDefensive=new SpellList(modelDefensize);
     
     /**
      * Az Offenzív varázslatok listájának görgető felülete
@@ -207,5 +211,6 @@ public class SpellbookPanel extends AbstractPanel {
             hero.getSpells().remove(spell);
             System.out.println("Varázslat kiszedve a listából: "+spell.getNAME());
        }
+       
     }
 }
