@@ -45,7 +45,7 @@ public class SpellbookPanel extends AbstractPanel {
                 @Override
                 public void mouseClicked(MouseEvent evt){
                      if(evt.getClickCount() == 2) {   
-                     changeSpellState(((JList<SpelllistPanel>)evt.getSource()).getSelectedValue());
+                     changeSpellState(getSelectedValue());
                      repaint();
                      }
                 }
