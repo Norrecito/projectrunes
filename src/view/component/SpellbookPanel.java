@@ -11,7 +11,10 @@ import game.SpellCategory;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -199,7 +202,7 @@ public class SpellbookPanel extends AbstractPanel {
        Spell spell = panel.getSpell();
        Hero hero = DataManager.getSelectedHero(); 
        
-       if(!spell.isMemorized() && (hero.getMaxSpell()>=hero.getSpells().size())) {
+       if(!spell.isMemorized() && (hero.getMaxSpell()>hero.getSpells().size())) {
            panel.getCheckBox().setSelected(true);
            spell.setMemorized(true);
            hero.getSpells().add(spell);
@@ -211,6 +214,14 @@ public class SpellbookPanel extends AbstractPanel {
             hero.getSpells().remove(spell);
             System.out.println("Varázslat kiszedve a listából: "+spell.getNAME());
        }
-       
+       refreshText();
+    }
+    
+    /**
+     * Frissiti a Varázskönyv felirat melett lévő számokat amik jelzik, hogy
+     * hány darab varázslat van memorizálva jelenleg, és hogy hány darab memorizálható maximum.
+     */
+    private void refreshText(){
+        lbText.setText("<html><h1 color='#FFFFFF'>Varázskönyv "+"("+DataManager.getSelectedHero().getSpells().size()+"/"+DataManager.getSelectedHero().getMaxSpell()+")"+"</h1></html>");
     }
 }
