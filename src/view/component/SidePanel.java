@@ -4,8 +4,6 @@
  */
 package view.component;
 
-import game.C;
-import game.Spell;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -101,7 +99,7 @@ public class SidePanel extends JPanel {
         }
     };
     
-    /*
+    /**
      * A varázslatokat mutató panel
      */
     private final JPanel pnSpell = new JPanel(){
@@ -113,8 +111,7 @@ public class SidePanel extends JPanel {
             
             for(int i =0; i<4; i++){
                 JPanel spellSlot = new JPanel();
-                spellSlot.setLayout(new BoxLayout(spellSlot,BoxLayout.X_AXIS));
-                //spellSlot.setBorder(BorderFactory.createLineBorder(Color.black));
+                spellSlot.setLayout(new BorderLayout());
                 box.add(spellSlot);
                 spellSlots[i] = spellSlot;
             }

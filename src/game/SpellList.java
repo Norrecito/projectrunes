@@ -13,4 +13,18 @@ import java.util.ArrayList;
  */
 public class SpellList extends ArrayList<Spell> {
     
+    /**
+     * Visszaadja az összes a listában szereplő varázslathóz szükséges rúnát listában.
+     * @return a szükséges rúnák listáját.
+     */
+    public RuneList getRunes(){
+        
+        RuneList runes= new RuneList();
+        
+        for(int i=0; i<size();i++){
+            runes.addAll(get(i).getRUNES());
+        }
+        return runes;    
+    }
+    
 }

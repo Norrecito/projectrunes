@@ -91,4 +91,15 @@ public class SpellPanel extends JPanel {
         pnRequirements.add(box);
     }
     
+    /**
+     * Frissiti a varázslat panel követelmény részében szereplő rúnák ikonját az éppen aktív karakter számára.
+     * Amenyiben időközben a karakter kapott egy rúnát amire szükség van a varázslat használatáhóz,
+     * akkor annak lecseréli az ikonját a panelen az "aktívált" ikonra.
+     * Amennyiben időközben a karakter felhasznált egy rúnát(rúnákat) ami eddig a rúnalistájában volt,
+     * akkor visszacseréli az ikont az "inaktív" változatára.
+     */
+    public void refreshIcons(){
+        
+    }
+    
 }
