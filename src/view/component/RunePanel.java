@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.BattleMaster;
 import game.Rune;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -73,6 +74,7 @@ public class RunePanel extends JPanel {
        if(!activated){
            activated=true;
            lbIcon.setIcon(rune.getActivatedIcon());
+           BattleMaster.addRune(rune);
        } 
     }
     

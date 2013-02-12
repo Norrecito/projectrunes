@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.BattleMaster;
 import game.C;
 import game.Rune;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class FightPanelTable extends JPanel {
      * Konstruktor
      */
     public FightPanelTable(int size){
+        
         this.size = size;
         initPanel(); //Panel inicializálása 
     }

@@ -25,7 +25,7 @@ public class SidePanel extends JPanel {
     /*
      * A megjelenítendő elem referenciája
      */
-    private Displayable displayable;
+    private Character character;
     
     /*
      * Az avatart tároló cimke
@@ -119,15 +119,15 @@ public class SidePanel extends JPanel {
      * egy "Megjeleníthető" (Displayable) interface-el ellátot objektumot (Hős, Ellenfél) vár paraméterként,
      * és automatikusan beállítja a nézetet hozzá
      */
-     public SidePanel(Displayable displayable){
+     public SidePanel(Character character){
          
-         this.displayable = displayable;
+         this.character = character;
          
          //Cimkék beállítása
-         lbAvatar.setIcon(displayable.getAvatar().getIcon());
-         lbSpellpower.setText(Integer.toString(displayable.getSpellpower()));
-         lbResistance.setText(Integer.toString(displayable.getResistance()));
-         lbCritical.setText(Integer.toString(displayable.getCritical()));
+         lbAvatar.setIcon(character.getAvatar().getIcon());
+         lbSpellpower.setText(Integer.toString(character.getSpellpower()));
+         lbResistance.setText(Integer.toString(character.getResistance()));
+         lbCritical.setText(Integer.toString(character.getCritical()));
          
          initComponents(); //Komponensek inicialízálása
          initPanel(); //Panel inicialízálása
@@ -138,10 +138,10 @@ public class SidePanel extends JPanel {
         
         //Teszt
         pbHP.setStringPainted(true);
-        pbHP.setString(Integer.toString(displayable.getHp())+"/"+Integer.toString(displayable.getHp()));
+        pbHP.setString(Integer.toString(character.getHp())+"/"+Integer.toString(character.getHp()));
         pbHP.setMinimum(0);
-        pbHP.setMaximum(displayable.getHp());
-        pbHP.setValue(displayable.getHp());
+        pbHP.setMaximum(character.getHp());
+        pbHP.setValue(character.getHp());
         
         Dimension size = new Dimension(40,25);
         lbSpellpower.setPreferredSize(size);
@@ -161,6 +161,13 @@ public class SidePanel extends JPanel {
         box.add(pnSpell);
         
         add(box);
+    }
+    
+    /**
+     * @return a panelen lévő karaktert
+     */
+    public Character getCharacter() {
+        return character;
     }
     
 }

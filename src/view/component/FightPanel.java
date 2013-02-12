@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.BattleMaster;
 import game.DataManager;
 import game.Enemy;
 import java.awt.BorderLayout;
@@ -15,6 +16,16 @@ import java.awt.Dimension;
  * @author Norrecito
  */
 public class FightPanel extends AbstractPanel {
+    
+    /**
+     * a harcban résztvevő hős
+     */
+    private view.component.Character hero=DataManager.getSelectedHero();
+    
+    /**
+     * a harcban résztvevő ellenfél
+     */
+    private view.component.Character enemy;
     
     /*
      * A rúnatábla méretéhez (sor, oszlop) tartozó változó
@@ -53,9 +64,11 @@ public class FightPanel extends AbstractPanel {
       
         this.tableSize = tableSize;
         
+        enemy = pnEnemy.getCharacter();
         pnFightTable = new FightPanelTable(tableSize);
         initComponents(); //Komponensek inicialízálása
         initPanel(); //Panel inicialízálása
+        BattleMaster.start();
     }
 
     private void initComponents() {

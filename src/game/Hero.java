@@ -5,14 +5,14 @@
 package game;
 
 import java.io.Serializable;
-import view.component.Displayable;
+import view.component.Character;
 
 /**
  * A játékos által létrehozott "Hős" (Játékos karakter)
  * 
  * @author Norrecito
  */
-public class Hero implements Serializable, Displayable {
+public class Hero implements Serializable, Character {
     
     /**
      * A karakter neve
@@ -67,6 +67,11 @@ public class Hero implements Serializable, Displayable {
     private int hp = 30;
     private int xp = 0;
     private int gold = 0;
+    
+    /**
+     * A karakter lépéspontjainak száma (alapértelmezetten 0)
+     */
+    private int moves=0;
     
     /**
      * Konstruktor
@@ -182,6 +187,39 @@ public class Hero implements Serializable, Displayable {
      */
     public int getMaxSpell() {
         return maxSpell;
+    }
+    
+    /**
+     * @return a karakter lépéspontjainak számát 
+     */
+    @Override
+    public int getMoves() {
+        return moves;
+    }
+    
+    /**
+     * Eggyel növeli a karakter lépéspontjait
+     */
+    @Override
+    public void movesUp() {
+        moves = moves +1;
+    }
+    
+    /**
+     * Eggyel csökknti a karakter lépéspontjait
+     */
+    @Override
+    public void movesDown() {
+        moves = moves - 1;
+    }
+    
+    /**
+     * Hozzáadja a paraméterben kapott rúnát a karakter rúnalistájáhóz
+     * @param r a hozzáadandó rúna
+     */
+    @Override
+    public void addRune(Rune r) {
+        runes.add(r);
     }
     
 }

@@ -5,14 +5,14 @@
 package game;
 
 import java.util.List;
-import view.component.Displayable;
+import view.component.Character;
 
 /**
  * A játékban szereplő ellenfelek (nem játékos karakterek)
  * 
  * @author Norrecito
  */
-public enum Enemy implements Displayable {
+public enum Enemy implements Character {
     
     SKELETON("Csontváz",Avatar.SKELETON1,5,15,5,30),
     SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2,10,15,5,40),
@@ -54,6 +54,11 @@ public enum Enemy implements Displayable {
      * Az ellenfél runáinak a listája
      */
     private RuneList runes;
+    
+    /**
+     * Az ellenfél lépéspontjainak száma (alapértelmezetten 0)
+     */
+    private int moves=0;
     
     /**
      * Konstruktor
@@ -141,6 +146,39 @@ public enum Enemy implements Displayable {
     @Override
     public int getHp() {
         return hp;
+    }
+    
+    /**
+     * @return a karakter lépéspontjainak számát 
+     */
+    @Override
+    public int getMoves() {
+        return moves;
+    }
+    
+    /**
+     * Eggyel növeli a karakter lépéspontjait
+     */
+    @Override
+    public void movesUp() {
+        moves = moves + 1;
+    }
+    
+    /**
+     * Eggyel csökkenti a karakter lépéspontjait
+     */
+    @Override
+    public void movesDown() {
+        moves = moves - 1;
+    }
+    
+    /**
+     * Hozzáadja a paraméterben kapott rúnát a karakter rúnalistájáhóz
+     * @param r a hozzáadandó rúna
+     */
+    @Override
+    public void addRune(Rune r) {
+        runes.add(r);
     }
     
 }
