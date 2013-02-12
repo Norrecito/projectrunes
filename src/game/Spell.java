@@ -216,10 +216,10 @@ public enum Spell {
     }
     
     /**
-     * @return memorizálva van-e jelenleg a varázslat 
+     * @return memorizálva van-e jelenleg a varázslat az aktuális hős számára 
      */
     public boolean isMemorized() {
-        return memorized;
+        return DataManager.getSelectedHero().getSpells().contains(this);
     }
     
     /**
