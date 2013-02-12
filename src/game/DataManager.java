@@ -51,7 +51,7 @@ public class DataManager {
      */
     public static void deleteHero(int index){
        heroes.remove(index); //Kitörli a paraméterben megkapott hőst a listából
-       save(); //Elementi a hősők listáját fájéba
+       save(); //Elementi a hősők listáját fájlba
     }
     
     /*
@@ -64,7 +64,7 @@ public class DataManager {
     /*
      * Elementi fájlba a hősők listáját
      */
-    private static void save(){
+    public static void save(){
         
         try{
             

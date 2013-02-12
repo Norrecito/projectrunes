@@ -4,6 +4,7 @@
  */
 package game;
 
+import java.util.Arrays;
 import java.util.List;
 import view.component.Character;
 
@@ -14,8 +15,8 @@ import view.component.Character;
  */
 public enum Enemy implements Character {
     
-    SKELETON("Csontváz",Avatar.SKELETON1,5,15,5,30),
-    SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2,10,15,5,40),
+    SKELETON("Csontváz",Avatar.SKELETON1,5,15,5,30, Spell.FREEZE, Spell.BLIZZARD, Spell.ICEBOW, Spell.ICESHARDS),
+    SKELETONWARRIOR("Csontváz harcos",Avatar.SKELETON2,10,15,5,40, Spell.ELECTRICCHARGE, Spell.ELECTRICSTORM, Spell.LIGHTNING, Spell.LIGHTNINGSPEAR),
     UNDEAD("Élőhalott",Avatar.UNDEAD1,2,20,5,50);
     
     /**
@@ -68,8 +69,9 @@ public enum Enemy implements Character {
      * @param resistance az ellenfél ellenállása
      * @param critical az ellenfél kritikus esélye
      * @param hp az ellenfél életerő pontjai
+     * @param spells az ellenfél varázslatai
      */
-    private Enemy(String name ,Avatar avatar, int spellpower, int resistance, int critical, int hp){
+    private Enemy(String name ,Avatar avatar, int spellpower, int resistance, int critical, int hp, Spell ...spells){
         
         this.name = name;
         this.avatar = avatar;
@@ -78,6 +80,7 @@ public enum Enemy implements Character {
         this.resistance = resistance;
         this.critical = critical;
         this.hp = hp;
+        this.spells = Arrays.asList(spells);
         setStats();
         
     }
@@ -179,6 +182,11 @@ public enum Enemy implements Character {
     @Override
     public void addRune(Rune r) {
         runes.add(r);
+    }
+
+    @Override
+    public List<Spell> getSpells() {
+        return spells;
     }
     
 }

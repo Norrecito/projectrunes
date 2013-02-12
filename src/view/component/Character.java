@@ -6,6 +6,8 @@ package view.component;
 
 import game.Avatar;
 import game.Rune;
+import game.Spell;
+import java.util.List;
 
 /**
  * A "Megjeleníthető" interface
@@ -55,6 +57,11 @@ public interface Character {
      * Visszaadja a karakter lépéseinek számát
      */
     public int getMoves();
+    
+    /**
+     * Visszaadja a karakter varázslatait
+     */
+    public List<Spell> getSpells();
     
     /**
      * eggyel növeli a karakter lépéspontjainak számát

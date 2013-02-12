@@ -70,6 +70,7 @@ public class SpellbookPanel extends AbstractPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    DataManager.save();
                     getFrame().switchPanel(SingleplayerMenuPanel.class);
                 }
             });

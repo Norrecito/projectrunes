@@ -171,6 +171,7 @@ public class Hero implements Serializable, Character {
     /**
      * @return a karakter jelenleg memorizált varázslatait 
      */
+    @Override
     public SpellList getSpells() {
         return spells;
     }

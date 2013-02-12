@@ -6,6 +6,7 @@ package view.component;
 
 import game.C;
 import game.Spell;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -59,6 +60,11 @@ public class SidePanel extends JPanel {
      */
     private JProgressBar pbHP = new JProgressBar();
     
+    /**
+     * A varázslat férőhelyeket tároló tömb
+     */
+    private JPanel spellSlots[] = new JPanel[4];
+    
     /*
      * Az avatart tároló panel
      */
@@ -100,16 +106,18 @@ public class SidePanel extends JPanel {
      */
     private final JPanel pnSpell = new JPanel(){
         {
-            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setLayout(new BorderLayout());
             setBorder(BorderFactory.createLineBorder(Color.black));
             
             Box box = Box.createVerticalBox();
             
             for(int i =0; i<4; i++){
-                SpellPanel spell = new SpellPanel(Spell.values()[C.createRandom(0, Spell.values().length-1)]);
-                box.add(spell);  
+                JPanel spellSlot = new JPanel();
+                spellSlot.setLayout(new BoxLayout(spellSlot,BoxLayout.X_AXIS));
+                //spellSlot.setBorder(BorderFactory.createLineBorder(Color.black));
+                box.add(spellSlot);
+                spellSlots[i] = spellSlot;
             }
-            
             add(box);
         }   
     };
@@ -147,6 +155,15 @@ public class SidePanel extends JPanel {
         lbSpellpower.setPreferredSize(size);
         lbResistance.setPreferredSize(size);
         lbCritical.setPreferredSize(size);
+        
+        //Varázslatok felrakása a felületre
+        
+        for(int i =0; i<character.getSpells().size(); i++){
+                JPanel slot = spellSlots[i];
+                SpellPanel spell = new SpellPanel(character.getSpells().get(i));
+                slot.add(spell);  
+            }
+            
     }
 
     private void initPanel() {
