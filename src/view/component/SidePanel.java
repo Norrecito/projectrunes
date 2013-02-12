@@ -7,6 +7,7 @@ package view.component;
 import game.C;
 import game.Spell;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.*;
 import resource.RM;
@@ -141,6 +142,11 @@ public class SidePanel extends JPanel {
         pbHP.setMinimum(0);
         pbHP.setMaximum(displayable.getHp());
         pbHP.setValue(displayable.getHp());
+        
+        Dimension size = new Dimension(40,25);
+        lbSpellpower.setPreferredSize(size);
+        lbResistance.setPreferredSize(size);
+        lbCritical.setPreferredSize(size);
     }
 
     private void initPanel() {

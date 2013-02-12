@@ -11,10 +11,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import org.imgscalr.Scalr;
 
 /**
@@ -79,6 +76,8 @@ public class SpellPanel extends JPanel {
         lbName.setForeground(spell.getELEMENT().getColor());
         lbPower.setText("Erő: "+String.valueOf(spell.getPower())+"%");
         
+        Box box = Box.createHorizontalBox();
+        
         List<Rune> runes = spell.getRUNES();
         for(int i=0; i<runes.size(); i++){
             
@@ -86,9 +85,10 @@ public class SpellPanel extends JPanel {
             BufferedImage image = (BufferedImage) rune.getIcon().getImage();
             BufferedImage scaledImage = Scalr.resize(image, 25);
             
-            pnRequirements.add(new JLabel(new ImageIcon(scaledImage)));
+            box.add(new JLabel(new ImageIcon(scaledImage)));
             
         }
+        pnRequirements.add(box);
     }
     
 }
