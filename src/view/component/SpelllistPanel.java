@@ -62,6 +62,7 @@ public class SpelllistPanel extends JPanel {
     }
 
     private void initComponents() {
+        cbEquip.setSelected(spell.isMemorized());
         
         lbLevel.setText(String.valueOf(spell.getLEVEL())+". szint");
         lbLevel.setForeground(Color.black);

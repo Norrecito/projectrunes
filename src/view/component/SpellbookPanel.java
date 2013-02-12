@@ -225,4 +225,12 @@ public class SpellbookPanel extends AbstractPanel {
     private void refreshText(){
         lbText.setText("<html><h1 color='#FFFFFF'>Varázskönyv "+"("+DataManager.getSelectedHero().getSpells().size()+"/"+DataManager.getSelectedHero().getMaxSpell()+")"+"</h1></html>");
     }
+    
+    /**
+     * Frissiti a panel komponenseit
+     */
+    @Override
+    public void refresh(){
+        refreshText();
+    }
 }
