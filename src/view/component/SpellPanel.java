@@ -4,6 +4,7 @@
  */
 package view.component;
 
+import game.BattleMaster;
 import game.Rune;
 import game.Spell;
 import java.awt.BorderLayout;
@@ -85,7 +86,7 @@ public class SpellPanel extends JPanel {
         
         Box box = Box.createHorizontalBox();
         RuneListPanel panel = spell.getRunesPanel(false, 25);
-        requirements.addAll(panel.getIcons());
+        requirements.addAll(0,panel.getIcons());
         
         pnRequirements.add(panel);
        
@@ -105,12 +106,21 @@ public class SpellPanel extends JPanel {
         if(spell.getRUNES().contains(r)){
             
             BufferedImage image = (BufferedImage) r.getIcon().getImage();
+            BufferedImage image2 = (BufferedImage) r.getActivatedIcon().getImage();
+            
             BufferedImage scaledImage = Scalr.resize(image, 25);
+            BufferedImage scaledImage2 = Scalr.resize(image2, 25);
             ImageIcon icon = new ImageIcon(scaledImage);
             
+            ImageIcon icon2 = new ImageIcon(scaledImage2);
+            
             for(int i=0; i<requirements.size(); i++){
-                if(requirements.get(i).getIcon() == icon) requirements.get(i).setIcon(r.getActivatedIcon());
+                if(requirements.get(i).getIcon().equals(icon)){
+                    requirements.get(i).setIcon(icon2);
+                    System.out.println("Ikon lecserélve!");
+                }
             }
+            System.out.println("Varázslatpanel "+spell.getNAME()+" frissitve "+BattleMaster.getActiveCharacter().getName()+" számára!");
         }
     }
         
