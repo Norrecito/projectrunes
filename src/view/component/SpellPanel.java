@@ -85,19 +85,8 @@ public class SpellPanel extends JPanel {
         
         Box box = Box.createHorizontalBox();
         
-        List<Rune> runes = spell.getRUNES();
-        for(int i=0; i<runes.size(); i++){
-            
-            Rune rune = runes.get(i);
-            BufferedImage image = (BufferedImage) rune.getIcon().getImage();
-            BufferedImage scaledImage = Scalr.resize(image, 25);
-            JLabel label = new JLabel(new ImageIcon(scaledImage));
-            ImageIcon icon = new ImageIcon(scaledImage);
-            runeLabels.add(label);
-            box.add(label);
-            
-        }
-        pnRequirements.add(box);
+        pnRequirements.add(spell.getRunesPanel(false, 25));
+       
     }
     
     /**
