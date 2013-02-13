@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import resource.RM;
 
@@ -119,10 +121,11 @@ public class SidePanel extends JPanel {
         }   
     };
     
-    /*
+    /**
      * A konstruktor
-     * egy "Megjeleníthető" (Displayable) interface-el ellátot objektumot (Hős, Ellenfél) vár paraméterként,
-     * és automatikusan beállítja a nézetet hozzá
+     * egy "Karakter" (Character) interface-el ellátot objektumot (Hős, Ellenfél) vár paraméterként,
+     * és automatikusan beállítja a nézetet hozzá.
+     * @param character a panelen megjelenítendő karakter.
      */
      public SidePanel(Character character){
          
@@ -178,10 +181,23 @@ public class SidePanel extends JPanel {
     }
     
     /**
-     * @return a panelen lévő karaktert
+     * @return a panelen lévő karaktert.
      */
     public Character getCharacter() {
         return character;
+    }
+    
+    /**
+     * @return a panelen lévő varázslatokat. 
+     */
+    public List<SpellPanel> getSpells() {
+        
+        List<SpellPanel> l = new ArrayList();
+        
+        for(int i=0; i<spellSlots.length; i++){
+           l.add((SpellPanel)spellSlots[i].getComponent(0));
+        }
+        return l;
     }
     
 }

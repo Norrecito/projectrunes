@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.imgscalr.Scalr;
+import view.component.RuneListPanel;
 
 /**
  * A varázslatok tároló enum
@@ -116,6 +117,8 @@ public enum Spell {
      * Konstruktor
      * @param name a varázslat neve
      * @param element az elem amibe a varázslat tartozik
+     * @param category a varászlat kategoriája
+     * @param type a varázslat típusa
      * @param level a varázslathóz szükséges karakterszint
      * @param runes  a varázslat használhatáhóz szükséges runák
      */
@@ -171,7 +174,7 @@ public enum Spell {
      * a rúna "aktívált" képe, és a méretük 30x30 pixel.
      * @return a varázslathóz szükséges runákat panelen. 
      */
-    public JPanel getRunesPanel(){
+    public RuneListPanel getRunesPanel(){
         return getRunesPanel(true,30);
     }
     
@@ -183,22 +186,8 @@ public enum Spell {
     * @param iconSize a rúna ikonok mérete.
     * @return a varázslathóz szükséges runákat panelen.
     */
-    public JPanel getRunesPanel(boolean activated, int iconSize){
-        JPanel pn = new JPanel();
-        pn.setLayout(new BorderLayout());
-        pn.setOpaque(false);
-        Box box = Box.createHorizontalBox();
-        for(int i=0; i<RUNES.size(); i++){
-            
-            Rune rune = RUNES.get(i);
-            BufferedImage image = (activated) ? (BufferedImage) rune.getActivatedIcon().getImage() : (BufferedImage) rune.getIcon().getImage();
-            BufferedImage scaledImage = Scalr.resize(image, iconSize);
-            
-            box.add(new JLabel(new ImageIcon(scaledImage)));
-            
-        }
-        pn.add(box);
-        return pn;
+    public RuneListPanel getRunesPanel(boolean activated, int iconSize){
+        return new RuneListPanel(RUNES, activated, iconSize);
     }
     
     /**

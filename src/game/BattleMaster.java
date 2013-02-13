@@ -56,14 +56,15 @@ public class BattleMaster {
     public static void addRune(Rune r){
         activeCharacter.addRune(r);
         System.out.println("Rúna "+r.getName()+" hozzáadva "+activeCharacter.getName()+ " számára");
+        refreshSpellPanels(r);
     }
     
     /**
      * Beállítja a harcmesterhez tartozó harctáblát amire felügyelni fog
      * @param fightpanel a harctábla
      */
-    public void setFightpanel(FightPanel fightpanel) {
-        this.fightpanel = fightpanel;
+    public static void setFightpanel(FightPanel fightpanel) {
+        BattleMaster.fightpanel = fightpanel;
     }
     
     /**
@@ -115,6 +116,10 @@ public class BattleMaster {
      */
     public static Character getActiveCharacter() {
         return activeCharacter;
+    }
+    
+    public static void refreshSpellPanels(Rune r){
+        fightpanel.refreshSidePanels(r);
     }
     
     

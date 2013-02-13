@@ -7,6 +7,7 @@ package view.component;
 import game.BattleMaster;
 import game.DataManager;
 import game.Enemy;
+import game.Rune;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -68,6 +69,7 @@ public class FightPanel extends AbstractPanel {
         pnFightTable = new FightPanelTable(tableSize);
         initComponents(); //Komponensek inicialízálása
         initPanel(); //Panel inicialízálása
+        BattleMaster.setFightpanel(this);
         BattleMaster.start();
     }
 
@@ -84,5 +86,16 @@ public class FightPanel extends AbstractPanel {
         add(pnEnemy, BorderLayout.EAST);
     }
     
+    /**
+     * Az egyenlőre kicsit sem optimális metódus ami frissíti a varázslatok követelményeit.
+     * @param r a rúna amit ellenőrizni kell.
+     * @pending átirni az egészet.
+     */
+    public void refreshSidePanels(Rune r){
+        for(int i=0; i<pnEnemy.getSpells().size(); i++){
+            pnHero.getSpells().get(i).refreshIcons(r);
+        }
+        
+    }
     
 }

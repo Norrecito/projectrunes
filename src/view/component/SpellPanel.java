@@ -9,12 +9,11 @@ import game.Spell;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import org.imgscalr.Scalr;
 
 /**
  * Panel amire a játékos illetve nem játékos karakterek varázslata kerül
@@ -32,11 +31,6 @@ public class SpellPanel extends JPanel {
     private Spell spell;
     
     /**
-     * A varázslathóz szükséges rúnák ikonjai
-     */
-    private List<JLabel> runeLabels = new ArrayList<>();
-    
-    /**
      * A varázslat nevét mutató cimke
      */
     private JLabel lbName = new JLabel();
@@ -45,6 +39,11 @@ public class SpellPanel extends JPanel {
      * A varázslat erejét mutató cimke
      */
     private JLabel lbPower = new JLabel();
+    
+    /**
+     * A varázslat követelményeinek ikonjait (a varázslathóz szükséges rúnák ikonjai) tároló lista
+     */
+    private List<JLabel>requirements = new ArrayList();
     
     /**
      * A varázslathóz szükséges rúnákat mutató panel
@@ -85,8 +84,10 @@ public class SpellPanel extends JPanel {
         lbPower.setText("Erő: "+String.valueOf(spell.getPower())+"%");
         
         Box box = Box.createHorizontalBox();
+        RuneListPanel panel = spell.getRunesPanel(false, 25);
+        requirements.addAll(panel.getIcons());
         
-        pnRequirements.add(spell.getRunesPanel(false, 25));
+        pnRequirements.add(panel);
        
     }
     
@@ -96,10 +97,21 @@ public class SpellPanel extends JPanel {
      * akkor annak lecseréli az ikonját a panelen az "aktívált" ikonra.
      * Amennyiben időközben a karakter felhasznált egy rúnát(rúnákat) ami eddig a rúnalistájában volt,
      * akkor visszacseréli az ikont az "inaktív" változatára.
-     * @param r a rúna
+     * @param r a rúna amit ellenőrizni szeretnénk.
+     * 
+     * @pending a metódus további kidolgozása/optimalizálása/átírása (egyenlőre erősen teszt jellegű)
      */
     public void refreshIcons(Rune r){
-        
+        if(spell.getRUNES().contains(r)){
+            
+            BufferedImage image = (BufferedImage) r.getIcon().getImage();
+            BufferedImage scaledImage = Scalr.resize(image, 25);
+            ImageIcon icon = new ImageIcon(scaledImage);
+            
+            for(int i=0; i<requirements.size(); i++){
+                if(requirements.get(i).getIcon() == icon) requirements.get(i).setIcon(r.getActivatedIcon());
+            }
+        }
     }
-    
+        
 }
