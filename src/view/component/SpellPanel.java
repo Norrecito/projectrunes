@@ -9,11 +9,12 @@ import game.Spell;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import org.imgscalr.Scalr;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * Panel amire a játékos illetve nem játékos karakterek varázslata kerül
