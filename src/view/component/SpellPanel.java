@@ -115,7 +115,7 @@ public class SpellPanel extends JPanel {
             ImageIcon icon2 = new ImageIcon(scaledImage2);
             
             for(int i=0; i<requirements.size(); i++){
-                if(requirements.get(i).getIcon().equals(icon)){
+                if(spell.getRUNES().get(i).getName().equals(r.getName())){
                     requirements.get(i).setIcon(icon2);
                     System.out.println("Ikon lecserélve!");
                 }
