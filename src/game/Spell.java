@@ -6,6 +6,7 @@ package game;
 
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.Box;
@@ -166,9 +167,24 @@ public enum Spell {
     }
     
     /**
-     * @return a varázslathóz szükséges runákat panelen 
+     * A varázslathóz szükséges rúnákat panelon visszaadó metódus első változata.
+     * Egy átlátszó JPanelt ad vissza amin a rúnák sorba vannak feltéve JLabelként, az ikonjuk
+     * a rúna "aktívált" képe, és a méretük 30x30 pixel.
+     * @return a varázslathóz szükséges runákat panelen. 
      */
-    public JPanel getRUNESOnPanel(){
+    public JPanel getRunesPanel(){
+        return getRunesPanel(true,30);
+    }
+    
+   /**
+    * A varázslathóz szükséges rúnákat panelon visszaadó metódus második változata.
+    * Itt már megadható, hogy az "inaktív" illetve az "aktív" ikonjait kapjuk-e vissza a rúnáknak,
+    * továbbá, hogy mekkorák legyenek az ikonok.
+    * @param activated az "aktivált" rúna ikonokokat adja-e vissza.
+    * @param iconSize a rúna ikonok mérete.
+    * @return a varázslathóz szükséges runákat panelen.
+    */
+    public JPanel getRunesPanel(boolean activated, int iconSize){
         JPanel pn = new JPanel();
         pn.setLayout(new BorderLayout());
         pn.setOpaque(false);
@@ -176,8 +192,8 @@ public enum Spell {
         for(int i=0; i<RUNES.size(); i++){
             
             Rune rune = RUNES.get(i);
-            BufferedImage image = (BufferedImage) rune.getActivatedIcon().getImage();
-            BufferedImage scaledImage = Scalr.resize(image, 30);
+            BufferedImage image = (activated) ? (BufferedImage) rune.getActivatedIcon().getImage() : (BufferedImage) rune.getIcon().getImage();
+            BufferedImage scaledImage = Scalr.resize(image, iconSize);
             
             box.add(new JLabel(new ImageIcon(scaledImage)));
             

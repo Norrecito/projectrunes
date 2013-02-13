@@ -109,6 +109,14 @@ public class BattleMaster {
         
     }
     
+    /**
+     * Visszaadja az éppen aktív karaktert.
+     * @return az aktív karaktert.
+     */
+    public static Character getActiveCharacter() {
+        return activeCharacter;
+    }
+    
     
     
 }

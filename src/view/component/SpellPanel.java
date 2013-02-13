@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import org.imgscalr.Scalr;
@@ -28,6 +29,11 @@ public class SpellPanel extends JPanel {
      * A varázslat ami jelenleg a panelen van
      */
     private Spell spell;
+    
+    /**
+     * A varázslathóz szükséges rúnák ikonjai
+     */
+    private List<JLabel> runeLabels = new ArrayList<>();
     
     /**
      * A varázslat nevét mutató cimke
@@ -57,8 +63,8 @@ public class SpellPanel extends JPanel {
     public SpellPanel(Spell s){
         
         this.spell = s;
-        
-        initComponents(); //Komponensek a inicializálása
+       
+        initComponents(); //Komponensek inicializálása
         initPanel(); //Panel inicializálása
     }
 
@@ -72,6 +78,7 @@ public class SpellPanel extends JPanel {
     }
 
     private void initComponents() {
+        
         lbName.setText(spell.getNAME());
         lbName.setForeground(spell.getELEMENT().getColor());
         lbPower.setText("Erő: "+String.valueOf(spell.getPower())+"%");
@@ -84,8 +91,10 @@ public class SpellPanel extends JPanel {
             Rune rune = runes.get(i);
             BufferedImage image = (BufferedImage) rune.getIcon().getImage();
             BufferedImage scaledImage = Scalr.resize(image, 25);
-            
-            box.add(new JLabel(new ImageIcon(scaledImage)));
+            JLabel label = new JLabel(new ImageIcon(scaledImage));
+            ImageIcon icon = new ImageIcon(scaledImage);
+            runeLabels.add(label);
+            box.add(label);
             
         }
         pnRequirements.add(box);
@@ -97,8 +106,9 @@ public class SpellPanel extends JPanel {
      * akkor annak lecseréli az ikonját a panelen az "aktívált" ikonra.
      * Amennyiben időközben a karakter felhasznált egy rúnát(rúnákat) ami eddig a rúnalistájában volt,
      * akkor visszacseréli az ikont az "inaktív" változatára.
+     * @param r a rúna
      */
-    public void refreshIcons(){
+    public void refreshIcons(Rune r){
         
     }
     

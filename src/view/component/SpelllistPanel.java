@@ -76,7 +76,7 @@ public class SpelllistPanel extends JPanel {
         lbType.setForeground(spell.getTYPE().getColor());
         lbType.setPreferredSize(new Dimension(70,25));
         
-        pnRunes = spell.getRUNESOnPanel();
+        pnRunes = spell.getRunesPanel();
         
     }
 
