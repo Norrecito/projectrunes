@@ -6,10 +6,7 @@ package resource;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -335,16 +332,17 @@ public class RM {
     /*
      * Visszaadja a szövegfájl tartalmát aminek a nevét paraméterben megkapja
      */
-    private static String getText(String filename){
+    public static String getText(String filename){
         
         String content="";
         
         try {
-            BufferedReader in = new BufferedReader(new FileReader(filename));
+            InputStream in = getStream(filename);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             
             String line;
             
-            while((line = in.readLine()) != null)
+            while((line = reader.readLine()) != null)
             {
                 content = content + line;
             }

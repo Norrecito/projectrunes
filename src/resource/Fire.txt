@@ -1,9 +1,7 @@
-<html>
+﻿<html>
 <body>
 
-<h1>T�z</h1>
-
-<p>Ez az els� paragrafus</p>
+<p color='FFFFFF'>A hóditó tűz, szó szerint a legforrobb elem. Ha ide tartozol, elemed a harc, a hódítás, a kihivások.</p>
 
 </body>
 </html>
