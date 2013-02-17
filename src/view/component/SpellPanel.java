@@ -43,6 +43,11 @@ public class SpellPanel extends JPanel {
     private JLabel lbPower = new JLabel();
     
     /**
+     * A varázslat eredeti ereje 
+     */
+    private int defaultPower;
+    
+    /**
      * A varázslat követelményeinek ikonjait (a varázslathóz szükséges rúnák ikonjai) tároló lista
      */
     private List<JLabel>requirements = new ArrayList();
@@ -65,6 +70,7 @@ public class SpellPanel extends JPanel {
     public SpellPanel(Spell s){
         
         this.spell = s;
+        defaultPower = spell.getPower();
        
         initComponents(); //Komponensek inicializálása
         initPanel(); //Panel inicializálása
@@ -133,11 +139,21 @@ public class SpellPanel extends JPanel {
      * ha pedig nem (például már elhasználta a szükséges rúnákat egy másik varázslatra),
      * akkor letíltja a varázslat használatát.
      */
-    public void checkSpellState(){
+    private void checkSpellState(){
         boolean criteria = BattleMaster.getActiveCharacter().getRunes().containsAll(spell.getRUNES());
         
         setEnabled(criteria);
         setBackground((criteria) ? Color.GREEN : Color.LIGHT_GRAY);
+    }
+    
+    /**
+     * Beállítja a varázslat erejét mutató címke betüszínét.
+     * Amennyiben a varázslat ereje nagyobb mint a varázslat eredeti ereje volt (tehát valamilyen bonusz hatására megnőtt),
+     * a címke betüszíne zöldre vált. Amennyiben a varázslat ereje kisebb mint az eredeti ereje volt (tehát valamilyen büntetés miatt lecsökkent),
+     * a címke betüszíne pirosra vált. Ha egyik kivétel se teljesül akkor a betűszín a fehér lesz.
+     */
+    private void checkPowerColor(){
+        lbPower.setForeground((spell.getPower() > defaultPower) ? Color.GREEN : (spell.getPower() == defaultPower) ? Color.WHITE : Color.RED);
     }
         
 }
