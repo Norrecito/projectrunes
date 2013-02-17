@@ -6,6 +6,7 @@ package view.component;
 
 import game.BattleMaster;
 import game.Rune;
+import game.RuneList;
 import game.Spell;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -106,21 +107,19 @@ public class SpellPanel extends JPanel {
     public void refreshIcons(Rune r){
         if(spell.getRUNES().contains(r)){
             
+            RuneList charrunes = BattleMaster.getActiveCharacter().getRunes();
+            List<Rune> spellrunes = spell.getRUNES();
             
-            
-            BufferedImage image = (BufferedImage) r.getIcon().getImage();
-            BufferedImage image2 = (BufferedImage) r.getActivatedIcon().getImage();
-            
-            BufferedImage scaledImage = Scalr.resize(image, 25);
-            BufferedImage scaledImage2 = Scalr.resize(image2, 25);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            
-            ImageIcon icon2 = new ImageIcon(scaledImage2);
-            
-            for(int i=0; i<requirements.size(); i++){
-                if(spell.getRUNES().get(i).getName().equals(r.getName())){
-                    requirements.get(i).setIcon(icon2);
-                    System.out.println("Ikon lecserélve!");
+            for(int i =0; i<charrunes.size(); i++){
+                
+                for(int j=0; j<spellrunes.size(); j++){
+                    if(charrunes.get(i) == spellrunes.get(j)){
+                        BufferedImage bufferedimage = (BufferedImage) spellrunes.get(j).getActivatedIcon().getImage();
+                        BufferedImage resizedImage = Scalr.resize(bufferedimage, 25);
+                        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+                        requirements.get(j).setIcon(resizedIcon);
+                        System.out.println("Ikon lecserélve!");
+                    }
                 }
             }
             System.out.println("Varázslatpanel "+spell.getNAME()+" frissitve "+BattleMaster.getActiveCharacter().getName()+" számára!");
