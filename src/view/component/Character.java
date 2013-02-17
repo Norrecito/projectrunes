@@ -6,6 +6,7 @@ package view.component;
 
 import game.Avatar;
 import game.Rune;
+import game.RuneList;
 import game.Spell;
 import java.util.List;
 
@@ -62,6 +63,11 @@ public interface Character {
      * Visszaadja a karakter varázslatait
      */
     public List<Spell> getSpells();
+    
+    /**
+     * Visszaadja a karakter jelenleg birtokolt rúnáinak a listáját.
+     */
+    public RuneList getRunes();
     
     /**
      * eggyel növeli a karakter lépéspontjainak számát

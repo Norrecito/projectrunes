@@ -72,6 +72,7 @@ public class SpellPanel extends JPanel {
     private void initPanel() {
         setLayout(new BorderLayout()); //Panel elrendezésének beállítása
         setBorder(BorderFactory.createLineBorder(Color.black)); //Panel keretének beállítása
+        setBackground(Color.LIGHT_GRAY);
         
         add(lbName, BorderLayout.WEST);
         add(lbPower, BorderLayout.EAST);
@@ -105,6 +106,8 @@ public class SpellPanel extends JPanel {
     public void refreshIcons(Rune r){
         if(spell.getRUNES().contains(r)){
             
+            
+            
             BufferedImage image = (BufferedImage) r.getIcon().getImage();
             BufferedImage image2 = (BufferedImage) r.getActivatedIcon().getImage();
             
@@ -122,6 +125,20 @@ public class SpellPanel extends JPanel {
             }
             System.out.println("Varázslatpanel "+spell.getNAME()+" frissitve "+BattleMaster.getActiveCharacter().getName()+" számára!");
         }
+        checkSpellState();
+    }
+    
+    /**
+     * Leellenőrzi, hogy a hős birtokolja-e a varázslathóz szükséges rúnákat.
+     * Amennyiben igen, engedélyezi a varázslat használatát a játékos számára,
+     * ha pedig nem (például már elhasználta a szükséges rúnákat egy másik varázslatra),
+     * akkor letíltja a varázslat használatát.
+     */
+    public void checkSpellState(){
+        boolean criteria = BattleMaster.getActiveCharacter().getRunes().containsAll(spell.getRUNES());
+        
+        setEnabled(criteria);
+        setBackground((criteria) ? Color.GREEN : Color.LIGHT_GRAY);
     }
         
 }

@@ -183,10 +183,23 @@ public enum Enemy implements Character {
     public void addRune(Rune r) {
         runes.add(r);
     }
-
+    
+    /**
+     * Visszaadja az ellenfél varázslatainak listáját.
+     * @return az ellenfél varázslatainak listáját.
+     */
     @Override
     public List<Spell> getSpells() {
         return spells;
+    }
+    
+    /**
+     * Visszaadja az ellenfél álltal jelenleg birtokolt rúnák listáját.
+     * @return az ellenfél rúnáinak listáját.
+     */
+    @Override
+    public RuneList getRunes() {
+        return runes;
     }
     
 }

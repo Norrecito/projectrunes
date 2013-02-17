@@ -179,6 +179,7 @@ public class Hero implements Serializable, Character {
     /**
      * @return a karakter jelenlegi runáinak listáját 
      */
+    @Override
     public RuneList getRunes() {
         return runes;
     }
