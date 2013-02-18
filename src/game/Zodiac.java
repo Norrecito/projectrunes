@@ -4,7 +4,9 @@
  */
 package game;
 
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import org.imgscalr.Scalr;
 import resource.RM;
 import view.component.Visible;
 
@@ -94,6 +96,21 @@ public enum Zodiac implements Visible {
     @Override
     public ImageIcon getIcon() {
         return icon;
+    }
+
+    /**
+     * Visszaadja az elem ikonját a paraméterben megkapott méret alapján
+     * @param iconSize az ikon mérete
+     * @return az ikon képét.
+     */
+    @Override
+    public ImageIcon getIcon(int iconSize) {
+        
+        BufferedImage image = (BufferedImage) getIcon().getImage();
+        BufferedImage resizedImage = Scalr.resize(image, iconSize);
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+        
+        return resizedIcon;
     }
     
 }

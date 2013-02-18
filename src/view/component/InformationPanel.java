@@ -61,12 +61,8 @@ public class InformationPanel extends JPanel {
     public void setContent(Visible visible){
         this.visible = visible;
         
-        BufferedImage image = (BufferedImage) visible.getIcon().getImage();
-        BufferedImage scaledImage = Scalr.resize(image, 30);
-        ImageIcon icon = new ImageIcon(scaledImage);
-        
         lbName.setText(visible.getName());
-        lbName.setIcon(icon);
+        lbName.setIcon(visible.getIcon(30));
         tpDescription.setText(visible.getDescription());
         tpDescription.setCaretPosition(0);
     }

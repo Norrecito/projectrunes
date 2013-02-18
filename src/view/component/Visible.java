@@ -9,25 +9,32 @@ import javax.swing.ImageIcon;
 /**
  * A "Látható" interface
  * Olyan osztály implementálja aminek van látható felülete (képe, leírása, neve)
- * Jelenleg az Elem (Element) illetve a Csillgjegy (Zodiac) enum használja, később bővítésre kerül
+ * Jelenleg az Elem (Element) illetve a Csillgjegy (Zodiac) enum használja, később bővítésre kerül.
  * 
  * @author Norrecito
  */
 public interface Visible {
     
-    /*
+    /**
      * Visszaadja az elem nevét
      */
     public String getName();
     
-    /*
+    /**
      * Visszaadja az elem leírását
      */
     public String getDescription();
     
-    /*
+    /**
      * Visszaadja az elem ikonképét 
      */
     public ImageIcon getIcon();
+    
+    /**
+     * Visszaadja az elem ikonképet a paraméterben megadott méretben
+     * @param iconSize az ikon mérete
+     * @return az elem ikonképét
+     */
+    public ImageIcon getIcon(int iconSize);
     
 }
