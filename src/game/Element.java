@@ -26,10 +26,10 @@ public enum Element implements Visible {
     /*
      * Az elemek
      */
-    AIR("<HTMl><p color='#0B3861'>Levegő<p></HTML>",RM.getText("Air.txt"),"Air", new Color(0,191,255)),  //Levegő
-    EARTH("<HTMl><p color='#61380B'>Föld<p></HTML>",RM.getText("Earth.txt"),"Earth", new Color(139,69,19)),  //Föld 
-    FIRE("<HTMl><p color='#FF0000'>Tűz<p></HTML>", RM.getText("Fire.txt"),"Fire", new Color(255,0,0)),     //Tűz
-    WATER("<HTMl><p color='#0404B4'>Víz<p></HTML>",RM.getText("Water.txt"),"Water", new Color(0,0,255));    //Víz
+    AIR("<HTMl><p color='#0B3861'>Levegő<p></HTML>",RM.getText("Air.html"),"Air", new Color(0,191,255)),  //Levegő
+    EARTH("<HTMl><p color='#61380B'>Föld<p></HTML>",RM.getText("Earth.html"),"Earth", new Color(139,69,19)),  //Föld 
+    FIRE("<HTMl><p color='#FF0000'>Tűz<p></HTML>", RM.getText("Fire.html"),"Fire", new Color(255,0,0)),     //Tűz
+    WATER("<HTMl><p color='#0404B4'>Víz<p></HTML>",RM.getText("Water.html"),"Water", new Color(0,0,255));    //Víz
     
     /*
      * Az elem neve

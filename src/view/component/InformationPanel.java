@@ -7,9 +7,7 @@ package view.component;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
-import org.imgscalr.Scalr;
 
 /**
  * A panel amire az Elem illetve a Csillagjegy információi kerülnek (név, ikon, leírás) 
