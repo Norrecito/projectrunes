@@ -1,7 +1,9 @@
 ﻿<html>
 <body>
 
-<p color='FFFFFF'>A víz elem leírása.</p>
+<span style="color:#FFFFFF">A víz elem leírása.</span>
+
+<p color='FFFFFF'> Azok varázslatai akik a Víz elemében születtek, képessek a <span style="color:#0404B4">megfagyasztásra</span>, ekkor az ellenfél kimarad a következő körből.</p>
 
 </body>
 </html>

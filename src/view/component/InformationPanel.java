@@ -7,7 +7,9 @@ package view.component;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import javax.swing.*;
+import org.imgscalr.Scalr;
 
 /**
  * A panel amire az Elem illetve a Csillagjegy információi kerülnek (név, ikon, leírás) 
@@ -58,9 +60,15 @@ public class InformationPanel extends JPanel {
      */
     public void setContent(Visible visible){
         this.visible = visible;
+        
+        BufferedImage image = (BufferedImage) visible.getIcon().getImage();
+        BufferedImage scaledImage = Scalr.resize(image, 30);
+        ImageIcon icon = new ImageIcon(scaledImage);
+        
         lbName.setText(visible.getName());
-        lbName.setIcon(visible.getIcon());
+        lbName.setIcon(icon);
         tpDescription.setText(visible.getDescription());
+        tpDescription.setCaretPosition(0);
     }
     
     private void initPanel(){
